@@ -1,0 +1,6 @@
+framework module Pods_Badalementini {
+  umbrella header "Pods-Badalementini-umbrella.h"
+
+  export *
+  module * { export * }
+}
