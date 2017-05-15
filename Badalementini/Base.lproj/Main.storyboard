@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VcS-en-dEB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OyX-d7-4IY">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--View Controller-->
         <scene sceneID="gcH-ah-5wr">
             <objects>
                 <viewController id="RRA-lQ-n8b" sceneMemberID="viewController">
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="cya-5M-sSY"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="cya-5M-sSY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qI8-Ky-7aB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,6 +57,68 @@
             </objects>
             <point key="canvasLocation" x="1392.8" y="-389.05547226386807"/>
         </scene>
+        <!--Sign In View Controller-->
+        <scene sceneID="MhS-kH-n8o">
+            <objects>
+                <viewController id="OyX-d7-4IY" customClass="SignInViewController" customModule="Badalementini" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5wd-Mh-k5S"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fk1-VM-rtN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KwY-CI-WCn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9rp-Bu-YUN">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCT-TS-gZE">
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpTapped:" destination="OyX-d7-4IY" eventType="touchUpInside" id="HHM-U3-fzf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ww-qt-O9C">
+                                <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="signInTapped:" destination="OyX-d7-4IY" eventType="touchUpInside" id="pE6-0h-imf"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F0h-pI-Ghp">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9rp-Bu-YUN" firstAttribute="leading" secondItem="KwY-CI-WCn" secondAttribute="leadingMargin" constant="22" id="3Yv-xk-EIP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="F0h-pI-Ghp" secondAttribute="trailing" constant="22" id="9RL-2P-rXA"/>
+                            <constraint firstItem="3Ww-qt-O9C" firstAttribute="leading" secondItem="KwY-CI-WCn" secondAttribute="leadingMargin" constant="126" id="E2Y-Fh-ksd"/>
+                            <constraint firstItem="VCT-TS-gZE" firstAttribute="top" secondItem="F0h-pI-Ghp" secondAttribute="bottom" constant="29" id="FQz-KD-YY0"/>
+                            <constraint firstItem="3Ww-qt-O9C" firstAttribute="top" secondItem="VCT-TS-gZE" secondAttribute="bottom" constant="8" id="LTp-R4-EbF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9rp-Bu-YUN" secondAttribute="trailing" constant="22" id="Ppd-oF-2Lv"/>
+                            <constraint firstItem="F0h-pI-Ghp" firstAttribute="leading" secondItem="KwY-CI-WCn" secondAttribute="leadingMargin" constant="22" id="Ri7-zb-9Mw"/>
+                            <constraint firstItem="9rp-Bu-YUN" firstAttribute="top" secondItem="5wd-Mh-k5S" secondAttribute="bottom" constant="59" id="Suw-A7-i0w"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VCT-TS-gZE" secondAttribute="trailing" constant="133" id="WJT-ke-vSs"/>
+                            <constraint firstItem="3Ww-qt-O9C" firstAttribute="top" secondItem="VCT-TS-gZE" secondAttribute="bottom" constant="8" id="dea-1a-bIW"/>
+                            <constraint firstItem="F0h-pI-Ghp" firstAttribute="top" secondItem="9rp-Bu-YUN" secondAttribute="bottom" constant="23" id="ewL-h5-Bn7"/>
+                            <constraint firstItem="VCT-TS-gZE" firstAttribute="leading" secondItem="KwY-CI-WCn" secondAttribute="leadingMargin" constant="132" id="jTx-67-Lke"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3Ww-qt-O9C" secondAttribute="trailing" constant="127" id="vCU-Js-vQx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="9rp-Bu-YUN" id="M1W-pw-dMb"/>
+                        <outlet property="passwordTextField" destination="F0h-pI-Ghp" id="h3Y-o7-8Ln"/>
+                        <segue destination="VcS-en-dEB" kind="show" identifier="SignedIn" id="4nN-N4-KWx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Kf-3v-WNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1183.2" y="-62.518740629685162"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Yda-M3-om4">
             <objects>
@@ -74,11 +137,11 @@
             </objects>
             <point key="canvasLocation" x="-497" y="-62"/>
         </scene>
-        <!--Item 1-->
+        <!--Navigation Controller-->
         <scene sceneID="nYK-VG-xoO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lvh-Ns-lCu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="SUC-xd-52o"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="SUC-xd-52o"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yK8-IU-1lu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
