@@ -11,15 +11,16 @@ import Firebase
 
 class SignInViewController: UIViewController {
     
+    var reference = FIRDatabaseReference.init()
+    var currentUser: FIRUser?
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidAppear(_ animated: Bool) {
-        
         if let user = FIRAuth.auth()?.currentUser {
             print("USER ELAMIL ADDRESS \(FIRAuth.auth()?.currentUser?.email)")
             self.signedIn(user)
-            
         }
     }
     
@@ -27,13 +28,10 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        reference = FIRDatabase.database().reference()
+        
+        reference.child("deneme").child((FIRAuth.auth()?.currentUser?.uid)!).setValue("ameno domimre")
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     @IBAction func signUpTapped(_ sender: UIButton) {
         
@@ -52,11 +50,8 @@ class SignInViewController: UIViewController {
             guard let uid = AppState.sharedInstance.UID else { return }
             UserManager.sharedInstance.ref.child("users").child(uid).setValue(messageDeneme)
             
-            //            self.setDisplayName(user)
-            
         }
     }
-    
     
     @IBAction func signInTapped(_ sender: UIButton) {
         // Sign In with credentials.
