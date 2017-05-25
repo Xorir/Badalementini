@@ -14,6 +14,13 @@
 		D254A5251EC8DB610079C17E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D254A5241EC8DB610079C17E /* Assets.xcassets */; };
 		D254A5281EC8DB610079C17E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D254A5261EC8DB610079C17E /* LaunchScreen.storyboard */; };
 		D254A5301EC8DBC70079C17E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D254A52F1EC8DBC70079C17E /* GoogleService-Info.plist */; };
+		D254A5321EC981330079C17E /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A5311EC981330079C17E /* Annotation.swift */; };
+		D254A5341EC987500079C17E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A5331EC987500079C17E /* SignInViewController.swift */; };
+		D254A5361EC9880D0079C17E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A5351EC9880D0079C17E /* AppState.swift */; };
+		D254A5381EC9894E0079C17E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A5371EC9894E0079C17E /* UserManager.swift */; };
+		D254A57E1ED551780079C17E /* MapEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A57D1ED551780079C17E /* MapEntryViewController.swift */; };
+		D254A5801ED6A2E00079C17E /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A57F1ED6A2E00079C17E /* UserLocationManager.swift */; };
+		D254A5831ED757B20079C17E /* StrayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A5821ED757B20079C17E /* StrayModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +35,13 @@
 		D254A5271EC8DB610079C17E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D254A5291EC8DB610079C17E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D254A52F1EC8DBC70079C17E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D254A5311EC981330079C17E /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		D254A5331EC987500079C17E /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		D254A5351EC9880D0079C17E /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D254A5371EC9894E0079C17E /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		D254A57D1ED551780079C17E /* MapEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapEntryViewController.swift; sourceTree = "<group>"; };
+		D254A57F1ED6A2E00079C17E /* UserLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
+		D254A5821ED757B20079C17E /* StrayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,15 +94,30 @@
 		D254A51C1EC8DB610079C17E /* Badalementini */ = {
 			isa = PBXGroup;
 			children = (
+				D254A5811ED7529A0079C17E /* Controller */,
 				D254A51D1EC8DB610079C17E /* AppDelegate.swift */,
-				D254A51F1EC8DB610079C17E /* ViewController.swift */,
+				D254A5821ED757B20079C17E /* StrayModel.swift */,
+				D254A5371EC9894E0079C17E /* UserManager.swift */,
+				D254A5351EC9880D0079C17E /* AppState.swift */,
+				D254A57F1ED6A2E00079C17E /* UserLocationManager.swift */,
 				D254A5211EC8DB610079C17E /* Main.storyboard */,
+				D254A5311EC981330079C17E /* Annotation.swift */,
 				D254A5241EC8DB610079C17E /* Assets.xcassets */,
 				D254A5261EC8DB610079C17E /* LaunchScreen.storyboard */,
 				D254A52F1EC8DBC70079C17E /* GoogleService-Info.plist */,
 				D254A5291EC8DB610079C17E /* Info.plist */,
 			);
 			path = Badalementini;
+			sourceTree = "<group>";
+		};
+		D254A5811ED7529A0079C17E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D254A51F1EC8DB610079C17E /* ViewController.swift */,
+				D254A5331EC987500079C17E /* SignInViewController.swift */,
+				D254A57D1ED551780079C17E /* MapEntryViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,7 +219,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E2D14A8E148D18E016FCC1EA /* [CP] Embed Pods Frameworks */ = {
@@ -215,8 +244,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D254A5381EC9894E0079C17E /* UserManager.swift in Sources */,
+				D254A5361EC9880D0079C17E /* AppState.swift in Sources */,
+				D254A5341EC987500079C17E /* SignInViewController.swift in Sources */,
 				D254A5201EC8DB610079C17E /* ViewController.swift in Sources */,
+				D254A57E1ED551780079C17E /* MapEntryViewController.swift in Sources */,
+				D254A5321EC981330079C17E /* Annotation.swift in Sources */,
 				D254A51E1EC8DB610079C17E /* AppDelegate.swift in Sources */,
+				D254A5831ED757B20079C17E /* StrayModel.swift in Sources */,
+				D254A5801ED6A2E00079C17E /* UserLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +414,7 @@
 				D254A52E1EC8DB610079C17E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
