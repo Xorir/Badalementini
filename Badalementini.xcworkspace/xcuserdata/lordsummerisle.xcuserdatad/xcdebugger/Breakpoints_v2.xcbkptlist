@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Badalementini/MapEntryViewController.swift"
-            timestampString = "517428807.60591"
+            filePath = "Badalementini/ViewController.swift"
+            timestampString = "517649303.772514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "reverseGeocoding(latitude:longitude:)"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "annotationTry(annotationValues:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/ViewController.swift"
+            timestampString = "517649303.772514"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "annotationTry(annotationValues:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +42,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Badalementini/MapEntryViewController.swift"
-            timestampString = "517428807.60591"
+            timestampString = "517823461.607373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "reverseGeocoding(latitude:longitude:)"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Badalementini.MapEntryViewController.imagePickerController (__ObjC.UIImagePickerController, didFinishPickingMediaWithInfo : Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "Badalementini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/MapEntryViewController.swift"
+                  timestampString = "517823553.864435"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "30">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Badalementini.MapEntryViewController.imagePickerController (__ObjC.UIImagePickerController, didFinishPickingMediaWithInfo : Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "Badalementini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/MapEntryViewController.swift"
+                  timestampString = "517823553.866501"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "170"
+                  endingLineNumber = "170"
+                  offsetFromSymbolStart = "320">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823461.607373"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +106,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Badalementini/MapEntryViewController.swift"
-            timestampString = "517428256.125965"
+            timestampString = "517823461.607373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "sendInfo(_:)"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "MapEntryViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823461.607373"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Badalementini/MapEntryViewController.swift"
-            timestampString = "517428256.125965"
+            timestampString = "517823751.248905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "sendInfo(_:)"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "sendPhoto()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +154,364 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Badalementini/MapEntryViewController.swift"
-            timestampString = "517428807.60591"
+            timestampString = "517823751.870712"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "sendInfo(_:)"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823752.680872"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823753.676962"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823755.291073"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Badalementini.MapEntryViewController.sendPhoto () -&gt; ()"
+                  moduleName = "Badalementini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/MapEntryViewController.swift"
+                  timestampString = "517823755.504295"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "778">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Badalementini.MapEntryViewController.sendPhoto () -&gt; ()"
+                  moduleName = "Badalementini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/MapEntryViewController.swift"
+                  timestampString = "517823755.505816"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "921">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823755.801466"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Badalementini.MapEntryViewController.sendPhoto () -&gt; ()"
+                  moduleName = "Badalementini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/MapEntryViewController.swift"
+                  timestampString = "517823756.015018"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "149"
+                  endingLineNumber = "149"
+                  offsetFromSymbolStart = "944">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Badalementini.MapEntryViewController.(sendPhoto () -&gt; ()).(closure #1)"
+                  moduleName = "Badalementini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/MapEntryViewController.swift"
+                  timestampString = "517823756.017079"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "150"
+                  endingLineNumber = "150"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823756.347427"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823757.175"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823757.74503"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823758.259191"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823758.803451"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823759.543154"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823760.269155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Badalementini.MapEntryViewController.sendPhoto () -&gt; ()"
+                  moduleName = "Badalementini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/MapEntryViewController.swift"
+                  timestampString = "517823760.479205"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "1265">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Badalementini.MapEntryViewController.(sendPhoto () -&gt; ()).(closure #1)"
+                  moduleName = "Badalementini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/MapEntryViewController.swift"
+                  timestampString = "517823760.480823"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "649">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823760.799624"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Badalementini.MapEntryViewController.sendPhoto () -&gt; ()"
+                  moduleName = "Badalementini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/MapEntryViewController.swift"
+                  timestampString = "517823760.804085"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "1265">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Badalementini.MapEntryViewController.(sendPhoto () -&gt; ()).(closure #1)"
+                  moduleName = "Badalementini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/MapEntryViewController.swift"
+                  timestampString = "517823760.808016"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "649">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823761.377222"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "sendPhoto()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "517823761.94718"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "sendPhoto()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -30,7 +30,7 @@ class SignInViewController: UIViewController {
         // Do any additional setup after loading the view.
         reference = FIRDatabase.database().reference()
         
-        reference.child("deneme").child((FIRAuth.auth()?.currentUser?.uid)!).setValue("ameno domimre")
+//        reference.child("deneme").child((FIRAuth.auth()?.currentUser?.uid)!).setValue("ameno domimre")
     }
     
     @IBAction func signUpTapped(_ sender: UIButton) {

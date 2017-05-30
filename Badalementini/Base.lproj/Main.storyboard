@@ -40,7 +40,7 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="G48-aD-sAE"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKW-Me-wc8">
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Add a new Post"/>
                                 <connections>
                                     <action selector="getCurrent:" destination="I0c-T5-igd" eventType="touchUpInside" id="lYw-er-4VA"/>
                                 </connections>
@@ -49,16 +49,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="G48-aD-sAE" secondAttribute="trailing" id="7t9-10-VtD"/>
-                            <constraint firstItem="pHp-KZ-K3N" firstAttribute="top" secondItem="gKW-Me-wc8" secondAttribute="bottom" constant="8" id="K1g-LG-PkR"/>
+                            <constraint firstItem="gKW-Me-wc8" firstAttribute="leading" secondItem="O8X-wv-mJR" secondAttribute="leadingMargin" id="9xh-Lf-dWa"/>
                             <constraint firstItem="G48-aD-sAE" firstAttribute="leading" secondItem="O8X-wv-mJR" secondAttribute="leading" id="MJE-Vg-bgh"/>
-                            <constraint firstItem="gKW-Me-wc8" firstAttribute="trailing" secondItem="O8X-wv-mJR" secondAttribute="trailingMargin" id="Nnn-AJ-rq0"/>
                             <constraint firstItem="G48-aD-sAE" firstAttribute="top" secondItem="re1-Sw-4ct" secondAttribute="bottom" id="dNg-AI-YYJ"/>
+                            <constraint firstItem="pHp-KZ-K3N" firstAttribute="top" secondItem="gKW-Me-wc8" secondAttribute="bottom" constant="8" id="g4w-dG-b3a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gKW-Me-wc8" secondAttribute="trailing" id="inH-Zz-a8q"/>
                             <constraint firstItem="pHp-KZ-K3N" firstAttribute="top" secondItem="G48-aD-sAE" secondAttribute="bottom" id="vSV-xb-nPb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="p0b-Ew-tIc"/>
                     <connections>
                         <outlet property="mapView" destination="G48-aD-sAE" id="YqJ-sf-qw6"/>
+                        <outlet property="postPost" destination="gKW-Me-wc8" id="Ec0-9b-hve"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xS8-de-Z36" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -66,47 +68,23 @@
             <point key="canvasLocation" x="1392.8" y="-389.05547226386807"/>
         </scene>
         <!--Map Entry View Controller-->
-        <scene sceneID="e5Z-VK-i7l">
+        <scene sceneID="K6O-n7-VTI">
             <objects>
-                <viewController storyboardIdentifier="MapEntryViewController" id="9CA-3c-2WP" customClass="MapEntryViewController" customModule="Badalementini" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapEntryViewController" id="gIq-Gn-2fu" customClass="MapEntryViewController" customModule="Badalementini" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="c2U-Si-SuV"/>
-                        <viewControllerLayoutGuide type="bottom" id="zDP-0w-gav"/>
+                        <viewControllerLayoutGuide type="top" id="YoU-w8-niF"/>
+                        <viewControllerLayoutGuide type="bottom" id="bQx-tS-0RT"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ljz-P6-z5v">
+                    <view key="view" contentMode="scaleToFill" id="UEU-eq-GIP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Info" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Zx-2W-O25">
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bf-hF-oRa">
-                                <state key="normal" title="Send Info"/>
-                                <connections>
-                                    <action selector="sendInfo:" destination="9CA-3c-2WP" eventType="touchUpInside" id="ljd-fg-3XX"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="8bf-hF-oRa" firstAttribute="leading" secondItem="ljz-P6-z5v" secondAttribute="leadingMargin" constant="139" id="WTs-6P-vS8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7Zx-2W-O25" secondAttribute="trailing" id="aOn-YE-p6G"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8bf-hF-oRa" secondAttribute="trailing" constant="139" id="cDE-y9-LFm"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="7Zx-2W-O25" secondAttribute="leading" id="gPZ-50-Kg2"/>
-                            <constraint firstItem="8bf-hF-oRa" firstAttribute="top" secondItem="7Zx-2W-O25" secondAttribute="bottom" constant="20" id="r5K-Uz-bhe"/>
-                            <constraint firstItem="7Zx-2W-O25" firstAttribute="top" secondItem="c2U-Si-SuV" secondAttribute="bottom" constant="8" id="uym-tc-nCb"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="QOd-oJ-ogZ"/>
-                    <connections>
-                        <outlet property="enterInfoTextField" destination="7Zx-2W-O25" id="xoe-VT-4BN"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="ir0-0q-A7x"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bFl-Ab-rxj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E31-Ac-ZYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2847.1999999999998" y="-389.05547226386807"/>
+            <point key="canvasLocation" x="3160.8000000000002" y="-389.05547226386807"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="MhS-kH-n8o">
@@ -208,22 +186,22 @@
             <point key="canvasLocation" x="453.60000000000002" y="-389.05547226386807"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="MSA-Vn-Ngw">
+        <scene sceneID="hQ1-97-BeD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wns-aZ-9tr" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kHN-Sy-2AU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uty-Vo-lI6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dQM-Ha-07U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="9CA-3c-2WP" kind="relationship" relationship="rootViewController" id="Zgd-iJ-owS"/>
+                        <segue destination="gIq-Gn-2fu" kind="relationship" relationship="rootViewController" id="h4f-tl-Ika"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wMf-VA-Bc6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tuK-at-3an" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2093.5999999999999" y="-389.05547226386807"/>
+            <point key="canvasLocation" x="2221.5999999999999" y="-389.05547226386807"/>
         </scene>
     </scenes>
 </document>
