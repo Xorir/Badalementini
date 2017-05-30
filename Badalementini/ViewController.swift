@@ -15,7 +15,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     var reference = FIRDatabaseReference.init()
     var stray: StrayModel!
-
+    @IBOutlet weak var postPost: UIButton!
     
     private struct Constants {
         static let mapEntryDetail = "MapEntryDetail"
@@ -36,44 +36,74 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
+        
+        centerUserLocation()
+        
+        postPost.layer.borderColor = UIColor.purple.cgColor
+        postPost.layer.borderWidth = 2.0
+        postPost.layer.cornerRadius = 5.0
+        postPost.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        postPost.backgroundColor = .purple
+        postPost.setTitleColor(.white, for: .normal)
+    }
     
+    func centerUserLocation() {
+        guard let lat = UserLocationManager.sharedInstance.locationValues?.latitude, let long = UserLocationManager.sharedInstance.locationValues?.longitude else {
+            return
+        }
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        mapView.setRegion(region, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
+        
         reference = FIRDatabase.database().reference()
-        reference.child("PostalCode").child("11218").observe(.value, with: { (snapshot) -> Void in
+        reference.child(currentCity).observe(.value, with: { (snapshot) -> Void in
             print("Darn snapshot \(snapshot)")
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             
-            // Make weak self
-            self.stray = StrayModel(dictionary: straySnapshot as NSDictionary)
-            print("LAT: \(self.stray.lat), userName: \(self.stray.userName), LAT: \(self.stray.long), LAT: \(self.stray.notes)")
+            var keko = [NSDictionary]()
+            keko.append(straySnapshot as NSDictionary)
+            var strayArray = [StrayModel]()
+
+            
+            for (_, value) in straySnapshot {
+                let strayAnimal = StrayModel(dictionary: value as! NSDictionary)
+                guard let strayAni = strayAnimal else { return }
+                strayArray.append(strayAni)
+            }
+            
+            self.annotationTry(annotationValues: strayArray)
             
         })
-        
-        annotationTry()
-        
     }
     
     @IBAction func getCurrent(_ sender: UIButton) {
         let mapEntryDetailStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let mapDetailVC = mapEntryDetailStoryBoard.instantiateViewController(withIdentifier: "MapEntryViewController") as! MapEntryViewController
-        navigationController?.pushViewController(mapDetailVC, animated: true)
+        navigationController?.showDetailViewController(mapDetailVC, sender: self)
     }
     
-    func annotationTry() {
-//        let london = Annotation(title: "London", coordinate: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), info: "Home to the 2012 Summer Olympics.")
-//        let oslo = Annotation(title: "Oslo", coordinate: CLLocationCoordinate2D(latitude: 59.95, longitude: 10.75), info: "Founded over a thousand years ago.")
-//        let paris = Annotation(title: "Paris", coordinate: CLLocationCoordinate2D(latitude: 48.8567, longitude: 2.3508), info: "Often called the City of Light.")
-//        let rome = Annotation(title: "Rome", coordinate: CLLocationCoordinate2D(latitude: 41.9, longitude: 12.5), info: "Has a whole country inside it.")
-//        let washington = Annotation(title: "Washington DC", coordinate: CLLocationCoordinate2D(latitude: 38.895111, longitude: -77.036667), info: "Named after George himself.")
-//        let cities = [london, oslo, paris, rome, washington]
-//        
-//        for city in cities {
-//            mapView.addAnnotation(city)
-//        }
+    func annotationTry(annotationValues: [StrayModel]) {
+        var annotationArray = [Annotation]()
+        
+        for anno in annotationValues {
+            if let lat = anno.lat, let long = anno.long, let info = anno.notes {
+                var lokas = CLLocationCoordinate2DMake(lat as CLLocationDegrees, long as CLLocationDegrees)
+                
+                let value = Annotation(title: "uu", coordinate: CLLocationCoordinate2DMake(lat, long), info: info)
+                annotationArray.append(value)
+            }
+        }
+        
+        for city in annotationArray {
+            mapView.addAnnotation(city)
+        }
         
     }
     
@@ -82,12 +112,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let locationValues: CLLocationCoordinate2D = location.coordinate
         let center = CLLocationCoordinate2D(latitude: locationValues.latitude, longitude: locationValues.longitude)
         UserLocationManager.sharedInstance.locationValues = locationValues
-        
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        UserLocationManager.sharedInstance.reverseGeocoding(latitude: locationValues.latitude, longitude: locationValues.longitude)
+        _ = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
 //        mapView.setRegion(region, animated: false)
         }
-        
     }
 }
 

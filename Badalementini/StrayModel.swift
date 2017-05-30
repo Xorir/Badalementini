@@ -9,14 +9,14 @@
 import Foundation
 
 public struct StrayModel {
-    let lat: Float?
-    let long: Float?
+    let lat: Double?
+    let long: Double?
     let notes: String?
     let userName: String?
     
     init?(dictionary: NSDictionary) {
-        lat = dictionary.value(forKeyPath: "lat") as? Float
-        long = dictionary.value(forKeyPath: "long") as? Float
+        lat = dictionary.value(forKeyPath: "lat") as? Double
+        long = dictionary.value(forKeyPath: "long") as? Double
         notes = dictionary.value(forKeyPath: "notes") as? String
         userName = dictionary.value(forKeyPath: "userName") as? String
     }
