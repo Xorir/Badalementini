@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E31-Ac-ZYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3160.8000000000002" y="-389.05547226386807"/>
+            <point key="canvasLocation" x="3622" y="-389"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="MhS-kH-n8o">
@@ -185,6 +185,25 @@
             </objects>
             <point key="canvasLocation" x="453.60000000000002" y="-389.05547226386807"/>
         </scene>
+        <!--Stray Animal Detail View Controller-->
+        <scene sceneID="G90-8Y-hpM">
+            <objects>
+                <viewController storyboardIdentifier="StrayAnimalDetail" id="07e-Dr-81f" customClass="StrayAnimalDetailViewController" customModule="Badalementini" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="36g-ge-CYs"/>
+                        <viewControllerLayoutGuide type="bottom" id="eon-t0-c1h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ugc-8u-fg0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EKe-3t-1xt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pOt-E8-ICq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2873" y="420"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="hQ1-97-BeD">
             <objects>
@@ -201,7 +220,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tuK-at-3an" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2221.5999999999999" y="-389.05547226386807"/>
+            <point key="canvasLocation" x="2929" y="-380"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ovc-VA-DQA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rf4-rl-CJ7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XKC-mS-6Qc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="07e-Dr-81f" kind="relationship" relationship="rootViewController" id="0vy-QG-Uqr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rQ8-Dh-KI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2112.8000000000002" y="410.64467766116945"/>
         </scene>
     </scenes>
 </document>

@@ -21,6 +21,8 @@
 		D254A57E1ED551780079C17E /* MapEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A57D1ED551780079C17E /* MapEntryViewController.swift */; };
 		D254A5801ED6A2E00079C17E /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A57F1ED6A2E00079C17E /* UserLocationManager.swift */; };
 		D254A5831ED757B20079C17E /* StrayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A5821ED757B20079C17E /* StrayModel.swift */; };
+		D28A95D41EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D31EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift */; };
+		D28A95D61EDFB1E2009F9DFE /* StrayAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D51EDFB1E2009F9DFE /* StrayAnnotationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		D254A57D1ED551780079C17E /* MapEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapEntryViewController.swift; sourceTree = "<group>"; };
 		D254A57F1ED6A2E00079C17E /* UserLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
 		D254A5821ED757B20079C17E /* StrayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayModel.swift; sourceTree = "<group>"; };
+		D28A95D31EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalDetailViewController.swift; sourceTree = "<group>"; };
+		D28A95D51EDFB1E2009F9DFE /* StrayAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnnotationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,14 +98,12 @@
 		D254A51C1EC8DB610079C17E /* Badalementini */ = {
 			isa = PBXGroup;
 			children = (
+				D28A95D71EDFCEA9009F9DFE /* View */,
+				D28A95D21EDE777F009F9DFE /* Model */,
+				D28A95D11EDE7769009F9DFE /* Singleton */,
 				D254A5811ED7529A0079C17E /* Controller */,
 				D254A51D1EC8DB610079C17E /* AppDelegate.swift */,
-				D254A5821ED757B20079C17E /* StrayModel.swift */,
-				D254A5371EC9894E0079C17E /* UserManager.swift */,
-				D254A5351EC9880D0079C17E /* AppState.swift */,
-				D254A57F1ED6A2E00079C17E /* UserLocationManager.swift */,
 				D254A5211EC8DB610079C17E /* Main.storyboard */,
-				D254A5311EC981330079C17E /* Annotation.swift */,
 				D254A5241EC8DB610079C17E /* Assets.xcassets */,
 				D254A5261EC8DB610079C17E /* LaunchScreen.storyboard */,
 				D254A52F1EC8DBC70079C17E /* GoogleService-Info.plist */,
@@ -116,8 +118,36 @@
 				D254A51F1EC8DB610079C17E /* ViewController.swift */,
 				D254A5331EC987500079C17E /* SignInViewController.swift */,
 				D254A57D1ED551780079C17E /* MapEntryViewController.swift */,
+				D28A95D31EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		D28A95D11EDE7769009F9DFE /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				D254A5371EC9894E0079C17E /* UserManager.swift */,
+				D254A5351EC9880D0079C17E /* AppState.swift */,
+				D254A57F1ED6A2E00079C17E /* UserLocationManager.swift */,
+			);
+			name = Singleton;
+			sourceTree = "<group>";
+		};
+		D28A95D21EDE777F009F9DFE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D254A5821ED757B20079C17E /* StrayModel.swift */,
+				D254A5311EC981330079C17E /* Annotation.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D28A95D71EDFCEA9009F9DFE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D28A95D51EDFB1E2009F9DFE /* StrayAnnotationView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,10 +275,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D254A5381EC9894E0079C17E /* UserManager.swift in Sources */,
+				D28A95D41EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift in Sources */,
 				D254A5361EC9880D0079C17E /* AppState.swift in Sources */,
 				D254A5341EC987500079C17E /* SignInViewController.swift in Sources */,
 				D254A5201EC8DB610079C17E /* ViewController.swift in Sources */,
 				D254A57E1ED551780079C17E /* MapEntryViewController.swift in Sources */,
+				D28A95D61EDFB1E2009F9DFE /* StrayAnnotationView.swift in Sources */,
 				D254A5321EC981330079C17E /* Annotation.swift in Sources */,
 				D254A51E1EC8DB610079C17E /* AppDelegate.swift in Sources */,
 				D254A5831ED757B20079C17E /* StrayModel.swift in Sources */,

@@ -44,7 +44,8 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     var uploadImage: EntryButtons!
     let imagePicker = UIImagePickerController()
     var sendButton: EntryButtons!
-    
+    var activityIndicator = UIActivityIndicatorView()
+    var activityIndicatorBackgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,25 +55,11 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         setUploadImageButton()
         setTextfield()
         imagePicker.delegate = self
+        
     }
     
     @IBAction func sendInfo(_ sender: UIButton) {
-        reference = FIRDatabase.database().reference()
-        guard let locationValues = UserLocationManager.sharedInstance.locationValues else { return }
-        guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
-        guard let infoText = enterInfoTextField.text else { return }
-        
-        let coordinates: [String: AnyObject] = [
-            "lat": locationValues.latitude as AnyObject,
-            "long": locationValues.longitude as AnyObject,
-            "userName": currentUser as AnyObject,
-            "notes": infoText as AnyObject
-        ]
-        
-        guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
-        
-        reference.child(currentCity).childByAutoId().setValue(coordinates)
-        enterInfoTextField.text = ""
+
         
     }
     
@@ -141,21 +128,73 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         dismiss(animated: true, completion: nil)
     }
     
+    func displayIndicator() {
+        activityIndicatorBackgroundView = UIView(frame: CGRect(x: 50, y: 100, width: 80, height: 80))
+        activityIndicatorBackgroundView.backgroundColor = UIColor.gray
+        activityIndicatorBackgroundView.layer.cornerRadius = 5.0
+        activityIndicatorBackgroundView.center = view.center
+        view.addSubview(activityIndicatorBackgroundView)
+            
+        
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        activityIndicator.center = activityIndicatorBackgroundView.center
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+    }
+    
+    func hideIndicator() {
+        activityIndicator.stopAnimating()
+        activityIndicatorBackgroundView.removeFromSuperview()
+    }
+    
     func sendPhoto() {
+        // Upload image to Firebase
         guard let userID = AppState.sharedInstance.UID else { return }
         guard let pickedImage = animalImageView.image else { return }
+        var metaDataOut: FIRStorageMetadata?
+        
         let storage = FIRStorage.storage().reference().child(userID)
         if let uploadData = UIImagePNGRepresentation(pickedImage) {
+            displayIndicator()
             storage.put(uploadData, metadata: nil, completion: { (metaData, error) in
                 if error != nil {
                     print(error)
                     return
                 }
                 
+                metaDataOut = metaData
                 print("METADATA \(metaData)")
+                self.createNewEntry(metaDataImage: metaData)
+                // make self weak
+                self.hideIndicator()
                 
             })
         }
+    }
+    
+    func createNewEntry(metaDataImage: FIRStorageMetadata?) {
+        
+        // enter info to Firebase DB
+        reference = FIRDatabase.database().reference()
+        guard let locationValues = UserLocationManager.sharedInstance.locationValues else { return }
+        guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let infoText = enterInfoTextField.text else { return }
+        guard let metaData = metaDataImage?.downloadURL()?.absoluteString else { return }
+        
+        let coordinates: [String: AnyObject] = [
+            "lat": locationValues.latitude as AnyObject,
+            "long": locationValues.longitude as AnyObject,
+            "userName": currentUser as AnyObject,
+            "notes": infoText as AnyObject,
+            "metaData": metaData as AnyObject
+        ]
+        
+        guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
+        
+        reference.child(currentCity).childByAutoId().setValue(coordinates)
+        enterInfoTextField.text = ""
     }
     
     func getPhotos() {

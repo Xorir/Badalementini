@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import Firebase
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     var reference = FIRDatabaseReference.init()
@@ -45,6 +45,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         postPost.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         postPost.backgroundColor = .purple
         postPost.setTitleColor(.white, for: .normal)
+        
+        mapView.delegate = self
+        
     }
     
     func centerUserLocation() {
@@ -64,7 +67,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         reference = FIRDatabase.database().reference()
         reference.child(currentCity).observe(.value, with: { (snapshot) -> Void in
-            print("Darn snapshot \(snapshot)")
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             
             var keko = [NSDictionary]()
@@ -93,10 +95,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         var annotationArray = [Annotation]()
         
         for anno in annotationValues {
-            if let lat = anno.lat, let long = anno.long, let info = anno.notes {
+            //Refactor
+            if let lat = anno.lat, let long = anno.long, let info = anno.notes, let metaData = anno.metaData, let userName = anno.userName {
                 var lokas = CLLocationCoordinate2DMake(lat as CLLocationDegrees, long as CLLocationDegrees)
                 
-                let value = Annotation(title: "uu", coordinate: CLLocationCoordinate2DMake(lat, long), info: info)
+                let value = Annotation(title: userName, coordinate: lokas, info: info, metaData: metaData, userName: userName)
                 annotationArray.append(value)
             }
         }
@@ -105,6 +108,52 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             mapView.addAnnotation(city)
         }
         
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is Annotation {
+            let identifier = "pin"
+            var annotationView: MKAnnotationView?
+            
+            var dequedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView?.canShowCallout = false
+                annotationView?.rightCalloutAccessoryView = UIButton(type: .infoLight)
+            } else {
+                annotationView?.annotation = annotation
+            }
+            
+            return annotationView
+
+        }
+        
+        return nil
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        performSegue(withIdentifier: "pinSegue", sender: self)
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let  anno = view as? MKAnnotationView {
+            guard let annotation = anno.annotation as? Annotation else { return }
+            displayTheDetail(annotation: annotation)
+        }
+    }
+    
+    func displayTheDetail(annotation: Annotation) {
+        let strayAnimalDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "StrayAnimalDetail") as! StrayAnimalDetailViewController
+        strayAnimalDetailVC.annotationInfo = annotation
+        strayAnimalDetailVC.title = annotation.userName
+        self.navigationController?.pushViewController(strayAnimalDetailVC, animated: true)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? StrayAnimalDetailViewController, let annotationView = sender as? MKPinAnnotationView  {
+            print("ANNOTATION VIEW \(annotationView)")
+            destinationVC.title = "Amonog dorime "
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
