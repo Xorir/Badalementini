@@ -7,25 +7,26 @@
 //
 
 import UIKit
+import MapKit
 
 class StrayAnimalDetailViewController: UIViewController {
     
     var annotationInfo: Annotation!
-
+    @IBOutlet weak var strayAnimalImageView: UIImageView!
+    
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    print(annotationInfo.coordinate)
+        strayAnimalImageView.layer.cornerRadius = 15.0
         
-        print(annotationInfo.title)
-
-        print(annotationInfo.metaData)
-
-        print(annotationInfo.info)
-
+        guard let metaData = annotationInfo.metaData else { return }
+        strayAnimalImageView.getCachedImage(urlString: metaData)
+        infoLabel.text = annotationInfo.info
+        addressLabel.text = annotationInfo.address
         
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +34,12 @@ class StrayAnimalDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func navigateToAddress(_ sender: UIButton) {
+        let coordinate = CLLocationCoordinate2DMake(annotationInfo.coordinate.latitude,annotationInfo.coordinate.longitude)
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
+        mapItem.name = "Target location"
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
+    }
 
     /*
     // MARK: - Navigation

@@ -14,6 +14,7 @@ public struct StrayModel {
     let notes: String?
     let userName: String?
     let metaData: String?
+    let address: String?
     
     init?(dictionary: NSDictionary) {
         lat = dictionary.value(forKeyPath: "lat") as? Double
@@ -21,6 +22,6 @@ public struct StrayModel {
         notes = dictionary.value(forKeyPath: "notes") as? String
         userName = dictionary.value(forKeyPath: "userName") as? String
         metaData = dictionary.value(forKeyPath: "metaData") as? String
+        address = dictionary.value(forKeyPath: "address") as? String
      }
-    
 }

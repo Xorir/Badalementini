@@ -196,13 +196,53 @@
                     <view key="view" contentMode="scaleToFill" id="ugc-8u-fg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MSD-Ta-mnu">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="197" id="hfY-MW-gEr"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="G93-ZW-LK2">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="infoLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54B-v9-5JX">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Addresslabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4Y-OI-dda">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ho-6q-hXO">
+                                        <state key="normal" title="Navigate to the Address"/>
+                                        <connections>
+                                            <action selector="navigateToAddress:" destination="07e-Dr-81f" eventType="touchUpInside" id="xlo-Gh-Rin"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="G93-ZW-LK2" secondAttribute="trailing" constant="8" id="5yH-ZM-s6C"/>
+                            <constraint firstItem="G93-ZW-LK2" firstAttribute="leading" secondItem="ugc-8u-fg0" secondAttribute="leadingMargin" constant="8" id="9hi-c0-0Z0"/>
+                            <constraint firstItem="MSD-Ta-mnu" firstAttribute="leading" secondItem="ugc-8u-fg0" secondAttribute="leadingMargin" id="CpN-M3-DnK"/>
+                            <constraint firstItem="MSD-Ta-mnu" firstAttribute="trailing" secondItem="ugc-8u-fg0" secondAttribute="trailingMargin" id="bNh-4S-m6e"/>
+                            <constraint firstItem="G93-ZW-LK2" firstAttribute="top" secondItem="MSD-Ta-mnu" secondAttribute="bottom" constant="8" id="dIs-T6-gdW"/>
+                            <constraint firstItem="MSD-Ta-mnu" firstAttribute="top" secondItem="36g-ge-CYs" secondAttribute="bottom" constant="8" id="lDk-bA-Xbk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EKe-3t-1xt"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="Z4Y-OI-dda" id="inU-z5-T9a"/>
+                        <outlet property="infoLabel" destination="54B-v9-5JX" id="f9f-o0-hXP"/>
+                        <outlet property="strayAnimalImageView" destination="MSD-Ta-mnu" id="cRD-Dm-xOH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOt-E8-ICq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2873" y="420"/>
+            <point key="canvasLocation" x="2861.5999999999999" y="410.64467766116945"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hQ1-97-BeD">

@@ -11,7 +11,7 @@ import MapKit
 import Firebase
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     var reference = FIRDatabaseReference.init()
     var stray: StrayModel!
@@ -64,6 +64,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         super.viewWillAppear(animated)
         
         guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
+        guard let areaOfInterest = UserLocationManager.sharedInstance.areaOfInterest else { return }
+        guard let name = UserLocationManager.sharedInstance.name else { return }
+        guard let thro = UserLocationManager.sharedInstance.thoroughfare else { return }
+        
+        print("AREA OF INTEREST \(name, thro, areaOfInterest)")
         
         reference = FIRDatabase.database().reference()
         reference.child(currentCity).observe(.value, with: { (snapshot) -> Void in
@@ -72,7 +77,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             var keko = [NSDictionary]()
             keko.append(straySnapshot as NSDictionary)
             var strayArray = [StrayModel]()
-
             
             for (_, value) in straySnapshot {
                 let strayAnimal = StrayModel(dictionary: value as! NSDictionary)
@@ -96,10 +100,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         for anno in annotationValues {
             //Refactor
-            if let lat = anno.lat, let long = anno.long, let info = anno.notes, let metaData = anno.metaData, let userName = anno.userName {
-                var lokas = CLLocationCoordinate2DMake(lat as CLLocationDegrees, long as CLLocationDegrees)
+            if let lat = anno.lat, let long = anno.long, let info = anno.notes, let metaData = anno.metaData, let userName = anno.userName, let address = anno.address {
+                let lokas = CLLocationCoordinate2DMake(lat as CLLocationDegrees, long as CLLocationDegrees)
                 
-                let value = Annotation(title: userName, coordinate: lokas, info: info, metaData: metaData, userName: userName)
+                let value = Annotation(title: userName, coordinate: lokas, info: info, metaData: metaData, userName: userName, address: address)
                 annotationArray.append(value)
             }
         }
@@ -115,7 +119,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let identifier = "pin"
             var annotationView: MKAnnotationView?
             
-            var dequedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+            _ = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
             if annotationView == nil {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 annotationView?.canShowCallout = false
@@ -125,7 +129,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
             
             return annotationView
-
+            
         }
         
         return nil
@@ -146,9 +150,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let strayAnimalDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "StrayAnimalDetail") as! StrayAnimalDetailViewController
         strayAnimalDetailVC.annotationInfo = annotation
         strayAnimalDetailVC.title = annotation.userName
+        
         self.navigationController?.pushViewController(strayAnimalDetailVC, animated: true)
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination as? StrayAnimalDetailViewController, let annotationView = sender as? MKPinAnnotationView  {
             print("ANNOTATION VIEW \(annotationView)")
@@ -157,14 +162,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-      if let location = manager.location {
+        if let location = manager.location {
             let locationValues: CLLocationCoordinate2D = location.coordinate
-        let center = CLLocationCoordinate2D(latitude: locationValues.latitude, longitude: locationValues.longitude)
-        UserLocationManager.sharedInstance.locationValues = locationValues
-        UserLocationManager.sharedInstance.reverseGeocoding(latitude: locationValues.latitude, longitude: locationValues.longitude)
-        _ = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
-//        mapView.setRegion(region, animated: false)
+            let center = CLLocationCoordinate2D(latitude: locationValues.latitude, longitude: locationValues.longitude)
+            UserLocationManager.sharedInstance.locationValues = locationValues
+            UserLocationManager.sharedInstance.reverseGeocoding(latitude: locationValues.latitude, longitude: locationValues.longitude)
+            _ = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            
+            //        mapView.setRegion(region, animated: false)
         }
     }
 }

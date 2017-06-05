@@ -23,6 +23,8 @@
 		D254A5831ED757B20079C17E /* StrayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A5821ED757B20079C17E /* StrayModel.swift */; };
 		D28A95D41EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D31EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift */; };
 		D28A95D61EDFB1E2009F9DFE /* StrayAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D51EDFB1E2009F9DFE /* StrayAnnotationView.swift */; };
+		D28A95DA1EDFCFDF009F9DFE /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */; };
+		D28A95DC1EDFDC05009F9DFE /* TheActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		D254A5821ED757B20079C17E /* StrayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayModel.swift; sourceTree = "<group>"; };
 		D28A95D31EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalDetailViewController.swift; sourceTree = "<group>"; };
 		D28A95D51EDFB1E2009F9DFE /* StrayAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnnotationView.swift; sourceTree = "<group>"; };
+		D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 		D254A51C1EC8DB610079C17E /* Badalementini */ = {
 			isa = PBXGroup;
 			children = (
+				D28A95D81EDFCFC9009F9DFE /* Extension */,
 				D28A95D71EDFCEA9009F9DFE /* View */,
 				D28A95D21EDE777F009F9DFE /* Model */,
 				D28A95D11EDE7769009F9DFE /* Singleton */,
@@ -146,8 +151,17 @@
 			isa = PBXGroup;
 			children = (
 				D28A95D51EDFB1E2009F9DFE /* StrayAnnotationView.swift */,
+				D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		D28A95D81EDFCFC9009F9DFE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,7 +289,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D254A5381EC9894E0079C17E /* UserManager.swift in Sources */,
+				D28A95DC1EDFDC05009F9DFE /* TheActivityIndicator.swift in Sources */,
 				D28A95D41EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift in Sources */,
+				D28A95DA1EDFCFDF009F9DFE /* UIImageViewExtension.swift in Sources */,
 				D254A5361EC9880D0079C17E /* AppState.swift in Sources */,
 				D254A5341EC987500079C17E /* SignInViewController.swift in Sources */,
 				D254A5201EC8DB610079C17E /* ViewController.swift in Sources */,

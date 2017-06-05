@@ -182,19 +182,30 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
         guard let infoText = enterInfoTextField.text else { return }
         guard let metaData = metaDataImage?.downloadURL()?.absoluteString else { return }
+        guard let address = UserLocationManager.sharedInstance.address else { return }
         
         let coordinates: [String: AnyObject] = [
             "lat": locationValues.latitude as AnyObject,
             "long": locationValues.longitude as AnyObject,
             "userName": currentUser as AnyObject,
             "notes": infoText as AnyObject,
-            "metaData": metaData as AnyObject
+            "metaData": metaData as AnyObject,
+            "date": getCurrentDate() as AnyObject,
+            "address": address as AnyObject
         ]
         
         guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
         
         reference.child(currentCity).childByAutoId().setValue(coordinates)
         enterInfoTextField.text = ""
+    }
+    
+    func getCurrentDate() -> String {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy"
+        let formattedDate = formatter.string(from: date)
+        return formattedDate
     }
     
     func getPhotos() {
