@@ -92,6 +92,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func getCurrent(_ sender: UIButton) {
         let mapEntryDetailStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let mapDetailVC = mapEntryDetailStoryBoard.instantiateViewController(withIdentifier: "MapEntryViewController") as! MapEntryViewController
+        mapDetailVC.isMissingPet = false
         navigationController?.showDetailViewController(mapDetailVC, sender: self)
     }
     

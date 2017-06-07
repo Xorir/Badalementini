@@ -58,7 +58,7 @@
                   moduleName = "Badalementini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/UIImageViewExtension.swift"
-                  timestampString = "518295605.58326"
+                  timestampString = "518485617.791455"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "28"
@@ -73,7 +73,7 @@
                   moduleName = "Badalementini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/UIImageViewExtension.swift"
-                  timestampString = "518295605.585408"
+                  timestampString = "518485617.794653"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "29"
@@ -106,7 +106,7 @@
                   moduleName = "Badalementini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/UIImageViewExtension.swift"
-                  timestampString = "518295605.592001"
+                  timestampString = "518485617.805519"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "29"
@@ -121,7 +121,7 @@
                   moduleName = "Badalementini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/UIImageViewExtension.swift"
-                  timestampString = "518295605.594889"
+                  timestampString = "518485617.810676"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "29"
@@ -234,11 +234,11 @@
                   moduleName = "Badalementini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/StrayAnimalDetailViewController.swift"
-                  timestampString = "518295605.628055"
+                  timestampString = "518485617.888728"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
                   offsetFromSymbolStart = "35">
                </Location>
                <Location
@@ -249,11 +249,11 @@
                   moduleName = "Badalementini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/StrayAnimalDetailViewController.swift"
-                  timestampString = "518295605.630683"
+                  timestampString = "518485617.895166"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
                   offsetFromSymbolStart = "65">
                </Location>
                <Location
@@ -264,11 +264,11 @@
                   moduleName = "Badalementini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/StrayAnimalDetailViewController.swift"
-                  timestampString = "518295605.633712"
+                  timestampString = "518485617.89799"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
                   offsetFromSymbolStart = "70">
                </Location>
                <Location
@@ -279,14 +279,94 @@
                   moduleName = "Badalementini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/StrayAnimalDetailViewController.swift"
-                  timestampString = "518295605.636532"
+                  timestampString = "518485617.902265"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "13"
-                  endingLineNumber = "13"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
                   offsetFromSymbolStart = "31">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/StrayAnimalDetailViewController.swift"
+            timestampString = "518341823.198962"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/UIImageViewExtension.swift"
+            timestampString = "518341889.293085"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getCachedImage(urlString:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/UIImageViewExtension.swift"
+            timestampString = "518341890.231114"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getCachedImage(urlString:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MissingPetViewController.swift"
+            timestampString = "518486310.129975"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MissingPetViewController.swift"
+            timestampString = "518485376.58761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
