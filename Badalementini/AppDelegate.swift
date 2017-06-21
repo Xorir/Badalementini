@@ -8,16 +8,28 @@
 
 import UIKit
 import Firebase
+import MapKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
+    var locationManager: CLLocationManager!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
+        
+//        if CLLocationManager.locationServicesEnabled() {
+//            locationManager = CLLocationManager()
+//            locationManager.delegate = self
+//            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//            locationManager.requestWhenInUseAuthorization()
+//            locationManager.startUpdatingLocation()
+//        }
+//        
+        
         return true
     }
 
@@ -42,7 +54,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+//    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        if let location = manager.location {
+//            let locationValues: CLLocationCoordinate2D = location.coordinate
+//            let center = CLLocationCoordinate2D(latitude: locationValues.latitude, longitude: locationValues.longitude)
+//            UserLocationManager.sharedInstance.locationValues = locationValues
+//            UserLocationManager.sharedInstance.reverseGeocoding(latitude: locationValues.latitude, longitude: locationValues.longitude)
+//            
+//            _ = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+//            
+//            //        mapView.setRegion(region, animated: false)
+//        }
+//    }
 
 }
 

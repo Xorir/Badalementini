@@ -18,6 +18,7 @@ class UserProfileViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         setupCheckPostButton()
+        title = "User Profile"
     }
 
     override func didReceiveMemoryWarning() {
