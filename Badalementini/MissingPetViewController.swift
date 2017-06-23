@@ -32,7 +32,7 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         
         let addMissingPet = UIButton()
-        addMissingPet.setTitle("Add missing pet post", for: .normal)
+        addMissingPet.setTitle("Add", for: .normal)
         addMissingPet.setTitleColor(UIColor.red, for: .normal)
         addMissingPet.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         addMissingPet.addTarget(self, action: #selector(addMissingPetFunc), for: .touchUpInside)
@@ -40,6 +40,7 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
         navigationItem.rightBarButtonItem = missingPetBarButtonItem
         
         setupTableView()
+        title = "Missing Pet"
     }
     
     func getInfFromFirebase() {
@@ -107,8 +108,9 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.missingPetTableViewCellIdentifier , for: indexPath) as! MissingPetTableViewCell
         
-        cell.missingPetInfoLabel.text = missingPetArray[indexPath.row].notes
-        cell.missingPetImageView.getCachedImage(urlString: missingPetArray[indexPath.row].metaData!)
+//        cell.missingPetInfoLabel.text = missingPetArray[indexPath.row].notes
+//        cell.missingPetImageView.getCachedImage(urlString: missingPetArray[indexPath.row].metaData!)
+        cell.missingPetInfo(missingPet: missingPetArray[indexPath.row])
         
         return cell
     }

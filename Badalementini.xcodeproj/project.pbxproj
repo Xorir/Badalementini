@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		866240C6F888F7469B962FD1 /* Pods_Badalementini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2392B117E06BB6F1B8B4270C /* Pods_Badalementini.framework */; };
+		D218BA4C1EFA1D9D0054F3B2 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D218BA4B1EFA1D9D0054F3B2 /* ActivityIndicator.swift */; };
 		D23079BA1EE772A700EA34CF /* MissingPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23079B81EE772A700EA34CF /* MissingPetTableViewCell.swift */; };
 		D23079BB1EE772A700EA34CF /* MissingPetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23079B91EE772A700EA34CF /* MissingPetTableViewCell.xib */; };
 		D23079BD1EE7D1DB00EA34CF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23079BC1EE7D1DB00EA34CF /* UserProfileViewController.swift */; };
@@ -30,12 +31,15 @@
 		D28A95DA1EDFCFDF009F9DFE /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */; };
 		D28A95DC1EDFDC05009F9DFE /* TheActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */; };
 		D28A95DE1EE536C7009F9DFE /* MissingPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95DD1EE536C7009F9DFE /* MissingPetViewController.swift */; };
+		D2D2C1C11EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */; };
+		D2D2C1C21EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		11F638F45EFAC58FFB67DB61 /* Pods-Badalementini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Badalementini.release.xcconfig"; path = "Pods/Target Support Files/Pods-Badalementini/Pods-Badalementini.release.xcconfig"; sourceTree = "<group>"; };
 		2392B117E06BB6F1B8B4270C /* Pods_Badalementini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Badalementini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC2FD49481DC622C78150C18 /* Pods-Badalementini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Badalementini.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Badalementini/Pods-Badalementini.debug.xcconfig"; sourceTree = "<group>"; };
+		D218BA4B1EFA1D9D0054F3B2 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D23079B81EE772A700EA34CF /* MissingPetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingPetTableViewCell.swift; sourceTree = "<group>"; };
 		D23079B91EE772A700EA34CF /* MissingPetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MissingPetTableViewCell.xib; sourceTree = "<group>"; };
 		D23079BC1EE7D1DB00EA34CF /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 		D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheActivityIndicator.swift; sourceTree = "<group>"; };
 		D28A95DD1EE536C7009F9DFE /* MissingPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingPetViewController.swift; sourceTree = "<group>"; };
+		D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalEntryTableViewCell.swift; sourceTree = "<group>"; };
+		D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrayAnimalEntryTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,9 +169,12 @@
 			isa = PBXGroup;
 			children = (
 				D28A95D51EDFB1E2009F9DFE /* StrayAnnotationView.swift */,
+				D218BA4B1EFA1D9D0054F3B2 /* ActivityIndicator.swift */,
 				D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */,
 				D23079B81EE772A700EA34CF /* MissingPetTableViewCell.swift */,
 				D23079B91EE772A700EA34CF /* MissingPetTableViewCell.xib */,
+				D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */,
+				D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -214,6 +223,7 @@
 				TargetAttributes = {
 					D254A5191EC8DB610079C17E = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = X5NHG8EC8E;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -245,6 +255,7 @@
 				D23079BB1EE772A700EA34CF /* MissingPetTableViewCell.xib in Resources */,
 				D254A5301EC8DBC70079C17E /* GoogleService-Info.plist in Resources */,
 				D254A5251EC8DB610079C17E /* Assets.xcassets in Resources */,
+				D2D2C1C21EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib in Resources */,
 				D254A5231EC8DB610079C17E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +331,8 @@
 				D254A5321EC981330079C17E /* Annotation.swift in Sources */,
 				D254A51E1EC8DB610079C17E /* AppDelegate.swift in Sources */,
 				D254A5831ED757B20079C17E /* StrayModel.swift in Sources */,
+				D218BA4C1EFA1D9D0054F3B2 /* ActivityIndicator.swift in Sources */,
+				D2D2C1C11EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift in Sources */,
 				D254A5801ED6A2E00079C17E /* UserLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +455,7 @@
 			baseConfigurationReference = AC2FD49481DC622C78150C18 /* Pods-Badalementini.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = X5NHG8EC8E;
 				INFOPLIST_FILE = Badalementini/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mariserman.Badalementini;
@@ -455,6 +469,7 @@
 			baseConfigurationReference = 11F638F45EFAC58FFB67DB61 /* Pods-Badalementini.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = X5NHG8EC8E;
 				INFOPLIST_FILE = Badalementini/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mariserman.Badalementini;

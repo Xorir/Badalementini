@@ -16,6 +16,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var reference = FIRDatabaseReference.init()
     var stray: StrayModel!
     @IBOutlet weak var postPost: UIButton!
+    let activityIndicator = ActivityIndicator()
     
     private struct Constants {
         static let mapEntryDetail = "MapEntryDetail"
@@ -37,7 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             locationManager.startUpdatingLocation()
         }
         
-        centerUserLocation()
+        activityIndicator.setupActivityIndicator(view: self.view, isFullScreen: true)
         
         postPost.layer.borderColor = UIColor.purple.cgColor
         postPost.layer.borderWidth = 2.0
@@ -47,22 +48,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         postPost.setTitleColor(.white, for: .normal)
         
         mapView.delegate = self
+        title = "Stray Animals"
         
     }
     
     func centerUserLocation() {
-        guard let lat = UserLocationManager.sharedInstance.locationValues?.latitude, let long = UserLocationManager.sharedInstance.locationValues?.longitude else {
-            return
-        }
+        guard let lat = UserLocationManager.sharedInstance.locationValues?.latitude, let long = UserLocationManager.sharedInstance.locationValues?.longitude else { return }
         let center = CLLocationCoordinate2D(latitude: lat, longitude: long)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
         mapView.setRegion(region, animated: false)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    func checkStrayAnimals() {
         guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
         guard let areaOfInterest = UserLocationManager.sharedInstance.areaOfInterest else { return }
         guard let name = UserLocationManager.sharedInstance.name else { return }
@@ -88,11 +86,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
         })
     }
+
     
     @IBAction func getCurrent(_ sender: UIButton) {
         let mapEntryDetailStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let mapDetailVC = mapEntryDetailStoryBoard.instantiateViewController(withIdentifier: "MapEntryViewController") as! MapEntryViewController
         mapDetailVC.isMissingPet = false
+        locationManager.startUpdatingLocation()
         navigationController?.showDetailViewController(mapDetailVC, sender: self)
     }
     
@@ -130,7 +130,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
             
             return annotationView
-            
         }
         
         return nil
@@ -162,15 +161,47 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
+    public func reverseGeocoding(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: { [weak self] (placemarks, error) -> Void in
+            guard let strongSelf = self else { return }
+            
+            if error != nil {
+                print(error)
+                strongSelf.activityIndicator.stopActivityIndicator(view: strongSelf.view)
+                return
+            } else {
+                if let placeMark = placemarks?.first {
+                    UserLocationManager.sharedInstance.postalCode = placeMark.postalCode
+                    UserLocationManager.sharedInstance.administrativeArea = placeMark.administrativeArea
+                    UserLocationManager.sharedInstance.locality = placeMark.locality
+                    UserLocationManager.sharedInstance.areaOfInterest = placeMark.areasOfInterest?.first
+                    UserLocationManager.sharedInstance.name = placeMark.name
+                    UserLocationManager.sharedInstance.thoroughfare = placeMark.thoroughfare
+                    if let name = placeMark.name, let areaOfInterest = placeMark.areasOfInterest?.first, let administrativeArea = placeMark.administrativeArea {
+                        UserLocationManager.sharedInstance.address = UserLocationManager.sharedInstance.formatAddress(name: name, areaOfInterest: areaOfInterest, administrativeArea: administrativeArea)
+                    }
+                    
+                    strongSelf.checkStrayAnimals()
+                    strongSelf.centerUserLocation()
+                    
+                    DispatchQueue.main.async {
+                        strongSelf.activityIndicator.stopActivityIndicator(view: strongSelf.view)
+                    }
+                    
+                }
+            }
+        })
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = manager.location {
             let locationValues: CLLocationCoordinate2D = location.coordinate
-            let center = CLLocationCoordinate2D(latitude: locationValues.latitude, longitude: locationValues.longitude)
+            locationManager.stopUpdatingLocation()
             UserLocationManager.sharedInstance.locationValues = locationValues
-            UserLocationManager.sharedInstance.reverseGeocoding(latitude: locationValues.latitude, longitude: locationValues.longitude)
-            _ = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            
-            //        mapView.setRegion(region, animated: false)
+
+            reverseGeocoding(latitude: locationValues.latitude, longitude: locationValues.longitude)
+
         }
     }
 }

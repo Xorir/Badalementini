@@ -16,26 +16,27 @@
                 <frame key="frameInset" width="320" height="107"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NMt-tw-5FE">
-                        <constraints>
-                            <constraint firstAttribute="height" constant="91" id="TeU-Lz-jNP"/>
-                            <constraint firstAttribute="width" constant="91" id="exl-fz-lyL"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81K-Yp-YEx">
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="y2k-jr-i26">
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NMt-tw-5FE">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="6Pk-zG-jqa"/>
+                                    <constraint firstAttribute="width" constant="91" id="K8s-FV-rem"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81K-Yp-YEx">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="NMt-tw-5FE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="3bp-eQ-Adv"/>
-                    <constraint firstItem="81K-Yp-YEx" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="4zr-pf-HPw"/>
-                    <constraint firstItem="81K-Yp-YEx" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="AGJ-8M-SId"/>
-                    <constraint firstItem="81K-Yp-YEx" firstAttribute="leading" secondItem="NMt-tw-5FE" secondAttribute="trailing" constant="8" id="Hg9-sQ-VeW"/>
-                    <constraint firstItem="81K-Yp-YEx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="UXr-uF-fxW"/>
-                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="NMt-tw-5FE" secondAttribute="bottom" constant="0.5" id="ZBm-hq-Juc"/>
-                    <constraint firstItem="NMt-tw-5FE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="qbl-i3-pda"/>
+                    <constraint firstItem="y2k-jr-i26" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="8Ie-7M-797"/>
+                    <constraint firstItem="y2k-jr-i26" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="Aaz-Gi-QS1"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="y2k-jr-i26" secondAttribute="trailing" id="QIa-3Y-nWr"/>
+                    <constraint firstItem="y2k-jr-i26" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Zta-lq-O1j"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

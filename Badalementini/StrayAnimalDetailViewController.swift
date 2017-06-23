@@ -23,6 +23,8 @@ class StrayAnimalDetailViewController: UIViewController {
         strayAnimalImageView.layer.cornerRadius = 15.0
         
         guard let metaData = annotationInfo.metaData else { return }
+        strayAnimalImageView.image = UIImage(named: "profile")
+        strayAnimalImageView.setNeedsDisplay()
         strayAnimalImageView.getCachedImage(urlString: metaData)
         infoLabel.text = annotationInfo.info
         addressLabel.text = annotationInfo.address
@@ -40,5 +42,4 @@ class StrayAnimalDetailViewController: UIViewController {
         mapItem.name = "Target location"
         mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
     }
-
 }
