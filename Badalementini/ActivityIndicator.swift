@@ -20,14 +20,30 @@ class ActivityIndicator: UIActivityIndicatorView {
     var activityIndicator = UIActivityIndicatorView()
     let activityIndicatorBackgroundView = UIView()
     
-    func setupActivityIndicator(view: UIView) {
+    func setupActivityIndicator(view: UIView, isFullScreen: Bool) {
         activityIndicatorBackgroundView.tag = Constants.tagNo
-        activityIndicatorBackgroundView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
-        activityIndicatorBackgroundView.backgroundColor = .white
+        if isFullScreen {
+            activityIndicatorBackgroundView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
+            activityIndicatorBackgroundView.backgroundColor = .white
+        } else {
+            activityIndicatorBackgroundView.frame = CGRect(x: 0, y: 0, width: 100.0, height: 100.0)
+            activityIndicatorBackgroundView.backgroundColor = .black
+        }
+
         view.addSubview(activityIndicatorBackgroundView)
+        activityIndicatorBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicatorBackgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicatorBackgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         activityIndicator.frame = CGRect(x:0 , y: Constants.yCoordinate, width: Constants.width, height: Constants.height)
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        
+        if isFullScreen {
+            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+
+        } else {
+            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        }
+        
         activityIndicatorBackgroundView.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false

@@ -38,7 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             locationManager.startUpdatingLocation()
         }
         
-        activityIndicator.setupActivityIndicator(view: self.view)
+        activityIndicator.setupActivityIndicator(view: self.view, isFullScreen: true)
         
         postPost.layer.borderColor = UIColor.purple.cgColor
         postPost.layer.borderWidth = 2.0
@@ -92,6 +92,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let mapEntryDetailStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let mapDetailVC = mapEntryDetailStoryBoard.instantiateViewController(withIdentifier: "MapEntryViewController") as! MapEntryViewController
         mapDetailVC.isMissingPet = false
+        locationManager.startUpdatingLocation()
         navigationController?.showDetailViewController(mapDetailVC, sender: self)
     }
     

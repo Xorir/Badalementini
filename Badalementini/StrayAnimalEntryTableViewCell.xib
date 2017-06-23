@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="582" id="KGk-i7-Jjw" customClass="StrayAnimalEntryTableViewCell" customModule="Badalementini" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="441" height="582"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="441" height="581.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24B-oM-5k5">
+                        <rect key="frame" x="8" y="486" width="425" height="30"/>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="takeStrayAnimalPhoto:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Nat-87-xXm"/>
+                        </connections>
+                    </button>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter stray animal info" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LhM-OP-6JX">
+                        <rect key="frame" x="8" y="534" width="425" height="30"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-L2-wC9">
+                        <rect key="frame" x="8" y="8" width="425" height="458"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="458" id="K8t-NX-ZfI"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LhM-OP-6JX" firstAttribute="top" secondItem="24B-oM-5k5" secondAttribute="bottom" constant="18" id="8UP-gf-KsW"/>
+                    <constraint firstItem="LhM-OP-6JX" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="F65-Uf-eUl"/>
+                    <constraint firstItem="yt2-L2-wC9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="F8F-bP-rRm"/>
+                    <constraint firstItem="LhM-OP-6JX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="I7Z-q6-x6V"/>
+                    <constraint firstItem="yt2-L2-wC9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="PZB-8h-c1y"/>
+                    <constraint firstItem="24B-oM-5k5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="R7A-ya-z9x"/>
+                    <constraint firstItem="yt2-L2-wC9" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="SIw-kH-OPo"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="LhM-OP-6JX" secondAttribute="bottom" constant="9.5" id="h0U-no-g5e"/>
+                    <constraint firstItem="24B-oM-5k5" firstAttribute="top" secondItem="yt2-L2-wC9" secondAttribute="bottom" constant="20" id="pFc-8y-Son"/>
+                    <constraint firstItem="LhM-OP-6JX" firstAttribute="top" secondItem="24B-oM-5k5" secondAttribute="bottom" constant="18" id="wFh-od-PMe"/>
+                    <constraint firstItem="24B-oM-5k5" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="ynB-pK-oH1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="strayAnimalInfoTextField" destination="LhM-OP-6JX" id="vxt-f2-QMs"/>
+                <outlet property="strayAnimalimageView" destination="yt2-L2-wC9" id="xvm-N3-u8x"/>
+                <outlet property="takePhotoButton" destination="24B-oM-5k5" id="cud-Nn-BDP"/>
+            </connections>
+            <point key="canvasLocation" x="28.5" y="216"/>
+        </tableViewCell>
+    </objects>
+</document>

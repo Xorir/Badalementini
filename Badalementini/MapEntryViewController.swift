@@ -19,6 +19,7 @@ public class EntryButtons: UIButton {
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -34,7 +35,12 @@ public class EntryButtons: UIButton {
     
 }
 
-class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, PresentImagePickerDelegate, UITextFieldDelegate {
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     var reference = FIRDatabaseReference.init()
     var enterInfoTextField: UITextField! = nil
@@ -44,23 +50,50 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     var uploadImage: EntryButtons!
     let imagePicker = UIImagePickerController()
     var sendButton: EntryButtons!
-    var activityIndicator = UIActivityIndicatorView()
+//    var activityIndicator = UIActivityIndicatorView()
     var activityIndicatorBackgroundView: UIView!
     var isMissingPet = false
+    var pickedImage: UIImage?
+    var infoText: String?
+    let activityIndicator = ActivityIndicator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavigationBar()
-        setAnimalImageView()
-        setUploadImageButton()
-        setTextfield()
+        //        setAnimalImageView()
+        //        setUploadImageButton()
+        //        setTextfield()
         imagePicker.delegate = self
+        setupTableView()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+ 
     }
     
-    @IBAction func sendInfo(_ sender: UIButton) {
-
+    func keyboardWillShow(notification:NSNotification) {
+        let userInfo:NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardFrame:NSValue = userInfo.value(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardRectangle = keyboardFrame.cgRectValue
+        let keyboardHeight = keyboardRectangle.height
+        print("Keyboard height \(keyboardHeight)")
+        self.tableViewBottomConstraint.constant = keyboardHeight + 10
+    }
+    
+    func keyboardWillHide(notification:NSNotification) {
+        self.tableViewBottomConstraint.constant = 0
+    }
+    
+    
+    func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100.0
+        tableView.register(UINib(nibName: "StrayAnimalEntryTableViewCell", bundle: nil), forCellReuseIdentifier: "strayAnimalEntry")
+        self.automaticallyAdjustsScrollViewInsets = false
+        tableView.tableFooterView = UIView()
         
     }
     
@@ -72,37 +105,47 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         print("Missing pet")
     }
     
-    func displayIndicator() {
-        activityIndicatorBackgroundView = UIView(frame: CGRect(x: 50, y: 100, width: 80, height: 80))
-        activityIndicatorBackgroundView.backgroundColor = UIColor.gray
-        activityIndicatorBackgroundView.layer.cornerRadius = 5.0
-        activityIndicatorBackgroundView.center = view.center
-        view.addSubview(activityIndicatorBackgroundView)
-            
-        
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-        activityIndicator.center = activityIndicatorBackgroundView.center
-        view.addSubview(activityIndicator)
-        
-        activityIndicator.startAnimating()
+    func presentImagePicker() {
+        getPhotos()
     }
     
-    func hideIndicator() {
-        activityIndicator.stopAnimating()
-        activityIndicatorBackgroundView.removeFromSuperview()
-    }
+    //    func displayIndicator() {
+    //        activityIndicatorBackgroundView = UIView(frame: CGRect(x: 50, y: 100, width: 80, height: 80))
+    //        activityIndicatorBackgroundView.backgroundColor = UIColor.gray
+    //        activityIndicatorBackgroundView.layer.cornerRadius = 5.0
+    //        activityIndicatorBackgroundView.center = view.center
+    //        view.addSubview(activityIndicatorBackgroundView)
+    //
+    //
+    //        activityIndicator.hidesWhenStopped = true
+    //        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+    //        activityIndicator.center = activityIndicatorBackgroundView.center
+    //        view.addSubview(activityIndicator)
+    //
+    //        activityIndicator.startAnimating()
+    //    }
+    //
+    //    func hideIndicator() {
+    //        activityIndicator.stopAnimating()
+    //        activityIndicatorBackgroundView.removeFromSuperview()
+    //    }
     
     func sendPhoto() {
+        
         // Upload image to Firebase
+        activityIndicator.setupActivityIndicator(view: self.tableView, isFullScreen: false)
+        
         guard let userID = AppState.sharedInstance.UID else { return }
-        guard let pickedImage = animalImageView.image else { return }
+        guard let pickedImage = self.pickedImage else { return }
         var metaDataOut: FIRStorageMetadata?
         
-        let storage = FIRStorage.storage().reference().child(userID)
-        if let uploadData = UIImagePNGRepresentation(pickedImage) {
-            displayIndicator()
-            storage.put(uploadData, metadata: nil, completion: { (metaData, error) in
+        print("Darn picked image \(pickedImage)")
+        
+        let storage = FIRStorage.storage().reference().child(userID).child(getDateAndHour())
+        
+        if let uploadData = UIImageJPEGRepresentation(pickedImage, 0.8) {
+            //            displayIndicator()
+            let uploadTask = storage.put(uploadData, metadata: nil, completion: { (metaData, error) in
                 if error != nil {
                     print(error)
                     return
@@ -112,9 +155,15 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                 print("METADATA \(metaData)")
                 self.createNewEntry(metaDataImage: metaData)
                 // make self weak
-                self.hideIndicator()
+                //                self.hideIndicator()
                 
             })
+            
+            //            uploadTask.observe(.progress, handler: { (snapshot) in
+            //                guard let progress = snapshot.progress else { return }
+            //                self.progress = Float(progress.fractionCompleted)
+            //
+            //            })
         }
     }
     
@@ -124,7 +173,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         reference = FIRDatabase.database().reference()
         guard let locationValues = UserLocationManager.sharedInstance.locationValues else { return }
         guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
-        guard let infoText = enterInfoTextField.text else { return }
+        guard let infoText = self.infoText else { return }
         guard let metaData = metaDataImage?.downloadURL()?.absoluteString else { return }
         guard let address = UserLocationManager.sharedInstance.address else { return }
         
@@ -136,7 +185,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
             "metaData": metaData as AnyObject,
             "date": getCurrentDate() as AnyObject,
             "address": address as AnyObject
-        ]
+]
         
         guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
         
@@ -146,7 +195,17 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         } else {
             reference.child(currentCity).childByAutoId().setValue(coordinates)
         }
-        enterInfoTextField.text = ""
+        //        enterInfoTextField.text = ""
+        
+        activityIndicator.stopActivityIndicator(view: tableView)
+        
+        //make weak
+        let alert = UIAlertController(title: "Alert", message: "Post Creaed", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK!", style: .default, handler: { (action) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+            
+        self.present(alert, animated: true, completion: nil)
     }
     
     func getCurrentDate() -> String {
@@ -157,24 +216,60 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         return formattedDate
     }
     
+    // Refactor
+    func getDateAndHour() -> String {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yyyy/HH/mm/ss"
+        let formattedDate = formatter.string(from: date)
+        return formattedDate.replacingOccurrences(of: "/", with: "")
+    }
+    
     func getPhotos() {
         print("test deneme")
         imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        
+        imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            animalImageView.contentMode = .scaleAspectFit
-            animalImageView.image = pickedImage
-            dismiss(animated: true, completion: nil)
+            self.pickedImage = pickedImage
+            dismiss(animated: true, completion: {
+                self.tableView.reloadData()
+            })
         }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "strayAnimalEntry" , for: indexPath) as! StrayAnimalEntryTableViewCell
+        
+        cell.strayAnimalimageView.image = UIImage(named: "profile")
+        if let pickedImage = self.pickedImage {
+            cell.strayAnimalimageView.image = pickedImage
+        }
+        cell.strayAnimalInfoTextField.delegate = self
+        cell.strayAnimalInfoTextField.keyboardType = .numbersAndPunctuation
+        cell.strayAnimalInfoTextField.returnKeyType = .done
+        cell.delegate = self
+        return cell
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.infoText = textField.text
+        sendPhoto()
+        textField.resignFirstResponder()
+        print(textField.text)
+        return true
+    }
+    
     
 }
