@@ -298,7 +298,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.40784313725490196" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="G93-ZW-LK2" secondAttribute="trailing" constant="16" id="5yH-ZM-s6C"/>
                             <constraint firstItem="G93-ZW-LK2" firstAttribute="leading" secondItem="ugc-8u-fg0" secondAttribute="leadingMargin" id="9hi-c0-0Z0"/>
@@ -319,11 +319,10 @@
             </objects>
             <point key="canvasLocation" x="4740" y="410.64467766116945"/>
         </scene>
-        <!--View Controller-->
+        <!--Image Detail View Controller-->
         <scene sceneID="W6f-XA-w9u">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Iho-tn-Ft2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Q4k-N0-IUS" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageDetailViewController" id="Q4k-N0-IUS" customClass="ImageDetailViewController" customModule="Badalementini" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nCo-OP-73X"/>
                         <viewControllerLayoutGuide type="bottom" id="9uh-64-9jh"/>
@@ -331,10 +330,25 @@
                     <view key="view" contentMode="scaleToFill" id="42v-S8-xiB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIQ-5s-2YN">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TIQ-5s-2YN" firstAttribute="top" secondItem="nCo-OP-73X" secondAttribute="bottom" id="027-um-WV1"/>
+                            <constraint firstItem="TIQ-5s-2YN" firstAttribute="leading" secondItem="42v-S8-xiB" secondAttribute="leadingMargin" id="XsH-jL-LJ6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TIQ-5s-2YN" secondAttribute="trailing" id="q2n-PG-Khy"/>
+                            <constraint firstItem="9uh-64-9jh" firstAttribute="top" secondItem="TIQ-5s-2YN" secondAttribute="bottom" id="wJo-9j-D2x"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bb9-ie-VdA"/>
+                    <connections>
+                        <outlet property="detailImageView" destination="TIQ-5s-2YN" id="zc3-Fx-HoH"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iho-tn-Ft2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5431.1999999999998" y="1593.5532233883059"/>
         </scene>
@@ -415,7 +429,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Ccv-vc-Lxe">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8s-hh-0Sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JM8-8Q-1Lh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CGP-yf-ycy">
@@ -427,6 +440,7 @@
                         <segue destination="Q4k-N0-IUS" kind="relationship" relationship="rootViewController" id="KYC-3O-a84"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8s-hh-0Sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4492" y="1593.5532233883059"/>
         </scene>

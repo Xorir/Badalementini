@@ -37,9 +37,7 @@ public class EntryButtons: UIButton {
 
 class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, PresentImagePickerDelegate, UITextFieldDelegate {
     
-    
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     var reference = FIRDatabaseReference.init()
@@ -50,7 +48,6 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     var uploadImage: EntryButtons!
     let imagePicker = UIImagePickerController()
     var sendButton: EntryButtons!
-//    var activityIndicator = UIActivityIndicatorView()
     var activityIndicatorBackgroundView: UIView!
     var isMissingPet = false
     var pickedImage: UIImage?
@@ -61,15 +58,12 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         super.viewDidLoad()
         
         setNavigationBar()
-        //        setAnimalImageView()
-        //        setUploadImageButton()
-        //        setTextfield()
         imagePicker.delegate = self
         setupTableView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
- 
+        
     }
     
     func keyboardWillShow(notification:NSNotification) {
@@ -84,7 +78,6 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     func keyboardWillHide(notification:NSNotification) {
         self.tableViewBottomConstraint.constant = 0
     }
-    
     
     func setupTableView() {
         tableView.dataSource = self
@@ -108,27 +101,6 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     func presentImagePicker() {
         getPhotos()
     }
-    
-    //    func displayIndicator() {
-    //        activityIndicatorBackgroundView = UIView(frame: CGRect(x: 50, y: 100, width: 80, height: 80))
-    //        activityIndicatorBackgroundView.backgroundColor = UIColor.gray
-    //        activityIndicatorBackgroundView.layer.cornerRadius = 5.0
-    //        activityIndicatorBackgroundView.center = view.center
-    //        view.addSubview(activityIndicatorBackgroundView)
-    //
-    //
-    //        activityIndicator.hidesWhenStopped = true
-    //        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-    //        activityIndicator.center = activityIndicatorBackgroundView.center
-    //        view.addSubview(activityIndicator)
-    //
-    //        activityIndicator.startAnimating()
-    //    }
-    //
-    //    func hideIndicator() {
-    //        activityIndicator.stopAnimating()
-    //        activityIndicatorBackgroundView.removeFromSuperview()
-    //    }
     
     func sendPhoto() {
         
@@ -185,7 +157,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
             "metaData": metaData as AnyObject,
             "date": getCurrentDate() as AnyObject,
             "address": address as AnyObject
-]
+        ]
         
         guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
         
@@ -204,7 +176,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         alert.addAction(UIAlertAction(title: "OK!", style: .default, handler: { (action) in
             self.dismiss(animated: true, completion: nil)
         }))
-            
+        
         self.present(alert, animated: true, completion: nil)
     }
     
