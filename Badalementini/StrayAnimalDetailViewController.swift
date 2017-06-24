@@ -20,7 +20,8 @@ class StrayAnimalDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        strayAnimalImageView.layer.cornerRadius = 15.0
+        strayAnimalImageView.layer.cornerRadius = 10.0
+        strayAnimalImageView.layer.masksToBounds = true
         
         guard let metaData = annotationInfo.metaData else { return }
         strayAnimalImageView.image = UIImage(named: "profile")
@@ -28,12 +29,21 @@ class StrayAnimalDetailViewController: UIViewController {
         strayAnimalImageView.getCachedImage(urlString: metaData)
         infoLabel.text = annotationInfo.info
         addressLabel.text = annotationInfo.address
-        
+        setupImageViewGesture()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func setupImageViewGesture() {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(displayImageDetail))
+        strayAnimalImageView.isUserInteractionEnabled = true
+        strayAnimalImageView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    func displayImageDetail() {
+        let mapEntryDetailStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let imageDetailVC = mapEntryDetailStoryBoard.instantiateViewController(withIdentifier: "ImageDetailViewController") as! ImageDetailViewController
+        imageDetailVC.title = "Image Detail"
+        imageDetailVC.annotationInfo = self.annotationInfo
+        navigationController?.pushViewController(imageDetailVC, animated: true)
     }
     
     @IBAction func navigateToAddress(_ sender: UIButton) {

@@ -31,6 +31,7 @@
 		D28A95DA1EDFCFDF009F9DFE /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */; };
 		D28A95DC1EDFDC05009F9DFE /* TheActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */; };
 		D28A95DE1EE536C7009F9DFE /* MissingPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95DD1EE536C7009F9DFE /* MissingPetViewController.swift */; };
+		D2A619C21EFEF71E00C7D69C /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */; };
 		D2D2C1C11EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */; };
 		D2D2C1C21EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheActivityIndicator.swift; sourceTree = "<group>"; };
 		D28A95DD1EE536C7009F9DFE /* MissingPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingPetViewController.swift; sourceTree = "<group>"; };
+		D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalEntryTableViewCell.swift; sourceTree = "<group>"; };
 		D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrayAnimalEntryTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +144,7 @@
 				D28A95D31EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift */,
 				D28A95DD1EE536C7009F9DFE /* MissingPetViewController.swift */,
 				D23079BC1EE7D1DB00EA34CF /* UserProfileViewController.swift */,
+				D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				D218BA4C1EFA1D9D0054F3B2 /* ActivityIndicator.swift in Sources */,
 				D2D2C1C11EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift in Sources */,
 				D254A5801ED6A2E00079C17E /* UserLocationManager.swift in Sources */,
+				D2A619C21EFEF71E00C7D69C /* ImageDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
