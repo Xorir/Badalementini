@@ -72,7 +72,7 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-
+        
         getInfFromFirebase()
     }
     
@@ -107,8 +107,8 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.missingPetTableViewCellIdentifier , for: indexPath) as! MissingPetTableViewCell
         
-//        cell.missingPetInfoLabel.text = missingPetArray[indexPath.row].notes
-//        cell.missingPetImageView.getCachedImage(urlString: missingPetArray[indexPath.row].metaData!)
+        //        cell.missingPetInfoLabel.text = missingPetArray[indexPath.row].notes
+        //        cell.missingPetImageView.getCachedImage(urlString: missingPetArray[indexPath.row].metaData!)
         cell.missingPetInfo(missingPet: missingPetArray[indexPath.row])
         
         return cell
