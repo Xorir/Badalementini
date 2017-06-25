@@ -21,35 +21,49 @@ extension UIImageView {
         let url = NSURL(string: urlString)
         let request = URLRequest(url: url! as URL)
         
-//        Alamofire.request(request).responseImage { (response) in
-//            
-//            if let imageData = response.result.value {
-//                print("image downloaded: \(imageData)")
-//                DispatchQueue.main.async {
-//                    
-//                    cachedImage.setObject(imageData, forKey: urlString as AnyObject)
-//                    self.image = imageData
-//                    
-//                }
-//            }
-//            
-//        }
+        URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            guard let imgData = data else { return }
+            DispatchQueue.main.async {
+                if let downloadedImgData = UIImage(data: imgData) {
+                    cachedImage.setObject(downloadedImgData, forKey: urlString as AnyObject)
+                    self.image = downloadedImgData
+                    
+                }
+            }
+        }).resume()
+    }
+    
+    func getCachedImageWithIndicator(urlString: String, imageView: UIImageView) {
         
-                URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+        let url = NSURL(string: urlString)
+        let request = URLRequest(url: url! as URL)
+        let activityIndicator = ActivityIndicator()
+        activityIndicator.setupActivityIndicatorForImageView(imageView: imageView, isFullScreen: false)
         
-                    if error != nil {
-                        print(error)
-                        return
-                    }
-        
-                    guard let imgData = data else { return }
-                    DispatchQueue.main.async {
-                        if let downloadedImgData = UIImage(data: imgData) {
-                            cachedImage.setObject(downloadedImgData, forKey: urlString as AnyObject)
-                            self.image = downloadedImgData
-        
-                        }
-                    }
-                }).resume()
+        URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            guard let imgData = data else { return }
+            DispatchQueue.main.async {
+                if let downloadedImgData = UIImage(data: imgData) {
+                    cachedImage.setObject(downloadedImgData, forKey: urlString as AnyObject)
+                    self.image = downloadedImgData
+                    activityIndicator.stopActivityIndicator(imageView: imageView)
+                    
+                }
+            }
+        }).resume()
     }
 }

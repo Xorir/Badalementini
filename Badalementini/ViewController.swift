@@ -86,7 +86,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
         })
     }
-
     
     @IBAction func getCurrent(_ sender: UIButton) {
         let mapEntryDetailStoryBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -199,9 +198,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let locationValues: CLLocationCoordinate2D = location.coordinate
             locationManager.stopUpdatingLocation()
             UserLocationManager.sharedInstance.locationValues = locationValues
-
+            
             reverseGeocoding(latitude: locationValues.latitude, longitude: locationValues.longitude)
-
+            
         }
     }
 }

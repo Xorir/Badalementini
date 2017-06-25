@@ -266,53 +266,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MSD-Ta-mnu">
-                                <rect key="frame" x="16" y="72" width="343" height="277"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="277" id="hfY-MW-gEr"/>
-                                </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="G93-ZW-LK2">
-                                <rect key="frame" x="16" y="376" width="327" height="103"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="infoLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54B-v9-5JX">
-                                        <rect key="frame" x="0.0" y="0.0" width="72.5" height="23.5"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Addresslabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4Y-OI-dda">
-                                        <rect key="frame" x="0.0" y="33.5" width="102.5" height="23.5"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ho-6q-hXO">
-                                        <rect key="frame" x="0.0" y="67" width="187" height="36"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                        <state key="normal" title="Navigate to the Address"/>
-                                        <connections>
-                                            <action selector="navigateToAddress:" destination="07e-Dr-81f" eventType="touchUpInside" id="xlo-Gh-Rin"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KvZ-Py-Pdc">
+                                <rect key="frame" x="16" y="80" width="343" height="571"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.40784313725490196" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="G93-ZW-LK2" secondAttribute="trailing" constant="16" id="5yH-ZM-s6C"/>
-                            <constraint firstItem="G93-ZW-LK2" firstAttribute="leading" secondItem="ugc-8u-fg0" secondAttribute="leadingMargin" id="9hi-c0-0Z0"/>
-                            <constraint firstItem="MSD-Ta-mnu" firstAttribute="leading" secondItem="ugc-8u-fg0" secondAttribute="leadingMargin" id="CpN-M3-DnK"/>
-                            <constraint firstItem="MSD-Ta-mnu" firstAttribute="trailing" secondItem="ugc-8u-fg0" secondAttribute="trailingMargin" id="bNh-4S-m6e"/>
-                            <constraint firstItem="G93-ZW-LK2" firstAttribute="top" secondItem="MSD-Ta-mnu" secondAttribute="bottom" constant="27" id="dIs-T6-gdW"/>
-                            <constraint firstItem="MSD-Ta-mnu" firstAttribute="top" secondItem="36g-ge-CYs" secondAttribute="bottom" constant="8" id="lDk-bA-Xbk"/>
+                            <constraint firstItem="KvZ-Py-Pdc" firstAttribute="leading" secondItem="ugc-8u-fg0" secondAttribute="leadingMargin" id="6gV-LX-S4b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KvZ-Py-Pdc" secondAttribute="trailing" id="Akr-06-yyH"/>
+                            <constraint firstItem="eon-t0-c1h" firstAttribute="top" secondItem="KvZ-Py-Pdc" secondAttribute="bottom" constant="16" id="XOM-Yf-Vsg"/>
+                            <constraint firstItem="KvZ-Py-Pdc" firstAttribute="top" secondItem="36g-ge-CYs" secondAttribute="bottom" constant="16" id="djo-vx-wbc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EKe-3t-1xt"/>
                     <connections>
-                        <outlet property="addressLabel" destination="Z4Y-OI-dda" id="inU-z5-T9a"/>
-                        <outlet property="infoLabel" destination="54B-v9-5JX" id="f9f-o0-hXP"/>
-                        <outlet property="strayAnimalImageView" destination="MSD-Ta-mnu" id="cRD-Dm-xOH"/>
+                        <outlet property="tableView" destination="KvZ-Py-Pdc" id="nxm-kG-S5k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOt-E8-ICq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,15 +301,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIQ-5s-2YN">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <rect key="frame" x="16" y="80" width="343" height="571"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TIQ-5s-2YN" firstAttribute="top" secondItem="nCo-OP-73X" secondAttribute="bottom" id="027-um-WV1"/>
+                            <constraint firstItem="TIQ-5s-2YN" firstAttribute="top" secondItem="nCo-OP-73X" secondAttribute="bottom" constant="16" id="027-um-WV1"/>
                             <constraint firstItem="TIQ-5s-2YN" firstAttribute="leading" secondItem="42v-S8-xiB" secondAttribute="leadingMargin" id="XsH-jL-LJ6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TIQ-5s-2YN" secondAttribute="trailing" id="q2n-PG-Khy"/>
-                            <constraint firstItem="9uh-64-9jh" firstAttribute="top" secondItem="TIQ-5s-2YN" secondAttribute="bottom" id="wJo-9j-D2x"/>
+                            <constraint firstItem="9uh-64-9jh" firstAttribute="top" secondItem="TIQ-5s-2YN" secondAttribute="bottom" constant="16" id="wJo-9j-D2x"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bb9-ie-VdA"/>
