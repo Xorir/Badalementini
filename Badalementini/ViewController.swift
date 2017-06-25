@@ -86,7 +86,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
         })
     }
-
     
     @IBAction func getCurrent(_ sender: UIButton) {
         let mapEntryDetailStoryBoard = UIStoryboard(name: "Main", bundle: nil)

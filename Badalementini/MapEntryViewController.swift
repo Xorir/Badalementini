@@ -32,7 +32,6 @@ public class EntryButtons: UIButton {
         self.layer.borderWidth = 1.0
         self.layer.borderColor = UIColor.white.cgColor
     }
-    
 }
 
 class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, PresentImagePickerDelegate, UITextFieldDelegate {
@@ -242,6 +241,4 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         print(textField.text)
         return true
     }
-    
-    
 }

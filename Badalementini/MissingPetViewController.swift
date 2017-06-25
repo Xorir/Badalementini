@@ -27,7 +27,6 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
         static let memberDetailVC = "MemberDetailViewController"
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

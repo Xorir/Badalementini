@@ -332,15 +332,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIQ-5s-2YN">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <rect key="frame" x="16" y="74" width="343" height="583"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TIQ-5s-2YN" firstAttribute="top" secondItem="nCo-OP-73X" secondAttribute="bottom" id="027-um-WV1"/>
+                            <constraint firstItem="TIQ-5s-2YN" firstAttribute="top" secondItem="nCo-OP-73X" secondAttribute="bottom" constant="10" id="027-um-WV1"/>
                             <constraint firstItem="TIQ-5s-2YN" firstAttribute="leading" secondItem="42v-S8-xiB" secondAttribute="leadingMargin" id="XsH-jL-LJ6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TIQ-5s-2YN" secondAttribute="trailing" id="q2n-PG-Khy"/>
-                            <constraint firstItem="9uh-64-9jh" firstAttribute="top" secondItem="TIQ-5s-2YN" secondAttribute="bottom" id="wJo-9j-D2x"/>
+                            <constraint firstItem="9uh-64-9jh" firstAttribute="top" secondItem="TIQ-5s-2YN" secondAttribute="bottom" constant="10" id="wJo-9j-D2x"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bb9-ie-VdA"/>

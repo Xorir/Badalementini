@@ -17,6 +17,7 @@ class StrayAnimalDetailViewController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,9 +25,9 @@ class StrayAnimalDetailViewController: UIViewController {
         strayAnimalImageView.layer.masksToBounds = true
         
         guard let metaData = annotationInfo.metaData else { return }
-        strayAnimalImageView.image = UIImage(named: "profile")
+//        strayAnimalImageView.image = UIImage(named: "profile")
         strayAnimalImageView.setNeedsDisplay()
-        strayAnimalImageView.getCachedImage(urlString: metaData)
+        strayAnimalImageView.getCachedImageWithIndicator(urlString: metaData, imageView: strayAnimalImageView)
         infoLabel.text = annotationInfo.info
         addressLabel.text = annotationInfo.address
         setupImageViewGesture()

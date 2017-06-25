@@ -11,13 +11,16 @@ import UIKit
 class ImageDetailViewController: UIViewController {
 
     var annotationInfo: Annotation!
-    
+
     @IBOutlet weak var detailImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         guard let metaData = annotationInfo.metaData else { return }
-        detailImageView.getCachedImage(urlString: metaData)
+//        detailImageView.getCachedImage(urlString: metaData)
+        detailImageView.getCachedImageWithIndicator(urlString: metaData, imageView: detailImageView)
+        detailImageView.layer.cornerRadius = 5.0
+        detailImageView.layer.masksToBounds = true
 
         
         // Do any additional setup after loading the view.
