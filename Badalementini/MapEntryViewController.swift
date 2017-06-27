@@ -36,6 +36,12 @@ public class EntryButtons: UIButton {
 
 class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, PresentImagePickerDelegate, UITextFieldDelegate {
     
+    private enum TextField: Int {
+        case strayAnimalTextField = 0
+        case contactName
+        case contactPhoneNumber
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
@@ -52,6 +58,8 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     var pickedImage: UIImage?
     var infoText: String?
     let activityIndicator = ActivityIndicator()
+    var contactPhoneNumber: String?
+    var contactName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,7 +156,8 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         guard let metaData = metaDataImage?.downloadURL()?.absoluteString else { return }
         guard let address = UserLocationManager.sharedInstance.address else { return }
         
-        let coordinates: [String: AnyObject] = [
+        
+        var coordinates: [String: AnyObject] = [
             "lat": locationValues.latitude as AnyObject,
             "long": locationValues.longitude as AnyObject,
             "userName": currentUser as AnyObject,
@@ -161,12 +170,15 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
         
         if isMissingPet {
+            if let contactName = self.contactName, let contactPhoneNumber = self.contactPhoneNumber {
+                coordinates.updateValue("\(contactName)" as AnyObject, forKey: "contactName")
+                coordinates.updateValue("\(contactPhoneNumber)" as AnyObject, forKey: "contactPhoneNumber")
+            }
             reference.child(currentCity).child("missingPet").childByAutoId().setValue(coordinates)
             reference.child("userPosts").child(currentUser).childByAutoId().setValue(coordinates)
         } else {
             reference.child(currentCity).childByAutoId().setValue(coordinates)
         }
-        //        enterInfoTextField.text = ""
         
         activityIndicator.stopActivityIndicator(view: tableView)
         
@@ -199,7 +211,11 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     func getPhotos() {
         print("test deneme")
         imagePicker.allowsEditing = false
-        imagePicker.sourceType = .camera
+        if isMissingPet {
+            imagePicker.sourceType = .photoLibrary
+        } else {
+            imagePicker.sourceType = .camera
+        }
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -227,15 +243,46 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         if let pickedImage = self.pickedImage {
             cell.strayAnimalimageView.image = pickedImage
         }
-        cell.strayAnimalInfoTextField.delegate = self
-        cell.strayAnimalInfoTextField.keyboardType = .numbersAndPunctuation
+
+        cell.strayAnimalInfoTextField.keyboardType = .default
         cell.strayAnimalInfoTextField.returnKeyType = .done
+        if isMissingPet {
+            cell.contactName.isHidden = false
+            cell.contactPhoneNUmber.isHidden = false
+            cell.strayAnimalInfoTextField.placeholder = "Enter missin pet info"
+            cell.takePhotoButton.setTitle("Upload a Photo", for: .normal)
+            
+        }
         cell.delegate = self
         return cell
     }
     
+    func textFieldInfo(tf: String, tf2: String, tf3: String) {
+        self.infoText = tf
+        self.contactName = tf2
+        self.contactPhoneNumber = tf3
+        sendPhoto()
+        
+        print(tf, tf2, tf3)
+    }
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.infoText = textField.text
+        if let textFieldy = TextField(rawValue: textField.tag) {
+            switch textFieldy {
+            case .strayAnimalTextField:
+                self.infoText = textField.text
+                print(infoText)
+                
+            case .contactName:
+                self.contactName = textField.text
+                print(contactName)
+                
+            case .contactPhoneNumber:
+                self.contactPhoneNumber = textField.text
+                print(contactPhoneNumber)
+            }
+        }
         sendPhoto()
         textField.resignFirstResponder()
         print(textField.text)

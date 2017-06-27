@@ -24,7 +24,6 @@ class MissingPetTableViewCell: UITableViewCell {
     }
     
     func missingPetInfo(missingPet: StrayModel) {
-        missingPetImageView.image = UIImage(named: "profile")
         missingPetImageView.getCachedImage(urlString: missingPet.metaData!)
         missingPetInfoLabel.text = missingPet.notes
     }

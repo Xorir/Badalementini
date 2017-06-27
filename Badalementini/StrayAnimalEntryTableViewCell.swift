@@ -10,9 +10,10 @@ import UIKit
 
 protocol PresentImagePickerDelegate {
     func presentImagePicker()
+    func textFieldInfo(tf: String, tf2: String, tf3: String)
 }
 
-class StrayAnimalEntryTableViewCell: UITableViewCell {
+class StrayAnimalEntryTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var progressView: UIProgressView!
     
@@ -20,14 +21,31 @@ class StrayAnimalEntryTableViewCell: UITableViewCell {
     @IBOutlet weak var takePhotoButton: UIButton!
     var delegate: PresentImagePickerDelegate?
     @IBOutlet weak var strayAnimalInfoTextField: UITextField!
-
+    @IBOutlet weak var contactPhoneNUmber: UITextField!
+    @IBOutlet weak var contactName: UITextField!
+    var isPhotoButtonTapped = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
         setupButton()
         setupStrayAnimalimageView()
+        contactPhoneNUmber.isHidden = true
+        contactName.isHidden = true
+        strayAnimalInfoTextField.tag = 1
+        contactName.tag = 2
+        contactPhoneNUmber.tag = 3
+        strayAnimalInfoTextField.delegate = self
+        contactPhoneNUmber.delegate = self
+        contactName.delegate = self
+        contactPhoneNUmber.keyboardType = .numbersAndPunctuation
+        strayAnimalInfoTextField.isEnabled = false
+        contactPhoneNUmber.isEnabled = false
+        contactName.isEnabled = false
+        selectionStyle = .none
+        
     }
-
     
     func setupStrayAnimalimageView() {
         strayAnimalimageView.layer.cornerRadius = 5.0
@@ -48,17 +66,27 @@ class StrayAnimalEntryTableViewCell: UITableViewCell {
         takePhotoButton.isUserInteractionEnabled = true
     }
     
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     
     @IBAction func takeStrayAnimalPhoto(_ sender: UIButton) {
         self.delegate?.presentImagePicker()
-        print("photo button")
+        strayAnimalInfoTextField.isEnabled = true
+        contactPhoneNUmber.isEnabled = true
+        contactName.isEnabled = true
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.delegate?.textFieldInfo(tf: strayAnimalInfoTextField.text!, tf2: contactName.text!, tf3: contactPhoneNUmber.text!)
+        strayAnimalInfoTextField.resignFirstResponder()
+        contactName.resignFirstResponder()
+        contactPhoneNUmber.resignFirstResponder()
+        return true
+    }
+    
     
 }
