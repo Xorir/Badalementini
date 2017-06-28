@@ -112,20 +112,17 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
 //        }
 //        return mpPost + SAPost
         return 2
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             if let postCount = userMissingPetPosts?.count {
                 return postCount
-            } else {
-                return 1
             }
         } else {
             if let postCount = userStrayAnimalPosts?.count {
                 return postCount
-            } else {
-                return 1
             }
         }
         return 0
