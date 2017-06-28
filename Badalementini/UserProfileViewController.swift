@@ -46,7 +46,7 @@ class UserProfileViewController: UIViewController {
     
     func setupCheckPostButton() {
         checkPostedItemsButton = EntryButtons(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
-        checkPostedItemsButton.setTitle("Check My Posts", for: .normal)
+        checkPostedItemsButton.setTitle("Check and Delete my posts", for: .normal)
         checkPostedItemsButton.addTarget(self, action: #selector(getPosts), for: .touchUpInside)
         
         view.addSubview(checkPostedItemsButton)

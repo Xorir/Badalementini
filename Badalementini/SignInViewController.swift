@@ -43,12 +43,8 @@ class SignInViewController: UIViewController {
             }
             
             // Register user to database
-            guard let userEmail = user?.email else { return }
-            var messageDeneme = [String: String]()
-            messageDeneme = ["email": userEmail]
+            self.signedIn(user)
             
-            guard let uid = AppState.sharedInstance.UID else { return }
-            UserManager.sharedInstance.ref.child("users").child(uid).setValue(messageDeneme)
             
         }
     }
