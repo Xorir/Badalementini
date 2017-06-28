@@ -118,14 +118,10 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
         if section == 0 {
             if let postCount = userMissingPetPosts?.count {
                 return postCount
-            } else {
-                return 1
             }
         } else {
             if let postCount = userStrayAnimalPosts?.count {
                 return postCount
-            } else {
-                return 1
             }
         }
         return 0
@@ -146,11 +142,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             return cell
 
-//            else {
-//                let cell: UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "theCell") as UITableViewCell!
-//                cell.textLabel?.text = "No Missing Pet Posts"
-//                return cell
-//            }
             
     
         } else {
@@ -163,13 +154,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                 cell.dateLabel.text = userPosts[indexPath.row].date
             }
             return cell
-
-//            else {
-//                let cell: UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "theCell") as UITableViewCell!
-//                cell.textLabel?.text = "No Stray Animal Posts"
-//                return cell
-//            }
-            
         }
         
     }
