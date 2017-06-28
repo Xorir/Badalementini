@@ -37,9 +37,17 @@ class UserProfileViewController: UIViewController {
         }
     }
     
+    func getPosts() {
+        print("posts")
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let userPostsVC = mainStoryBoard.instantiateViewController(withIdentifier: "userPostsVC") as! UserPostsViewController
+        navigationController?.pushViewController(userPostsVC, animated: true)
+    }
+    
     func setupCheckPostButton() {
         checkPostedItemsButton = EntryButtons(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
         checkPostedItemsButton.setTitle("Check My Posts", for: .normal)
+        checkPostedItemsButton.addTarget(self, action: #selector(getPosts), for: .touchUpInside)
         
         view.addSubview(checkPostedItemsButton)
         

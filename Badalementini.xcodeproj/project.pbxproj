@@ -36,6 +36,9 @@
 		D2A619C61F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */; };
 		D2D2C1C11EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */; };
 		D2D2C1C21EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */; };
+		D2EB944F1F034AFD00174DC5 /* UserPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB944E1F034AFD00174DC5 /* UserPostsViewController.swift */; };
+		D2EB94521F0352B800174DC5 /* UserPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB94501F0352B800174DC5 /* UserPostTableViewCell.swift */; };
+		D2EB94531F0352B800174DC5 /* UserPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2EB94511F0352B800174DC5 /* UserPostTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +75,9 @@
 		D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrayAnimalDetailTableViewCell.xib; sourceTree = "<group>"; };
 		D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalEntryTableViewCell.swift; sourceTree = "<group>"; };
 		D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrayAnimalEntryTableViewCell.xib; sourceTree = "<group>"; };
+		D2EB944E1F034AFD00174DC5 /* UserPostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostsViewController.swift; sourceTree = "<group>"; };
+		D2EB94501F0352B800174DC5 /* UserPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostTableViewCell.swift; sourceTree = "<group>"; };
+		D2EB94511F0352B800174DC5 /* UserPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserPostTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,7 @@
 				D28A95DD1EE536C7009F9DFE /* MissingPetViewController.swift */,
 				D23079BC1EE7D1DB00EA34CF /* UserProfileViewController.swift */,
 				D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */,
+				D2EB944E1F034AFD00174DC5 /* UserPostsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -184,6 +191,8 @@
 				D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */,
 				D2A619C31F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift */,
 				D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */,
+				D2EB94501F0352B800174DC5 /* UserPostTableViewCell.swift */,
+				D2EB94511F0352B800174DC5 /* UserPostTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -262,6 +271,7 @@
 			files = (
 				D254A5281EC8DB610079C17E /* LaunchScreen.storyboard in Resources */,
 				D23079BB1EE772A700EA34CF /* MissingPetTableViewCell.xib in Resources */,
+				D2EB94531F0352B800174DC5 /* UserPostTableViewCell.xib in Resources */,
 				D254A5301EC8DBC70079C17E /* GoogleService-Info.plist in Resources */,
 				D254A5251EC8DB610079C17E /* Assets.xcassets in Resources */,
 				D2D2C1C21EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib in Resources */,
@@ -334,6 +344,8 @@
 				D23079BA1EE772A700EA34CF /* MissingPetTableViewCell.swift in Sources */,
 				D254A5361EC9880D0079C17E /* AppState.swift in Sources */,
 				D254A5341EC987500079C17E /* SignInViewController.swift in Sources */,
+				D2EB944F1F034AFD00174DC5 /* UserPostsViewController.swift in Sources */,
+				D2EB94521F0352B800174DC5 /* UserPostTableViewCell.swift in Sources */,
 				D254A5201EC8DB610079C17E /* ViewController.swift in Sources */,
 				D23079BF1EE7DA4A00EA34CF /* MapEntryViewControllerExtension.swift in Sources */,
 				D23079BD1EE7D1DB00EA34CF /* UserProfileViewController.swift in Sources */,
