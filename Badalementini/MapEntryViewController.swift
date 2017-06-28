@@ -174,16 +174,36 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                 coordinates.updateValue("\(contactName)" as AnyObject, forKey: "contactName")
                 coordinates.updateValue("\(contactPhoneNumber)" as AnyObject, forKey: "contactPhoneNumber")
             }
-            reference.child(currentCity).child("missingPet").childByAutoId().setValue(coordinates)
-            reference.child("userPosts").child(currentUser).childByAutoId().setValue(coordinates)
+
+            let mainPost =  reference.child(currentCity).child("missingPet").childByAutoId()
+            mainPost.setValue(coordinates)
+            coordinates.updateValue("\(mainPost)" as AnyObject, forKey: "deletionLink")
+            
+            let userPostDict = reference.child("userPosts").child("missingPet").child(currentUser).childByAutoId()
+            
+            coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: "userPostDeletionLink")
+            
+            userPostDict.setValue(coordinates)
+            
         } else {
-            reference.child(currentCity).childByAutoId().setValue(coordinates)
+           let mainPost = reference.child(currentCity).childByAutoId()
+            coordinates.updateValue("\(mainPost)" as AnyObject, forKey: "deletionLink")
+            mainPost.setValue(coordinates)
+            
+            
+            let userPostDict = reference.child("userPosts").child("strayAnimal").child(currentUser).childByAutoId()
+            userPostDict.setValue(coordinates)
+            
+            coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: "userPostDeletionLink")
+            userPostDict.setValue(coordinates)
+            
+            
         }
         
         activityIndicator.stopActivityIndicator(view: tableView)
         
         //make weak
-        let alert = UIAlertController(title: "Alert", message: "Post Creaed", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Alert", message: "Post Created", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK!", style: .default, handler: { (action) in
             self.dismiss(animated: true, completion: nil)
         }))
@@ -243,7 +263,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         if let pickedImage = self.pickedImage {
             cell.strayAnimalimageView.image = pickedImage
         }
-
+        
         cell.strayAnimalInfoTextField.keyboardType = .default
         cell.strayAnimalInfoTextField.returnKeyType = .done
         if isMissingPet {
