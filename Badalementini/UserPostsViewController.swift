@@ -98,19 +98,19 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-//        var mpPost = 0
-//        if let postCount = userMissingPetPosts?.count {
-//            if postCount > 0 {
-//                mpPost = 1
-//            }
-//        }
-//        var SAPost = 0
-//        if let postCount = userStrayAnimalPosts?.count {
-//            if postCount > 0 {
-//                SAPost = 1
-//            }
-//        }
-//        return mpPost + SAPost
+        //        var mpPost = 0
+        //        if let postCount = userMissingPetPosts?.count {
+        //            if postCount > 0 {
+        //                mpPost = 1
+        //            }
+        //        }
+        //        var SAPost = 0
+        //        if let postCount = userStrayAnimalPosts?.count {
+        //            if postCount > 0 {
+        //                SAPost = 1
+        //            }
+        //        }
+        //        return mpPost + SAPost
         return 2
     }
     
@@ -134,21 +134,21 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
             let cell = tableView.dequeueReusableCell(withIdentifier:
                 "userPostsIdentifier", for: indexPath) as! UserPostTableViewCell
             if let userPosts = userMissingPetPosts {
-        
+                
                 cell.userPostImageView.getCachedImage(urlString: userPosts[indexPath.row].metaData!)
                 cell.addressLabel.text = userPosts[indexPath.row].address
                 cell.dateLabel.text = userPosts[indexPath.row].date
-
+                
             }
             return cell
-
             
-    
+            
+            
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier:
                 "userPostsIdentifier", for: indexPath) as! UserPostTableViewCell
             if let userPosts = userStrayAnimalPosts {
-
+                
                 cell.userPostImageView.getCachedImage(urlString: userPosts[indexPath.row].metaData!)
                 cell.addressLabel.text = userPosts[indexPath.row].address
                 cell.dateLabel.text = userPosts[indexPath.row].date
@@ -232,9 +232,17 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
         label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
         
         if section == 0 {
-            label.text = "Missing Pet posts"
+            if userMissingPetPosts?.count == nil {
+                label.text = "No missing pet posts"
+            } else {
+                label.text = "Missing Pet posts"
+            }
         } else {
-            label.text = "Stray Animal Posts"
+            if userStrayAnimalPosts?.count == nil {
+                label.text = "No stray animal posts"
+            } else {
+                label.text = "Stray Animal Posts"
+            }
         }
         
         return headerView

@@ -27,6 +27,9 @@ class UserProfileViewController: UIViewController {
     }
     
     @IBAction func signOutBarButton(_ sender: UIBarButtonItem) {
+        if AppState.sharedInstance.isFaceBookUser {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "keyPressed"), object: nil)
+        }
         let firebaseAuth = FIRAuth.auth()
         do {
             try firebaseAuth?.signOut()
