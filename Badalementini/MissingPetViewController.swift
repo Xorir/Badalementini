@@ -87,6 +87,11 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
+    func displayTheDetail(annotation: Annotation) {
+        let strayAnimalDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "StrayAnimalDetail") as! StrayAnimalDetailViewController
+    
+        self.navigationController?.pushViewController(strayAnimalDetailVC, animated: true)
+    }
     
     func addMissingPetFunc() {
         let mapEntryDetailStoryBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -100,18 +105,24 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
         if let missingPetArray = missingPetArray {
             return missingPetArray.count
         }
-        
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.missingPetTableViewCellIdentifier , for: indexPath) as! MissingPetTableViewCell
-        
-        //        cell.missingPetInfoLabel.text = missingPetArray[indexPath.row].notes
-        //        cell.missingPetImageView.getCachedImage(urlString: missingPetArray[indexPath.row].metaData!)
+
         cell.missingPetInfo(missingPet: missingPetArray[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let missingAdoptionVC = mainStoryBoard.instantiateViewController(withIdentifier: "missingAndAdoption") as! MissingAndAdoptionViewController
+        missingAdoptionVC.missingAdoptionPet = missingPetArray[indexPath.row]
+        navigationController?.pushViewController(missingAdoptionVC, animated: true)
+        
     }
     
 }
