@@ -18,6 +18,8 @@ public struct StrayModel {
     let deletionLink: String?
     let date: String?
     let userPostDeletionLink: String?
+    let contactName: String?
+    let contactPhoneNumber: String?
     
     init?(dictionary: NSDictionary) {
         lat = dictionary.value(forKeyPath: "lat") as? Double
@@ -29,5 +31,7 @@ public struct StrayModel {
         deletionLink = dictionary.value(forKeyPath: "deletionLink") as? String
         date = dictionary.value(forKeyPath: "date") as? String
         userPostDeletionLink = dictionary.value(forKeyPath: "userPostDeletionLink") as? String
+        contactName = dictionary.value(forKeyPath: "contactName") as? String
+        contactPhoneNumber = dictionary.value(forKeyPath: "contactPhoneNumber") as? String
      }
 }

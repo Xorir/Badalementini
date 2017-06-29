@@ -124,6 +124,40 @@
             </objects>
             <point key="canvasLocation" x="482" y="2461"/>
         </scene>
+        <!--Missing And Adoption View Controller-->
+        <scene sceneID="Nlc-NW-Uyg">
+            <objects>
+                <viewController storyboardIdentifier="missingAndAdoption" id="8rt-NP-Jbk" customClass="MissingAndAdoptionViewController" customModule="Badalementini" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GTk-IC-8Y0"/>
+                        <viewControllerLayoutGuide type="bottom" id="VVH-lA-JpT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oBa-8c-XXy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VgX-GA-iFB">
+                                <rect key="frame" x="24" y="72" width="327" height="587"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VgX-GA-iFB" firstAttribute="leading" secondItem="oBa-8c-XXy" secondAttribute="leadingMargin" constant="8" id="JM2-k3-H6w"/>
+                            <constraint firstItem="VVH-lA-JpT" firstAttribute="top" secondItem="VgX-GA-iFB" secondAttribute="bottom" constant="8" id="LQA-Cc-prF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VgX-GA-iFB" secondAttribute="trailing" constant="8" id="Mc2-SW-M88"/>
+                            <constraint firstItem="VgX-GA-iFB" firstAttribute="top" secondItem="GTk-IC-8Y0" secondAttribute="bottom" constant="8" id="Z9T-lK-mZE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9iX-YK-g3v"/>
+                    <connections>
+                        <outlet property="tableView" destination="VgX-GA-iFB" id="MKO-Yi-TfU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bF2-Qp-n7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="481" y="3243"/>
+        </scene>
         <!--Sign In View Controller-->
         <scene sceneID="MhS-kH-n8o">
             <objects>
@@ -319,7 +353,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ge-B1-85U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3495.1999999999998" y="2446.3268365817094"/>
+            <point key="canvasLocation" x="2553" y="2461"/>
         </scene>
         <!--Image Detail View Controller-->
         <scene sceneID="W6f-XA-w9u">
@@ -462,7 +496,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1R-hs-jRa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2556" y="2446.3268365817094"/>
+            <point key="canvasLocation" x="1641" y="2461"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wQH-MX-aFF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9ix-X5-0mx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DRG-SX-xtE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rt-NP-Jbk" kind="relationship" relationship="rootViewController" id="6be-Ot-rm0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GKd-sh-vyT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-498" y="3244"/>
         </scene>
     </scenes>
 </document>

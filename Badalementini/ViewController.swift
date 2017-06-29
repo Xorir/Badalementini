@@ -17,6 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var stray: StrayModel!
     @IBOutlet weak var postPost: UIButton!
     let activityIndicator = ActivityIndicator()
+    var annotationArray = [Annotation]()
     
     private struct Constants {
         static let mapEntryDetail = "MapEntryDetail"
@@ -101,7 +102,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func annotationTry(annotationValues: [StrayModel]) {
-        var annotationArray = [Annotation]()
         
         for anno in annotationValues {
             //Refactor
