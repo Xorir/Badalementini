@@ -84,6 +84,7 @@
 		D2EB944E1F034AFD00174DC5 /* UserPostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostsViewController.swift; sourceTree = "<group>"; };
 		D2EB94501F0352B800174DC5 /* UserPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostTableViewCell.swift; sourceTree = "<group>"; };
 		D2EB94511F0352B800174DC5 /* UserPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserPostTableViewCell.xib; sourceTree = "<group>"; };
+		D2EB94541F0440A700174DC5 /* Badalementini.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Badalementini.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +137,7 @@
 		D254A51C1EC8DB610079C17E /* Badalementini */ = {
 			isa = PBXGroup;
 			children = (
+				D2EB94541F0440A700174DC5 /* Badalementini.entitlements */,
 				D28A95D81EDFCFC9009F9DFE /* Extension */,
 				D28A95D71EDFCEA9009F9DFE /* View */,
 				D28A95D21EDE777F009F9DFE /* Model */,
@@ -252,6 +254,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = X5NHG8EC8E;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -491,6 +498,7 @@
 			baseConfigurationReference = AC2FD49481DC622C78150C18 /* Pods-Badalementini.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Badalementini/Badalementini.entitlements;
 				DEVELOPMENT_TEAM = X5NHG8EC8E;
 				INFOPLIST_FILE = Badalementini/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -505,6 +513,7 @@
 			baseConfigurationReference = 11F638F45EFAC58FFB67DB61 /* Pods-Badalementini.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Badalementini/Badalementini.entitlements;
 				DEVELOPMENT_TEAM = X5NHG8EC8E;
 				INFOPLIST_FILE = Badalementini/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

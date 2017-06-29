@@ -461,11 +461,11 @@
             </objects>
             <point key="canvasLocation" x="-498" y="1652"/>
         </scene>
-        <!--Item-->
+        <!--User Profile-->
         <scene sceneID="KmO-s7-QMP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jz3-W3-w6q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="qbX-E7-1FK"/>
+                    <tabBarItem key="tabBarItem" title="User Profile" id="qbX-E7-1FK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zQu-kO-89x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

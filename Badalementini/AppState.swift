@@ -13,6 +13,7 @@ class AppState: NSObject {
     static let sharedInstance = AppState()
     
     var signedIn = false
+    var isFaceBookUser = false
     var displayName: String?
     var photoUrl: URL?
     var UID: String?
