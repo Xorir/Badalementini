@@ -96,7 +96,7 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
     func addMissingPetFunc() {
         let mapEntryDetailStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let mapDetailVC = mapEntryDetailStoryBoard.instantiateViewController(withIdentifier: "MapEntryViewController") as! MapEntryViewController
-        mapDetailVC.isMissingPet = true
+        mapDetailVC.petSection = "missingPet"
         navigationController?.showDetailViewController(mapDetailVC, sender: self)
     }
     

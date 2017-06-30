@@ -42,6 +42,12 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         case contactPhoneNumber
     }
     
+    private enum PetSection: String {
+        case missingPet = "missingPet"
+        case strayAnimal = "strayAnimal"
+        case petAdoption = "petAdoption"
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
@@ -60,6 +66,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     let activityIndicator = ActivityIndicator()
     var contactPhoneNumber: String?
     var contactName: String?
+    var petSection: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +86,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         let keyboardRectangle = keyboardFrame.cgRectValue
         let keyboardHeight = keyboardRectangle.height
         print("Keyboard height \(keyboardHeight)")
-        self.tableViewBottomConstraint.constant = keyboardHeight + 10
+        self.tableViewBottomConstraint.constant = keyboardHeight + 50
     }
     
     func keyboardWillHide(notification:NSNotification) {
@@ -168,37 +175,54 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         ]
         
         guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
+        guard let petSection = petSection else { return }
         
-        if isMissingPet {
-            if let contactName = self.contactName, let contactPhoneNumber = self.contactPhoneNumber {
-                coordinates.updateValue("\(contactName)" as AnyObject, forKey: "contactName")
-                coordinates.updateValue("\(contactPhoneNumber)" as AnyObject, forKey: "contactPhoneNumber")
+        if let section = PetSection(rawValue: petSection) {
+            switch section {
+            case .missingPet :
+                if let contactName = self.contactName, let contactPhoneNumber = self.contactPhoneNumber {
+                    coordinates.updateValue("\(contactName)" as AnyObject, forKey: "contactName")
+                    coordinates.updateValue("\(contactPhoneNumber)" as AnyObject, forKey: "contactPhoneNumber")
+                }
+                
+                let mainPost =  reference.child(currentCity).child("missingPet").childByAutoId()
+                mainPost.setValue(coordinates)
+                coordinates.updateValue("\(mainPost)" as AnyObject, forKey: "deletionLink")
+                
+                let userPostDict = reference.child("userPosts").child("missingPet").child(currentUser).childByAutoId()
+                
+                coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: "userPostDeletionLink")
+                
+                userPostDict.setValue(coordinates)
+            case .strayAnimal:
+                let mainPost = reference.child(currentCity).childByAutoId()
+                coordinates.updateValue("\(mainPost)" as AnyObject, forKey: "deletionLink")
+                mainPost.setValue(coordinates)
+                
+                
+                let userPostDict = reference.child("userPosts").child("strayAnimal").child(currentUser).childByAutoId()
+                userPostDict.setValue(coordinates)
+                
+                coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: "userPostDeletionLink")
+                userPostDict.setValue(coordinates)
+            case .petAdoption:
+                if let contactName = self.contactName, let contactPhoneNumber = self.contactPhoneNumber {
+                    coordinates.updateValue("\(contactName)" as AnyObject, forKey: "contactName")
+                    coordinates.updateValue("\(contactPhoneNumber)" as AnyObject, forKey: "contactPhoneNumber")
+                }
+                
+                let mainPost =  reference.child(currentCity).child("petAdoption").childByAutoId()
+                mainPost.setValue(coordinates)
+                coordinates.updateValue("\(mainPost)" as AnyObject, forKey: "deletionLink")
+                
+                let userPostDict = reference.child("userPosts").child("petAdoption").child(currentUser).childByAutoId()
+                
+                coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: "userPostDeletionLink")
+                
+                userPostDict.setValue(coordinates)
             }
-
-            let mainPost =  reference.child(currentCity).child("missingPet").childByAutoId()
-            mainPost.setValue(coordinates)
-            coordinates.updateValue("\(mainPost)" as AnyObject, forKey: "deletionLink")
-            
-            let userPostDict = reference.child("userPosts").child("missingPet").child(currentUser).childByAutoId()
-            
-            coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: "userPostDeletionLink")
-            
-            userPostDict.setValue(coordinates)
-            
-        } else {
-           let mainPost = reference.child(currentCity).childByAutoId()
-            coordinates.updateValue("\(mainPost)" as AnyObject, forKey: "deletionLink")
-            mainPost.setValue(coordinates)
-            
-            
-            let userPostDict = reference.child("userPosts").child("strayAnimal").child(currentUser).childByAutoId()
-            userPostDict.setValue(coordinates)
-            
-            coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: "userPostDeletionLink")
-            userPostDict.setValue(coordinates)
-            
-            
         }
+        
         
         activityIndicator.stopActivityIndicator(view: tableView)
         
@@ -266,13 +290,26 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         
         cell.strayAnimalInfoTextField.keyboardType = .default
         cell.strayAnimalInfoTextField.returnKeyType = .done
-        if isMissingPet {
-            cell.contactName.isHidden = false
-            cell.contactPhoneNUmber.isHidden = false
-            cell.strayAnimalInfoTextField.placeholder = "Enter missin pet info"
-            cell.takePhotoButton.setTitle("Upload a Photo", for: .normal)
-            
+        
+        if let petSection = petSection {
+            if let section = PetSection(rawValue: petSection) {
+                switch section {
+                case .missingPet :
+                    cell.contactName.isHidden = false
+                    cell.contactPhoneNUmber.isHidden = false
+                    cell.strayAnimalInfoTextField.placeholder = "Enter missin pet info"
+                    cell.takePhotoButton.setTitle("Upload a Photo", for: .normal)
+                case .strayAnimal:
+                    print("tray animal")
+                case .petAdoption:
+                    cell.contactName.isHidden = false
+                    cell.contactPhoneNUmber.isHidden = false
+                    cell.strayAnimalInfoTextField.placeholder = "Enter missin pet info"
+                    cell.takePhotoButton.setTitle("Upload a Photo", for: .normal)
+                }
+            }
         }
+        
         cell.delegate = self
         return cell
     }

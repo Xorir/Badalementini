@@ -98,19 +98,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        //        var mpPost = 0
-        //        if let postCount = userMissingPetPosts?.count {
-        //            if postCount > 0 {
-        //                mpPost = 1
-        //            }
-        //        }
-        //        var SAPost = 0
-        //        if let postCount = userStrayAnimalPosts?.count {
-        //            if postCount > 0 {
-        //                SAPost = 1
-        //            }
-        //        }
-        //        return mpPost + SAPost
         return 2
     }
     
@@ -173,7 +160,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                         }
                     })
                 }
-                
                 
                 if let userPostDeletionLink = userMissingPetPosts?[indexPath.row].userPostDeletionLink {
                     reference = FIRDatabase.database().reference()
