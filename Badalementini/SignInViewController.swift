@@ -73,7 +73,6 @@ class SignInViewController: UIViewController, LoginButtonDelegate {
             }
             self.signedIn(user!)
         }
-        //    signedIn(nil)
         
     }
     
@@ -105,8 +104,6 @@ class SignInViewController: UIViewController, LoginButtonDelegate {
         print("log outlog")
         
     }
-    
-    
 
 }
 
