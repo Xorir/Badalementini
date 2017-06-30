@@ -29,6 +29,7 @@
 		D25C108C1F057FB30014DA93 /* MissingAndAdoptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25C108B1F057FB30014DA93 /* MissingAndAdoptionViewController.swift */; };
 		D25C108F1F0580C00014DA93 /* MissingAdoptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25C108D1F0580C00014DA93 /* MissingAdoptionTableViewCell.swift */; };
 		D25C10901F0580C00014DA93 /* MissingAdoptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D25C108E1F0580C00014DA93 /* MissingAdoptionTableViewCell.xib */; };
+		D25C10921F0624520014DA93 /* PetAdoptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25C10911F0624520014DA93 /* PetAdoptionViewController.swift */; };
 		D28A95D41EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D31EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift */; };
 		D28A95D61EDFB1E2009F9DFE /* StrayAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D51EDFB1E2009F9DFE /* StrayAnnotationView.swift */; };
 		D28A95DA1EDFCFDF009F9DFE /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */; };
@@ -71,6 +72,7 @@
 		D25C108B1F057FB30014DA93 /* MissingAndAdoptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingAndAdoptionViewController.swift; sourceTree = "<group>"; };
 		D25C108D1F0580C00014DA93 /* MissingAdoptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingAdoptionTableViewCell.swift; sourceTree = "<group>"; };
 		D25C108E1F0580C00014DA93 /* MissingAdoptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MissingAdoptionTableViewCell.xib; sourceTree = "<group>"; };
+		D25C10911F0624520014DA93 /* PetAdoptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetAdoptionViewController.swift; sourceTree = "<group>"; };
 		D28A95D31EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalDetailViewController.swift; sourceTree = "<group>"; };
 		D28A95D51EDFB1E2009F9DFE /* StrayAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnnotationView.swift; sourceTree = "<group>"; };
 		D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */,
 				D2EB944E1F034AFD00174DC5 /* UserPostsViewController.swift */,
 				D25C108B1F057FB30014DA93 /* MissingAndAdoptionViewController.swift */,
+				D25C10911F0624520014DA93 /* PetAdoptionViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				D2EB944F1F034AFD00174DC5 /* UserPostsViewController.swift in Sources */,
 				D2EB94521F0352B800174DC5 /* UserPostTableViewCell.swift in Sources */,
 				D254A5201EC8DB610079C17E /* ViewController.swift in Sources */,
+				D25C10921F0624520014DA93 /* PetAdoptionViewController.swift in Sources */,
 				D23079BF1EE7DA4A00EA34CF /* MapEntryViewControllerExtension.swift in Sources */,
 				D23079BD1EE7D1DB00EA34CF /* UserProfileViewController.swift in Sources */,
 				D254A57E1ED551780079C17E /* MapEntryViewController.swift in Sources */,
