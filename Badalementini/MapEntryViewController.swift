@@ -86,7 +86,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         let keyboardRectangle = keyboardFrame.cgRectValue
         let keyboardHeight = keyboardRectangle.height
         print("Keyboard height \(keyboardHeight)")
-        self.tableViewBottomConstraint.constant = keyboardHeight + 50
+        self.tableViewBottomConstraint.constant = keyboardHeight + 10
     }
     
     func keyboardWillHide(notification:NSNotification) {
