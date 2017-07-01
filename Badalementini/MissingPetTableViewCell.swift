@@ -17,7 +17,16 @@ class MissingPetTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         //Safe unwarap
+        roundImageView()
        
+    }
+    
+    func roundImageView() {
+        missingPetImageView.layer.borderWidth = 1.0
+        missingPetImageView.layer.masksToBounds = false
+        missingPetImageView.layer.borderColor = UIColor.black.cgColor
+        missingPetImageView.layer.cornerRadius = missingPetImageView.frame.size.width / 2
+        missingPetImageView.clipsToBounds = true
     }
     
     func missingPetInfo(missingPet: StrayModel) {
