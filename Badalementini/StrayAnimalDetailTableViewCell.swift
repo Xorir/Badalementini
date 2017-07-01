@@ -16,9 +16,7 @@ protocol StrayAnimalDetailDelegate {
 class StrayAnimalDetailTableViewCell: UITableViewCell {
     
     @IBOutlet weak var strayAnimalDetailImageView: UIImageView!
-    
     @IBOutlet weak var infoLabel: UILabel!
-    
     @IBOutlet weak var addressLabel: UILabel!
     
     var annotationInfo: Annotation!
@@ -56,6 +54,4 @@ class StrayAnimalDetailTableViewCell: UITableViewCell {
     @IBAction func navigateToTheAddress(_ sender: UIButton) {
         self.delegate?.navigateToTheAddress()
     }
-    
-    
 }

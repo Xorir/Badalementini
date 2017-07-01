@@ -22,6 +22,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     private struct Constants {
         static let mapEntryDetail = "MapEntryDetail"
         static let mapEntryIdentifier = "mapEntry"
+        static let vcTitle = "Stay Animals"
+        static let letLongSpan = 0.01
+        static let borderWidth: CGFloat = 2.0
+        static let cornerRadius: CGFloat = 5.0
+        static let edgeInsets: CGFloat = 10.0
+        static let mainStoryBoard = "Main"
+        static let mapEntryVC = "MapEntryViewController"
+        static let petSection = "strayAnimal"
+        static let pinIdentifier = "pin"
+        static let pinSegue = "pinSegue"
+        static let strayAnimalDetail = "StrayAnimalDetail"
+    
     }
     
     var locationManager: CLLocationManager!
@@ -42,14 +54,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         activityIndicator.setupActivityIndicator(view: self.view, isFullScreen: true)
         
         postPost.layer.borderColor = UIColor.purple.cgColor
-        postPost.layer.borderWidth = 2.0
-        postPost.layer.cornerRadius = 5.0
-        postPost.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        postPost.layer.borderWidth = Constants.borderWidth
+        postPost.layer.cornerRadius = Constants.cornerRadius
+        postPost.contentEdgeInsets = UIEdgeInsets(top: Constants.edgeInsets, left: Constants.edgeInsets, bottom: Constants.edgeInsets, right: Constants.edgeInsets)
         postPost.backgroundColor = .purple
         postPost.setTitleColor(.white, for: .normal)
         
         mapView.delegate = self
-        title = "Stray Animals"
+        title = Constants.vcTitle
         
     }
     
@@ -61,7 +73,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func centerUserLocation() {
         guard let lat = UserLocationManager.sharedInstance.locationValues?.latitude, let long = UserLocationManager.sharedInstance.locationValues?.longitude else { return }
         let center = CLLocationCoordinate2D(latitude: lat, longitude: long)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: Constants.letLongSpan , longitudeDelta: Constants.letLongSpan))
         
         mapView.setRegion(region, animated: false)
     }
@@ -94,9 +106,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     @IBAction func getCurrent(_ sender: UIButton) {
-        let mapEntryDetailStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let mapDetailVC = mapEntryDetailStoryBoard.instantiateViewController(withIdentifier: "MapEntryViewController") as! MapEntryViewController
-        mapDetailVC.petSection = "strayAnimal"
+        let mapEntryDetailStoryBoard = UIStoryboard(name: Constants.mainStoryBoard, bundle: nil)
+        let mapDetailVC = mapEntryDetailStoryBoard.instantiateViewController(withIdentifier: Constants.mapEntryVC) as! MapEntryViewController
+        mapDetailVC.petSection = Constants.petSection
         locationManager.startUpdatingLocation()
         navigationController?.showDetailViewController(mapDetailVC, sender: self)
     }
@@ -121,7 +133,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is Annotation {
-            let identifier = "pin"
+            let identifier = Constants.pinIdentifier
             var annotationView: MKAnnotationView?
             
             _ = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
@@ -140,7 +152,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        performSegue(withIdentifier: "pinSegue", sender: self)
+        performSegue(withIdentifier: Constants.pinSegue, sender: self)
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -151,7 +163,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func displayTheDetail(annotation: Annotation) {
-        let strayAnimalDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "StrayAnimalDetail") as! StrayAnimalDetailViewController
+        let strayAnimalDetailVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.strayAnimalDetail) as! StrayAnimalDetailViewController
         strayAnimalDetailVC.annotationInfo = annotation
         strayAnimalDetailVC.title = annotation.userName
         
