@@ -16,6 +16,7 @@ class ActivityIndicator: UIActivityIndicatorView {
         static let yCoordinate: CGFloat = 200.0
         static let width: CGFloat = 80.0
         static let height: CGFloat = 80.0
+        static let viewHeightAndWidth = 100.0
     }
     
     var activityIndicator = UIActivityIndicatorView()
@@ -28,7 +29,7 @@ class ActivityIndicator: UIActivityIndicatorView {
             activityIndicatorBackgroundView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
             activityIndicatorBackgroundView.backgroundColor = .white
         } else {
-            activityIndicatorBackgroundView.frame = CGRect(x: 0, y: 0, width: 100.0, height: 100.0)
+            activityIndicatorBackgroundView.frame = CGRect(x: 0, y: 0, width: Constants.viewHeightAndWidth, height: Constants.viewHeightAndWidth)
             activityIndicatorBackgroundView.backgroundColor = .black
         }
 
@@ -68,7 +69,7 @@ class ActivityIndicator: UIActivityIndicatorView {
             activityIndicatorBackgroundView.frame = CGRect(x: 0, y: 0, width: imageView.bounds.size.width, height: imageView.bounds.size.height)
             activityIndicatorBackgroundView.backgroundColor = .white
         } else {
-            activityIndicatorBackgroundView.frame = CGRect(x: 0, y: 0, width: 100.0, height: 100.0)
+            activityIndicatorBackgroundView.frame = CGRect(x: 0, y: 0, width: Constants.viewHeightAndWidth, height: Constants.viewHeightAndWidth)
             activityIndicatorBackgroundView.backgroundColor = .black
         }
         

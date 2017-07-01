@@ -10,17 +10,14 @@ import UIKit
 
 class MissingPetTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var missingPetImageView: UIImageView!
     @IBOutlet weak var missingPetInfoLabel: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         //Safe unwarap
        
-    
     }
     
     func missingPetInfo(missingPet: StrayModel) {
@@ -29,14 +26,4 @@ class MissingPetTableViewCell: UITableViewCell {
         missingPetInfoLabel.text = missingPet.notes
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    override func prepareForReuse() {
-        
-    }
-    
 }

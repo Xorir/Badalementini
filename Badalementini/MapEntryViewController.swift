@@ -144,12 +144,6 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                 //                self.hideIndicator()
                 
             })
-            
-            //            uploadTask.observe(.progress, handler: { (snapshot) in
-            //                guard let progress = snapshot.progress else { return }
-            //                self.progress = Float(progress.fractionCompleted)
-            //
-            //            })
         }
     }
     

@@ -15,8 +15,20 @@ protocol PresentImagePickerDelegate {
 
 class StrayAnimalEntryTableViewCell: UITableViewCell, UITextFieldDelegate {
     
-    @IBOutlet weak var progressView: UIProgressView!
+    private struct Constants {
+        static let strayTag = 1
+        static let nameTag = 2
+        static let numberTag = 3
+        static let cornerRadius: CGFloat = 5.0
+        static let borderWidth: CGFloat = 1.0
+        static let viewHeight: CGFloat = 50.0
+        static let viewWidth: CGFloat = 100
+        static let originX: CGFloat = 50.0
+        static let originY: CGFloat = 150.0
+        static let takePhoto = "Take a Photo"
+    }
     
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var strayAnimalimageView: UIImageView!
     @IBOutlet weak var takePhotoButton: UIButton!
     var delegate: PresentImagePickerDelegate?
@@ -31,11 +43,16 @@ class StrayAnimalEntryTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         setupButton()
         setupStrayAnimalimageView()
+        setupTextFields()
+        selectionStyle = .none
+    }
+    
+    func setupTextFields() {
         contactPhoneNUmber.isHidden = true
         contactName.isHidden = true
-        strayAnimalInfoTextField.tag = 1
-        contactName.tag = 2
-        contactPhoneNUmber.tag = 3
+        strayAnimalInfoTextField.tag = Constants.strayTag
+        contactName.tag = Constants.nameTag
+        contactPhoneNUmber.tag = Constants.numberTag
         strayAnimalInfoTextField.delegate = self
         contactPhoneNUmber.delegate = self
         contactName.delegate = self
@@ -43,35 +60,26 @@ class StrayAnimalEntryTableViewCell: UITableViewCell, UITextFieldDelegate {
         strayAnimalInfoTextField.isEnabled = false
         contactPhoneNUmber.isEnabled = false
         contactName.isEnabled = false
-        selectionStyle = .none
-        
     }
     
     func setupStrayAnimalimageView() {
-        strayAnimalimageView.layer.cornerRadius = 5.0
+        strayAnimalimageView.layer.cornerRadius = Constants.cornerRadius
         strayAnimalimageView.layer.masksToBounds = true
         strayAnimalimageView.layer.borderColor = UIColor.black.cgColor
-        strayAnimalimageView.layer.borderWidth = 1.0
+        strayAnimalimageView.layer.borderWidth = Constants.borderWidth
         
     }
     func setupButton() {
         takePhotoButton.setTitleColor(.white, for: .normal)
         takePhotoButton.backgroundColor = .purple
-        takePhotoButton.setTitle("Take Photo", for: .normal)
-        takePhotoButton.frame.size = CGSize(width: 100, height: 50)
-        takePhotoButton.frame.origin = CGPoint(x: 50, y: 150)
-        takePhotoButton.layer.cornerRadius = 5.0
-        takePhotoButton.layer.borderWidth = 1.0
+        takePhotoButton.setTitle(Constants.takePhoto, for: .normal)
+        takePhotoButton.frame.size = CGSize(width: Constants.viewWidth, height: Constants.viewHeight)
+        takePhotoButton.frame.origin = CGPoint(x: Constants.originX, y: Constants.originY)
+        takePhotoButton.layer.cornerRadius = Constants.cornerRadius
+        takePhotoButton.layer.borderWidth = Constants.borderWidth
         takePhotoButton.layer.borderColor = UIColor.white.cgColor
         takePhotoButton.isUserInteractionEnabled = true
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
     
     @IBAction func takeStrayAnimalPhoto(_ sender: UIButton) {
         self.delegate?.presentImagePicker()
@@ -81,12 +89,12 @@ class StrayAnimalEntryTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.delegate?.textFieldInfo(tf: strayAnimalInfoTextField.text!, tf2: contactName.text!, tf3: contactPhoneNUmber.text!)
+        if let strayTextField = strayAnimalInfoTextField.text, let contactName = contactName.text, let contactPhone = contactPhoneNUmber.text {
+              self.delegate?.textFieldInfo(tf: strayTextField, tf2: contactName, tf3: contactPhone)
+        }
         strayAnimalInfoTextField.resignFirstResponder()
         contactName.resignFirstResponder()
         contactPhoneNUmber.resignFirstResponder()
         return true
     }
-    
-    
 }

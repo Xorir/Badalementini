@@ -13,13 +13,18 @@ import FacebookCore
 
 class SignInViewController: UIViewController, LoginButtonDelegate {
     
+    private struct Constants {
+        static let keyPressedNotification = "keyPressed"
+        static let signedInSegue = "SignedIn"
+    }
+    
     var reference = FIRDatabaseReference.init()
     var currentUser: FIRUser?
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     let loginButton = LoginButton(readPermissions: [ .publicProfile, .email])
-
+    
     
     override func viewDidAppear(_ animated: Bool) {
         if let user = FIRAuth.auth()?.currentUser {
@@ -38,8 +43,8 @@ class SignInViewController: UIViewController, LoginButtonDelegate {
         
         view.addSubview(loginButton)
         loginButton.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(keko), name:NSNotification.Name(rawValue: "keyPressed"), object: nil);
-
+        NotificationCenter.default.addObserver(self, selector: #selector(keko), name:NSNotification.Name(rawValue: Constants.keyPressedNotification), object: nil);
+        
     }
     
     @IBAction func signUpTapped(_ sender: UIButton) {
@@ -53,8 +58,6 @@ class SignInViewController: UIViewController, LoginButtonDelegate {
             
             // Register user to database
             self.signedIn(user)
-            
-            
         }
     }
     
@@ -80,7 +83,7 @@ class SignInViewController: UIViewController, LoginButtonDelegate {
         AppState.sharedInstance.displayName = user?.displayName ?? user?.email
         AppState.sharedInstance.signedIn = true
         AppState.sharedInstance.UID = user?.uid
-        performSegue(withIdentifier: "SignedIn", sender: nil)
+        performSegue(withIdentifier: Constants.signedInSegue, sender: nil)
     }
     
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
@@ -104,6 +107,6 @@ class SignInViewController: UIViewController, LoginButtonDelegate {
         print("log outlog")
         
     }
-
+    
 }
 
