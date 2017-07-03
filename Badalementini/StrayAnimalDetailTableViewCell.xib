@@ -63,6 +63,7 @@
             <connections>
                 <outlet property="addressLabel" destination="aLp-tr-7Wa" id="ftG-Fz-lCD"/>
                 <outlet property="infoLabel" destination="s9X-vm-ESA" id="jjp-Sw-Oez"/>
+                <outlet property="navigationButton" destination="DmF-8b-zpa" id="1TA-ql-x5c"/>
                 <outlet property="strayAnimalDetailImageView" destination="h7T-Yc-JKX" id="3Ku-a8-Kmq"/>
             </connections>
             <point key="canvasLocation" x="48.5" y="118.5"/>

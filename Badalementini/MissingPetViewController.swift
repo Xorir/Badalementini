@@ -71,8 +71,6 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
         getInfFromFirebase()
     }
     
@@ -89,7 +87,6 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func displayTheDetail(annotation: Annotation) {
         let strayAnimalDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "StrayAnimalDetail") as! StrayAnimalDetailViewController
-    
         self.navigationController?.pushViewController(strayAnimalDetailVC, animated: true)
     }
     
@@ -99,8 +96,7 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
         mapDetailVC.petSection = "missingPet"
         navigationController?.showDetailViewController(mapDetailVC, sender: self)
     }
-    
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let missingPetArray = missingPetArray {
             return missingPetArray.count

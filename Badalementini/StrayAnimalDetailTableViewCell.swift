@@ -18,6 +18,7 @@ class StrayAnimalDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var strayAnimalDetailImageView: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var navigationButton: UIButton!
     
     var annotationInfo: Annotation!
     var delegate: StrayAnimalDetailDelegate?

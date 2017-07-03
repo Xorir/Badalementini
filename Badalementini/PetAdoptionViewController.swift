@@ -16,7 +16,7 @@ class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableV
     var reference = FIRDatabaseReference.init()
 
 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -107,6 +107,15 @@ class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableV
         cell.missingPetInfo(missingPet: petAdoptionArray[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let missingAdoptionVC = mainStoryBoard.instantiateViewController(withIdentifier: "missingAndAdoption") as! MissingAndAdoptionViewController
+        missingAdoptionVC.missingAdoptionPet = petAdoptionArray[indexPath.row]
+        navigationController?.pushViewController(missingAdoptionVC, animated: true)
+        
     }
     
 }

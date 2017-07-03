@@ -12,28 +12,20 @@ import MapKit
 class StrayAnimalDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StrayAnimalDetailDelegate {
     
     var annotationInfo: Annotation!
+    var thePet: StrayModel!
+    var isMissingOrAdoptionPet = false
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        guard let metaData = annotationInfo.metaData else { return }
         
-        //        strayAnimalImageView.layer.cornerRadius = 10.0
-        //        strayAnimalImageView.layer.masksToBounds = true
-        
-        guard let metaData = annotationInfo.metaData else { return }
-        //        strayAnimalImageView.image = UIImage(named: "profile")
-        //        strayAnimalImageView.setNeedsDisplay()
-        //        strayAnimalImageView.getCachedImageWithIndicator(urlString: metaData, imageView: strayAnimalImageView)
-        //        infoLabel.text = annotationInfo.info
-        //        addressLabel.text = annotationInfo.address
-        //        setupImageViewGesture()
         setupTableView()
     }
     
     func setupImageViewGesture() {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(displayImageDetail))
-        //        strayAnimalImageView.isUserInteractionEnabled = true
-        //        strayAnimalImageView.addGestureRecognizer(gestureRecognizer)
     }
     
     func setupTableView() {
@@ -54,15 +46,16 @@ class StrayAnimalDetailViewController: UIViewController, UITableViewDelegate, UI
         let imageDetailVC = mapEntryDetailStoryBoard.instantiateViewController(withIdentifier: "ImageDetailViewController") as! ImageDetailViewController
         imageDetailVC.title = "Image Detail"
         imageDetailVC.annotationInfo = self.annotationInfo
+        imageDetailVC.isStrayAnimalVC = true
         navigationController?.pushViewController(imageDetailVC, animated: true)
     }
     
-    @IBAction func navigateToAddress(_ sender: UIButton) {
-        let coordinate = CLLocationCoordinate2DMake(annotationInfo.coordinate.latitude,annotationInfo.coordinate.longitude)
-        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
-        mapItem.name = "Target location"
-        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
-    }
+//    @IBAction func navigateToAddress(_ sender: UIButton) {
+//        let coordinate = CLLocationCoordinate2DMake(annotationInfo.coordinate.latitude,annotationInfo.coordinate.longitude)
+//        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
+//        mapItem.name = "Target location"
+//        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
