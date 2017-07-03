@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="441" height="647"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="441" height="647"/>
+                <rect key="frame" x="0.0" y="0.0" width="441" height="646.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24B-oM-5k5">
@@ -26,7 +26,7 @@
                             <action selector="takeStrayAnimalPhoto:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Nat-87-xXm"/>
                         </connections>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-L2-wC9">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-L2-wC9">
                         <rect key="frame" x="8" y="8" width="425" height="458"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="458" id="K8t-NX-ZfI"/>

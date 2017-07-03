@@ -15,8 +15,12 @@ class ImageDetailViewController: UIViewController {
     var isStrayAnimalVC = false
     
     @IBOutlet weak var detailImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        detailImageView.layer.borderWidth = 3.0
+        detailImageView.layer.borderColor = UIColor.purple.cgColor
         
         if isStrayAnimalVC {
             guard let metaData = annotationInfo.metaData else { return }

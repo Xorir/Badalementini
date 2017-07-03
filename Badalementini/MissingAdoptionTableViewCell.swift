@@ -18,6 +18,7 @@ class MissingAdoptionTableViewCell: UITableViewCell {
     @IBOutlet weak var contactNoLabel: UILabel!
     @IBOutlet weak var contactNameLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
+    var detailInfoLabel: UILabel! = nil
     
     var delegate: MissingAndAdoptionDelegate?
 
@@ -26,6 +27,19 @@ class MissingAdoptionTableViewCell: UITableViewCell {
         // Initialization code
         setupImageViewGesture()
         self.backgroundColor = UIColor.purple
+        
+        detailInfoLabel = UILabel(frame: CGRect(x: 50, y: 50, width: 100, height: 50))
+        detailInfoLabel.text = "Tap to see image larger"
+        detailInfoLabel.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        detailInfoLabel.textAlignment = .center
+        
+        
+        missingAdoptionImageView.addSubview(detailInfoLabel)
+        detailInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+        detailInfoLabel.leadingAnchor.constraint(equalTo: missingAdoptionImageView.leadingAnchor).isActive = true
+        detailInfoLabel.trailingAnchor.constraint(equalTo: missingAdoptionImageView.trailingAnchor).isActive = true
+        detailInfoLabel.bottomAnchor.constraint(equalTo: missingAdoptionImageView.bottomAnchor).isActive = true
+        detailInfoLabel.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
     }
     
     func setupImageViewGesture() {
