@@ -137,16 +137,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VgX-GA-iFB">
-                                <rect key="frame" x="24" y="72" width="327" height="587"/>
+                                <rect key="frame" x="24" y="80" width="327" height="571"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VgX-GA-iFB" firstAttribute="leading" secondItem="oBa-8c-XXy" secondAttribute="leadingMargin" constant="8" id="JM2-k3-H6w"/>
-                            <constraint firstItem="VVH-lA-JpT" firstAttribute="top" secondItem="VgX-GA-iFB" secondAttribute="bottom" constant="8" id="LQA-Cc-prF"/>
+                            <constraint firstItem="VVH-lA-JpT" firstAttribute="top" secondItem="VgX-GA-iFB" secondAttribute="bottom" constant="16" id="LQA-Cc-prF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VgX-GA-iFB" secondAttribute="trailing" constant="8" id="Mc2-SW-M88"/>
-                            <constraint firstItem="VgX-GA-iFB" firstAttribute="top" secondItem="GTk-IC-8Y0" secondAttribute="bottom" constant="8" id="Z9T-lK-mZE"/>
+                            <constraint firstItem="VgX-GA-iFB" firstAttribute="top" secondItem="GTk-IC-8Y0" secondAttribute="bottom" constant="16" id="Z9T-lK-mZE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9iX-YK-g3v"/>
