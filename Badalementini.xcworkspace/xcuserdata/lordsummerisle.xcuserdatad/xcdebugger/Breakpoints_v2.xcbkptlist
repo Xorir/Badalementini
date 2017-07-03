@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Badalementini/MissingAdoptionTableViewCell.swift"
-            timestampString = "520759813.620889"
+            timestampString = "520761162.467068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "displaying()"
             landmarkType = "7">
          </BreakpointContent>

@@ -277,7 +277,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "strayAnimalEntry" , for: indexPath) as! StrayAnimalEntryTableViewCell
         
-        cell.strayAnimalimageView.image = UIImage(named: "profile")
+        cell.strayAnimalimageView.image = UIImage(named: "photoPlaceHolder")
         if let pickedImage = self.pickedImage {
             cell.strayAnimalimageView.image = pickedImage
         }
