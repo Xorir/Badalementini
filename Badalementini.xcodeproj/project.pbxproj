@@ -35,6 +35,7 @@
 		D28A95DA1EDFCFDF009F9DFE /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */; };
 		D28A95DC1EDFDC05009F9DFE /* TheActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */; };
 		D28A95DE1EE536C7009F9DFE /* MissingPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95DD1EE536C7009F9DFE /* MissingPetViewController.swift */; };
+		D29674FF1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29674FE1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift */; };
 		D2A619C21EFEF71E00C7D69C /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */; };
 		D2A619C51F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A619C31F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift */; };
 		D2A619C61F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */; };
@@ -78,6 +79,7 @@
 		D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheActivityIndicator.swift; sourceTree = "<group>"; };
 		D28A95DD1EE536C7009F9DFE /* MissingPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingPetViewController.swift; sourceTree = "<group>"; };
+		D29674FE1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClarifaiInteractor.swift; sourceTree = "<group>"; };
 		D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		D2A619C31F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalDetailTableViewCell.swift; sourceTree = "<group>"; };
 		D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrayAnimalDetailTableViewCell.xib; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		D254A5111EC8DB610079C17E = {
 			isa = PBXGroup;
 			children = (
+				D29674FE1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift */,
 				D254A51C1EC8DB610079C17E /* Badalementini */,
 				D254A51B1EC8DB610079C17E /* Products */,
 				6FCD5FF0BB49BD638DB176F9 /* Pods */,
@@ -376,6 +379,7 @@
 				D28A95D61EDFB1E2009F9DFE /* StrayAnnotationView.swift in Sources */,
 				D254A5321EC981330079C17E /* Annotation.swift in Sources */,
 				D254A51E1EC8DB610079C17E /* AppDelegate.swift in Sources */,
+				D29674FF1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift in Sources */,
 				D254A5831ED757B20079C17E /* StrayModel.swift in Sources */,
 				D218BA4C1EFA1D9D0054F3B2 /* ActivityIndicator.swift in Sources */,
 				D2D2C1C11EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift in Sources */,
