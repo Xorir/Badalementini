@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Firebase
+import Clarifai
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -63,6 +64,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.delegate = self
         title = Constants.vcTitle
         
+        
+        ClarifAIInteractor.analyzeImageByURL(imageURL: "http://orig15.deviantart.net/18ba/f/2016/094/8/8/red_crystal_dragon_by_sandara-d9xs66f.jpg") { (response, error) in
+            if error != nil {
+                print("darn error")
+                return
+            }
+            
+            if let response = response {
+                for concept in response {
+                    print(concept.conceptName)
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

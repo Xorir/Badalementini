@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -15,6 +20,11 @@
 			<false/>
 		</dict>
 		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Clarifai.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -72,11 +82,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>24A8670D2C1411514A8E59C2EDCA2A87</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>332F91393FB1DE033D370B4CEDDD5FCF</key>
 		<dict>
 			<key>primary</key>
@@ -87,7 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B55C96C4B048F5E60FCBCEC647B5302</key>
+		<key>48E25E66D622C6B01EAF6F8BDEA43DA4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,7 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E51F69AAE69E1A2A31059C9FD4DCEAC</key>
+		<key>6423C4E016F29DD9F935E3BC6BB9A3E8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -128,6 +133,11 @@
 			<true/>
 		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
