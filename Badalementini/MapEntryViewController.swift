@@ -140,7 +140,6 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                 }
                 
                 metaDataOut = metaData
-                print("METADATA \(metaData)")
                 self.createNewEntry(metaDataImage: metaData)
                 // make self weak
                 //                self.hideIndicator()
@@ -251,10 +250,17 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     func getPhotos() {
         print("test deneme")
         imagePicker.allowsEditing = false
-        if isMissingPet {
-            imagePicker.sourceType = .photoLibrary
-        } else {
-            imagePicker.sourceType = .camera
+        if let petSection = petSection {
+            if let section = PetSection(rawValue: petSection){
+                switch section {
+                case .strayAnimal:
+                    imagePicker.sourceType = .camera
+                case .missingPet:
+                    imagePicker.sourceType = .photoLibrary
+                case .petAdoption:
+                    imagePicker.sourceType = .camera
+                }
+            }
         }
         present(imagePicker, animated: true, completion: nil)
     }
@@ -310,8 +316,6 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                     
                 }
             })
-            
-            
             
             dismiss(animated: true, completion: {
                 self.tableView.reloadData()
