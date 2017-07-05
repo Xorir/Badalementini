@@ -8,5 +8,11 @@ target 'Badalementini' do
   # Pods for Badalementini
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
-	pod 'Firebase/Auth'	
+	pod 'Firebase/Auth'
+	pod 'Firebase/Storage'
+	pod 'AlamofireImage', '~> 3.1'	
+	pod 'FacebookCore'
+	pod 'FacebookLogin'
+	pod 'FacebookShare'
+	pod 'Clarifai'
 end

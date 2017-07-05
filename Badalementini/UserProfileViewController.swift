@@ -1,0 +1,63 @@
+//
+//  UserProfileViewController.swift
+//  Badalementini
+//
+//  Created by Lord Summerisle on 6/7/17.
+//  Copyright © 2017 ErmanMaris. All rights reserved.
+//
+
+import UIKit
+import Firebase
+
+class UserProfileViewController: UIViewController {
+    
+    var checkPostedItemsButton: EntryButtons!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        setupCheckPostButton()
+        title = "User Profile"
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func signOutBarButton(_ sender: UIBarButtonItem) {
+        if AppState.sharedInstance.isFaceBookUser {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "keyPressed"), object: nil)
+        }
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+            AppState.sharedInstance.signedIn = false
+            dismiss(animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: \(signOutError.localizedDescription)")
+        }
+    }
+    
+    func getPosts() {
+        print("posts")
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let userPostsVC = mainStoryBoard.instantiateViewController(withIdentifier: "userPostsVC") as! UserPostsViewController
+        navigationController?.pushViewController(userPostsVC, animated: true)
+    }
+    
+    func setupCheckPostButton() {
+        checkPostedItemsButton = EntryButtons(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
+        checkPostedItemsButton.setTitle("Check and Delete my posts", for: .normal)
+        checkPostedItemsButton.addTarget(self, action: #selector(getPosts), for: .touchUpInside)
+        
+        view.addSubview(checkPostedItemsButton)
+        
+        checkPostedItemsButton.translatesAutoresizingMaskIntoConstraints = false
+        checkPostedItemsButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -8).isActive = true
+        checkPostedItemsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        checkPostedItemsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        
+    }
+}
