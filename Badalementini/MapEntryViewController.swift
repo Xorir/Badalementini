@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import Firebase
 import FirebaseStorage
+import Clarifai
 
 public class EntryButtons: UIButton {
     
@@ -67,6 +68,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     var contactPhoneNumber: String?
     var contactName: String?
     var petSection: String?
+    var areTextfiledActivated = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -260,8 +262,63 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.pickedImage = pickedImage
+            //make it weak
+            ClarifAIInteractor.analyzeImageByBytes(imageByte: pickedImage, handler: { (response, error) in
+                
+                if error != nil {
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopActivityIndicator(view: self.tableView)
+                    }
+                    print("error")
+                    return
+                } else {
+                    var conceptArray = [String]()
+                    
+                    if let response = response {
+                        for concept in response {
+                            conceptArray.append(concept.conceptName)
+                            print(concept.conceptName)
+                            
+                        }
+                    }
+                    
+                    let array = ["animal", "pet", "puppy", "cat", "dog", "bird", "dragon"]
+                    
+                    for animal in array {
+                        if conceptArray.contains(animal) {
+                            print("array contains animal")
+                           
+                            self.areTextfiledActivated = true
+                            DispatchQueue.main.async {
+                                self.activityIndicator.stopActivityIndicator(view: self.tableView)
+                                self.tableView.reloadData()
+                            }
+                            return
+                        } else {
+                            let alert = UIAlertController(title: "Alert", message: "The image you have taken does not have animal in it", preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "Retake photo", style: .default, handler: { (action) in
+                                //                                self.dismiss(animated: true, completion: nil)
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                            DispatchQueue.main.async {
+                                self.activityIndicator.stopActivityIndicator(view: self.tableView)
+                                
+                            }
+                            return
+                        }
+                    }
+                    
+                }
+            })
+            
+            
+            
             dismiss(animated: true, completion: {
                 self.tableView.reloadData()
+                
+                DispatchQueue.main.async {
+                    self.activityIndicator.setupActivityIndicator(view: self.tableView, isFullScreen: false)
+                }
             })
         }
     }
@@ -302,6 +359,12 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                     cell.takePhotoButton.setTitle("Upload a Photo", for: .normal)
                 }
             }
+        }
+        
+        if areTextfiledActivated {
+            cell.contactName.isEnabled = true
+            cell.contactPhoneNUmber.isEnabled = true
+            cell.strayAnimalInfoTextField.isEnabled = true
         }
         
         cell.delegate = self
