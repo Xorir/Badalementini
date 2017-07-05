@@ -16,17 +16,17 @@ class ActivityIndicator: UIActivityIndicatorView {
         static let yCoordinate: CGFloat = 200.0
         static let width: CGFloat = 80.0
         static let height: CGFloat = 80.0
-        static let viewHeightAndWidth = 100.0
+        static let viewHeightAndWidth: CGFloat = 100.0
     }
     
     var activityIndicator = UIActivityIndicatorView()
-    let activityIndicatorBackgroundView = UIView()
+    var activityIndicatorBackgroundView = UIView()
     
     func setupActivityIndicator(view: UIView, isFullScreen: Bool) {
         activityIndicatorBackgroundView.tag = Constants.tagNo
         
         if isFullScreen {
-            activityIndicatorBackgroundView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.height)
+            activityIndicatorBackgroundView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
             activityIndicatorBackgroundView.backgroundColor = .white
         } else {
             activityIndicatorBackgroundView.frame = CGRect(x: 0, y: 0, width: Constants.viewHeightAndWidth, height: Constants.viewHeightAndWidth)
@@ -100,6 +100,4 @@ class ActivityIndicator: UIActivityIndicatorView {
             activityIndicatorBackgroundView.removeFromSuperview()
         }
     }
-    
-
 }
