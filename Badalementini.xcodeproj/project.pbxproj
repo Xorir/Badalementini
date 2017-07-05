@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		866240C6F888F7469B962FD1 /* Pods_Badalementini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2392B117E06BB6F1B8B4270C /* Pods_Badalementini.framework */; };
+		D218BA4C1EFA1D9D0054F3B2 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D218BA4B1EFA1D9D0054F3B2 /* ActivityIndicator.swift */; };
+		D23079BA1EE772A700EA34CF /* MissingPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23079B81EE772A700EA34CF /* MissingPetTableViewCell.swift */; };
+		D23079BB1EE772A700EA34CF /* MissingPetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23079B91EE772A700EA34CF /* MissingPetTableViewCell.xib */; };
+		D23079BD1EE7D1DB00EA34CF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23079BC1EE7D1DB00EA34CF /* UserProfileViewController.swift */; };
+		D23079BF1EE7DA4A00EA34CF /* MapEntryViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23079BE1EE7DA4A00EA34CF /* MapEntryViewControllerExtension.swift */; };
 		D254A51E1EC8DB610079C17E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A51D1EC8DB610079C17E /* AppDelegate.swift */; };
 		D254A5201EC8DB610079C17E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A51F1EC8DB610079C17E /* ViewController.swift */; };
 		D254A5231EC8DB610079C17E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D254A5211EC8DB610079C17E /* Main.storyboard */; };
@@ -18,12 +23,38 @@
 		D254A5341EC987500079C17E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A5331EC987500079C17E /* SignInViewController.swift */; };
 		D254A5361EC9880D0079C17E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A5351EC9880D0079C17E /* AppState.swift */; };
 		D254A5381EC9894E0079C17E /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A5371EC9894E0079C17E /* UserManager.swift */; };
+		D254A57E1ED551780079C17E /* MapEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A57D1ED551780079C17E /* MapEntryViewController.swift */; };
+		D254A5801ED6A2E00079C17E /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A57F1ED6A2E00079C17E /* UserLocationManager.swift */; };
+		D254A5831ED757B20079C17E /* StrayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D254A5821ED757B20079C17E /* StrayModel.swift */; };
+		D25C108C1F057FB30014DA93 /* MissingAndAdoptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25C108B1F057FB30014DA93 /* MissingAndAdoptionViewController.swift */; };
+		D25C108F1F0580C00014DA93 /* MissingAdoptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25C108D1F0580C00014DA93 /* MissingAdoptionTableViewCell.swift */; };
+		D25C10901F0580C00014DA93 /* MissingAdoptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D25C108E1F0580C00014DA93 /* MissingAdoptionTableViewCell.xib */; };
+		D25C10921F0624520014DA93 /* PetAdoptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25C10911F0624520014DA93 /* PetAdoptionViewController.swift */; };
+		D28A95D41EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D31EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift */; };
+		D28A95D61EDFB1E2009F9DFE /* StrayAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D51EDFB1E2009F9DFE /* StrayAnnotationView.swift */; };
+		D28A95DA1EDFCFDF009F9DFE /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */; };
+		D28A95DC1EDFDC05009F9DFE /* TheActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */; };
+		D28A95DE1EE536C7009F9DFE /* MissingPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A95DD1EE536C7009F9DFE /* MissingPetViewController.swift */; };
+		D29674FF1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29674FE1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift */; };
+		D2A619C21EFEF71E00C7D69C /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */; };
+		D2A619C51F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A619C31F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift */; };
+		D2A619C61F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */; };
+		D2D2C1C11EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */; };
+		D2D2C1C21EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */; };
+		D2EB944F1F034AFD00174DC5 /* UserPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB944E1F034AFD00174DC5 /* UserPostsViewController.swift */; };
+		D2EB94521F0352B800174DC5 /* UserPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB94501F0352B800174DC5 /* UserPostTableViewCell.swift */; };
+		D2EB94531F0352B800174DC5 /* UserPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2EB94511F0352B800174DC5 /* UserPostTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		11F638F45EFAC58FFB67DB61 /* Pods-Badalementini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Badalementini.release.xcconfig"; path = "Pods/Target Support Files/Pods-Badalementini/Pods-Badalementini.release.xcconfig"; sourceTree = "<group>"; };
 		2392B117E06BB6F1B8B4270C /* Pods_Badalementini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Badalementini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC2FD49481DC622C78150C18 /* Pods-Badalementini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Badalementini.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Badalementini/Pods-Badalementini.debug.xcconfig"; sourceTree = "<group>"; };
+		D218BA4B1EFA1D9D0054F3B2 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		D23079B81EE772A700EA34CF /* MissingPetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingPetTableViewCell.swift; sourceTree = "<group>"; };
+		D23079B91EE772A700EA34CF /* MissingPetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MissingPetTableViewCell.xib; sourceTree = "<group>"; };
+		D23079BC1EE7D1DB00EA34CF /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		D23079BE1EE7DA4A00EA34CF /* MapEntryViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapEntryViewControllerExtension.swift; sourceTree = "<group>"; };
 		D254A51A1EC8DB610079C17E /* Badalementini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Badalementini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D254A51D1EC8DB610079C17E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D254A51F1EC8DB610079C17E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +67,28 @@
 		D254A5331EC987500079C17E /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D254A5351EC9880D0079C17E /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D254A5371EC9894E0079C17E /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		D254A57D1ED551780079C17E /* MapEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapEntryViewController.swift; sourceTree = "<group>"; };
+		D254A57F1ED6A2E00079C17E /* UserLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
+		D254A5821ED757B20079C17E /* StrayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayModel.swift; sourceTree = "<group>"; };
+		D25C108B1F057FB30014DA93 /* MissingAndAdoptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingAndAdoptionViewController.swift; sourceTree = "<group>"; };
+		D25C108D1F0580C00014DA93 /* MissingAdoptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingAdoptionTableViewCell.swift; sourceTree = "<group>"; };
+		D25C108E1F0580C00014DA93 /* MissingAdoptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MissingAdoptionTableViewCell.xib; sourceTree = "<group>"; };
+		D25C10911F0624520014DA93 /* PetAdoptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetAdoptionViewController.swift; sourceTree = "<group>"; };
+		D28A95D31EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalDetailViewController.swift; sourceTree = "<group>"; };
+		D28A95D51EDFB1E2009F9DFE /* StrayAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnnotationView.swift; sourceTree = "<group>"; };
+		D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheActivityIndicator.swift; sourceTree = "<group>"; };
+		D28A95DD1EE536C7009F9DFE /* MissingPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingPetViewController.swift; sourceTree = "<group>"; };
+		D29674FE1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClarifaiInteractor.swift; sourceTree = "<group>"; };
+		D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
+		D2A619C31F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalDetailTableViewCell.swift; sourceTree = "<group>"; };
+		D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrayAnimalDetailTableViewCell.xib; sourceTree = "<group>"; };
+		D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalEntryTableViewCell.swift; sourceTree = "<group>"; };
+		D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrayAnimalEntryTableViewCell.xib; sourceTree = "<group>"; };
+		D2EB944E1F034AFD00174DC5 /* UserPostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostsViewController.swift; sourceTree = "<group>"; };
+		D2EB94501F0352B800174DC5 /* UserPostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostTableViewCell.swift; sourceTree = "<group>"; };
+		D2EB94511F0352B800174DC5 /* UserPostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserPostTableViewCell.xib; sourceTree = "<group>"; };
+		D2EB94541F0440A700174DC5 /* Badalementini.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Badalementini.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +123,7 @@
 		D254A5111EC8DB610079C17E = {
 			isa = PBXGroup;
 			children = (
+				D29674FE1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift */,
 				D254A51C1EC8DB610079C17E /* Badalementini */,
 				D254A51B1EC8DB610079C17E /* Products */,
 				6FCD5FF0BB49BD638DB176F9 /* Pods */,
@@ -88,19 +142,85 @@
 		D254A51C1EC8DB610079C17E /* Badalementini */ = {
 			isa = PBXGroup;
 			children = (
+				D2EB94541F0440A700174DC5 /* Badalementini.entitlements */,
+				D28A95D81EDFCFC9009F9DFE /* Extension */,
+				D28A95D71EDFCEA9009F9DFE /* View */,
+				D28A95D21EDE777F009F9DFE /* Model */,
+				D28A95D11EDE7769009F9DFE /* Singleton */,
+				D254A5811ED7529A0079C17E /* Controller */,
 				D254A51D1EC8DB610079C17E /* AppDelegate.swift */,
-				D254A51F1EC8DB610079C17E /* ViewController.swift */,
-				D254A5331EC987500079C17E /* SignInViewController.swift */,
-				D254A5371EC9894E0079C17E /* UserManager.swift */,
-				D254A5351EC9880D0079C17E /* AppState.swift */,
 				D254A5211EC8DB610079C17E /* Main.storyboard */,
-				D254A5311EC981330079C17E /* Annotation.swift */,
 				D254A5241EC8DB610079C17E /* Assets.xcassets */,
 				D254A5261EC8DB610079C17E /* LaunchScreen.storyboard */,
 				D254A52F1EC8DBC70079C17E /* GoogleService-Info.plist */,
 				D254A5291EC8DB610079C17E /* Info.plist */,
 			);
 			path = Badalementini;
+			sourceTree = "<group>";
+		};
+		D254A5811ED7529A0079C17E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D254A51F1EC8DB610079C17E /* ViewController.swift */,
+				D254A5331EC987500079C17E /* SignInViewController.swift */,
+				D254A57D1ED551780079C17E /* MapEntryViewController.swift */,
+				D28A95D31EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift */,
+				D28A95DD1EE536C7009F9DFE /* MissingPetViewController.swift */,
+				D23079BC1EE7D1DB00EA34CF /* UserProfileViewController.swift */,
+				D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */,
+				D2EB944E1F034AFD00174DC5 /* UserPostsViewController.swift */,
+				D25C108B1F057FB30014DA93 /* MissingAndAdoptionViewController.swift */,
+				D25C10911F0624520014DA93 /* PetAdoptionViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		D28A95D11EDE7769009F9DFE /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				D254A5371EC9894E0079C17E /* UserManager.swift */,
+				D254A5351EC9880D0079C17E /* AppState.swift */,
+				D254A57F1ED6A2E00079C17E /* UserLocationManager.swift */,
+			);
+			name = Singleton;
+			sourceTree = "<group>";
+		};
+		D28A95D21EDE777F009F9DFE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D254A5821ED757B20079C17E /* StrayModel.swift */,
+				D254A5311EC981330079C17E /* Annotation.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D28A95D71EDFCEA9009F9DFE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D28A95D51EDFB1E2009F9DFE /* StrayAnnotationView.swift */,
+				D218BA4B1EFA1D9D0054F3B2 /* ActivityIndicator.swift */,
+				D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */,
+				D23079B81EE772A700EA34CF /* MissingPetTableViewCell.swift */,
+				D23079B91EE772A700EA34CF /* MissingPetTableViewCell.xib */,
+				D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */,
+				D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */,
+				D2A619C31F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift */,
+				D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */,
+				D2EB94501F0352B800174DC5 /* UserPostTableViewCell.swift */,
+				D2EB94511F0352B800174DC5 /* UserPostTableViewCell.xib */,
+				D25C108D1F0580C00014DA93 /* MissingAdoptionTableViewCell.swift */,
+				D25C108E1F0580C00014DA93 /* MissingAdoptionTableViewCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		D28A95D81EDFCFC9009F9DFE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */,
+				D23079BE1EE7DA4A00EA34CF /* MapEntryViewControllerExtension.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +258,13 @@
 				TargetAttributes = {
 					D254A5191EC8DB610079C17E = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = X5NHG8EC8E;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -166,9 +292,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D254A5281EC8DB610079C17E /* LaunchScreen.storyboard in Resources */,
+				D23079BB1EE772A700EA34CF /* MissingPetTableViewCell.xib in Resources */,
+				D2EB94531F0352B800174DC5 /* UserPostTableViewCell.xib in Resources */,
 				D254A5301EC8DBC70079C17E /* GoogleService-Info.plist in Resources */,
 				D254A5251EC8DB610079C17E /* Assets.xcassets in Resources */,
+				D2D2C1C21EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib in Resources */,
+				D25C10901F0580C00014DA93 /* MissingAdoptionTableViewCell.xib in Resources */,
 				D254A5231EC8DB610079C17E /* Main.storyboard in Resources */,
+				D2A619C61F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,11 +359,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				D254A5381EC9894E0079C17E /* UserManager.swift in Sources */,
+				D2A619C51F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift in Sources */,
+				D28A95DE1EE536C7009F9DFE /* MissingPetViewController.swift in Sources */,
+				D25C108C1F057FB30014DA93 /* MissingAndAdoptionViewController.swift in Sources */,
+				D28A95DC1EDFDC05009F9DFE /* TheActivityIndicator.swift in Sources */,
+				D28A95D41EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift in Sources */,
+				D28A95DA1EDFCFDF009F9DFE /* UIImageViewExtension.swift in Sources */,
+				D23079BA1EE772A700EA34CF /* MissingPetTableViewCell.swift in Sources */,
 				D254A5361EC9880D0079C17E /* AppState.swift in Sources */,
+				D25C108F1F0580C00014DA93 /* MissingAdoptionTableViewCell.swift in Sources */,
 				D254A5341EC987500079C17E /* SignInViewController.swift in Sources */,
+				D2EB944F1F034AFD00174DC5 /* UserPostsViewController.swift in Sources */,
+				D2EB94521F0352B800174DC5 /* UserPostTableViewCell.swift in Sources */,
 				D254A5201EC8DB610079C17E /* ViewController.swift in Sources */,
+				D25C10921F0624520014DA93 /* PetAdoptionViewController.swift in Sources */,
+				D23079BF1EE7DA4A00EA34CF /* MapEntryViewControllerExtension.swift in Sources */,
+				D23079BD1EE7D1DB00EA34CF /* UserProfileViewController.swift in Sources */,
+				D254A57E1ED551780079C17E /* MapEntryViewController.swift in Sources */,
+				D28A95D61EDFB1E2009F9DFE /* StrayAnnotationView.swift in Sources */,
 				D254A5321EC981330079C17E /* Annotation.swift in Sources */,
 				D254A51E1EC8DB610079C17E /* AppDelegate.swift in Sources */,
+				D29674FF1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift in Sources */,
+				D254A5831ED757B20079C17E /* StrayModel.swift in Sources */,
+				D218BA4C1EFA1D9D0054F3B2 /* ActivityIndicator.swift in Sources */,
+				D2D2C1C11EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift in Sources */,
+				D254A5801ED6A2E00079C17E /* UserLocationManager.swift in Sources */,
+				D2A619C21EFEF71E00C7D69C /* ImageDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +506,8 @@
 			baseConfigurationReference = AC2FD49481DC622C78150C18 /* Pods-Badalementini.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Badalementini/Badalementini.entitlements;
+				DEVELOPMENT_TEAM = X5NHG8EC8E;
 				INFOPLIST_FILE = Badalementini/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mariserman.Badalementini;
@@ -367,6 +521,8 @@
 			baseConfigurationReference = 11F638F45EFAC58FFB67DB61 /* Pods-Badalementini.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Badalementini/Badalementini.entitlements;
+				DEVELOPMENT_TEAM = X5NHG8EC8E;
 				INFOPLIST_FILE = Badalementini/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mariserman.Badalementini;
