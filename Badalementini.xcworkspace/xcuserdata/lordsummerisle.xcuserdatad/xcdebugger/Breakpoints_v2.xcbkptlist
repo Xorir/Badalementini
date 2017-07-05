@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Badalementini/MissingAdoptionTableViewCell.swift"
-            timestampString = "520761162.467068"
+            timestampString = "520759813.620889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "displaying()"
             landmarkType = "7">
          </BreakpointContent>
@@ -128,6 +128,86 @@
             startingLineNumber = "41"
             endingLineNumber = "41"
             landmarkName = "displayImageDetail()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "520901391.605759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Badalementini.MapEntryViewController.imagePickerController (__ObjC.UIImagePickerController, didFinishPickingMediaWithInfo : Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "Badalementini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/MapEntryViewController.swift"
+                  timestampString = "520898887.073757"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "265"
+                  endingLineNumber = "265"
+                  offsetFromSymbolStart = "360">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Badalementini.MapEntryViewController.(imagePickerController (__ObjC.UIImagePickerController, didFinishPickingMediaWithInfo : Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "Badalementini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lordsummerisle/Documents/Swift/Badalementini/Badalementini/MapEntryViewController.swift"
+                  timestampString = "520898887.075166"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "520901391.605759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Badalementini/MapEntryViewController.swift"
+            timestampString = "520901391.605759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
