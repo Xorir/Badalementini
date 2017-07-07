@@ -283,11 +283,15 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
             if let section = PetSection(rawValue: petSection){
                 switch section {
                 case .strayAnimal:
-                    imagePicker.sourceType = .camera
+                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                        imagePicker.sourceType = .camera
+                    } else { print("No camera") }
                 case .missingPet:
                     imagePicker.sourceType = .photoLibrary
                 case .petAdoption:
-                    imagePicker.sourceType = .camera
+                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                        imagePicker.sourceType = .camera
+                    } else { print("No camera") }
                 }
             }
         }
