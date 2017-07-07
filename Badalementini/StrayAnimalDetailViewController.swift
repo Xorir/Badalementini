@@ -41,6 +41,9 @@ class StrayAnimalDetailViewController: UIViewController, UITableViewDelegate, UI
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
         tableView.layer.cornerRadius = 5.0
+        tableView.layer.borderWidth = 1.0
+        tableView.layer.borderColor = UIColor.purple.cgColor
+        tableView.backgroundColor = .purple
         tableView.layer.masksToBounds = true
         tableView.register(UINib(nibName: Constants.strayAnimalCell, bundle: nil), forCellReuseIdentifier: Constants.strayAnimalIdentifier)
         self.automaticallyAdjustsScrollViewInsets = false
