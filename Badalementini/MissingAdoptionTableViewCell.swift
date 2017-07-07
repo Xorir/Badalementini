@@ -13,6 +13,15 @@ protocol MissingAndAdoptionDelegate {
 }
 
 class MissingAdoptionTableViewCell: UITableViewCell {
+    
+    private struct Constants {
+        static let labelXY: CGFloat = 50.0
+        static let labelWidth: CGFloat = 100.0
+        static let labelHeight: CGFloat = 50.0
+        static let labelText = "Tap to see image larger"
+        static let white: CGFloat = 1.0
+        static let alpha: CGFloat = 0.5
+    }
 
     @IBOutlet weak var missingAdoptionImageView: UIImageView!
     @IBOutlet weak var contactNoLabel: UILabel!
@@ -28,9 +37,9 @@ class MissingAdoptionTableViewCell: UITableViewCell {
         setupImageViewGesture()
         self.backgroundColor = UIColor.purple
         
-        detailInfoLabel = UILabel(frame: CGRect(x: 50, y: 50, width: 100, height: 50))
-        detailInfoLabel.text = "Tap to see image larger"
-        detailInfoLabel.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        detailInfoLabel = UILabel(frame: CGRect(x: Constants.labelXY, y: Constants.labelXY, width: Constants.labelWidth, height: Constants.labelHeight))
+        detailInfoLabel.text = Constants.labelText
+        detailInfoLabel.backgroundColor = UIColor(white: Constants.white, alpha: Constants.alpha)
         detailInfoLabel.textAlignment = .center
         
         

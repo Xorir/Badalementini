@@ -10,6 +10,11 @@ import UIKit
 
 class ImageDetailViewController: UIViewController {
     
+    private struct Constants {
+        static let borderWidth: CGFloat = 3.0
+        static let cornerRadius: CGFloat = 5.0
+    }
+    
     var annotationInfo: Annotation!
     var missingOrAdoptionPet: StrayModel!
     var isStrayAnimalVC = false
@@ -19,7 +24,7 @@ class ImageDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailImageView.layer.borderWidth = 3.0
+        detailImageView.layer.borderWidth = Constants.borderWidth
         detailImageView.layer.borderColor = UIColor.purple.cgColor
         
         if isStrayAnimalVC {
@@ -31,16 +36,10 @@ class ImageDetailViewController: UIViewController {
             detailImageView.getCachedImageWithIndicator(urlString: metaData, imageView: detailImageView)
         }
      
-        detailImageView.layer.cornerRadius = 5.0
+        detailImageView.layer.cornerRadius = Constants.cornerRadius
         detailImageView.layer.masksToBounds = true
         
         
         // Do any additional setup after loading the view.
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 }
