@@ -39,7 +39,7 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         
         let addMissingPet = UIButton()
-        addMissingPet.setTitle("Create", for: .normal)
+        addMissingPet.setTitle("Add", for: .normal)
         addMissingPet.setTitleColor(UIColor.red, for: .normal)
         addMissingPet.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         addMissingPet.addTarget(self, action: #selector(addMissingPetFunc), for: .touchUpInside)

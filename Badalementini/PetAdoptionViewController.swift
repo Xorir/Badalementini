@@ -12,7 +12,7 @@ import Firebase
 class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private struct Constants {
-        static let create = "Create"
+        static let create = "Add"
         static let petAdoptionTitle = "Pet Adoption"
         static let petAdoption = "petAdoption"
         static let missingPetCell = "MissingPetTableViewCell"

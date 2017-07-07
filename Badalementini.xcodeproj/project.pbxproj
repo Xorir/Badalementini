@@ -79,7 +79,7 @@
 		D28A95D91EDFCFDF009F9DFE /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		D28A95DB1EDFDC05009F9DFE /* TheActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheActivityIndicator.swift; sourceTree = "<group>"; };
 		D28A95DD1EE536C7009F9DFE /* MissingPetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingPetViewController.swift; sourceTree = "<group>"; };
-		D29674FE1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClarifaiInteractor.swift; sourceTree = "<group>"; };
+		D29674FE1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClarifaiInteractor.swift; path = ../ClarifaiInteractor.swift; sourceTree = "<group>"; };
 		D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		D2A619C31F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalDetailTableViewCell.swift; sourceTree = "<group>"; };
 		D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrayAnimalDetailTableViewCell.xib; sourceTree = "<group>"; };
@@ -123,7 +123,6 @@
 		D254A5111EC8DB610079C17E = {
 			isa = PBXGroup;
 			children = (
-				D29674FE1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift */,
 				D254A51C1EC8DB610079C17E /* Badalementini */,
 				D254A51B1EC8DB610079C17E /* Products */,
 				6FCD5FF0BB49BD638DB176F9 /* Pods */,
@@ -142,6 +141,7 @@
 		D254A51C1EC8DB610079C17E /* Badalementini */ = {
 			isa = PBXGroup;
 			children = (
+				D2BB2EC41F0FEA24008FF9BE /* Interactor */,
 				D2EB94541F0440A700174DC5 /* Badalementini.entitlements */,
 				D28A95D81EDFCFC9009F9DFE /* Extension */,
 				D28A95D71EDFCEA9009F9DFE /* View */,
@@ -221,6 +221,14 @@
 				D23079BE1EE7DA4A00EA34CF /* MapEntryViewControllerExtension.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		D2BB2EC41F0FEA24008FF9BE /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				D29674FE1F0C3ADD0044C4F5 /* ClarifaiInteractor.swift */,
+			);
+			name = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

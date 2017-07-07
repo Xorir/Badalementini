@@ -27,6 +27,8 @@ class StrayAnimalDetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         setupImageViewGesture()
+        contentView.backgroundColor = .purple
+        self.selectionStyle = .none
     }
     
     func setupImageViewGesture() {

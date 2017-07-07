@@ -302,6 +302,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: headerView.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
+        label.textColor = .white
         
         if let section = PostSection(rawValue: section) {
             switch section {
