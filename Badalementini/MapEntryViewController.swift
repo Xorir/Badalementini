@@ -36,6 +36,38 @@ public class EntryButtons: UIButton {
 
 class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, PresentImagePickerDelegate, UITextFieldDelegate {
     
+    private struct Constants {
+        static let strayAnimalEntryTableViewCell = "StrayAnimalEntryTableViewCell"
+        static let strayAnimalEntryIdentifier = "strayAnimalEntry"
+        static let lat = "lat"
+        static let long = "long"
+        static let userName = "userName"
+        static let notes = "notes"
+        static let metaData = "metaData"
+        static let date = "date"
+        static let address = "address"
+        static let contactName = "contactName"
+        static let contactPhoneNumber = "contactPhoneNumber"
+        static let missingPet = "missingPet"
+        static let deletionLink = "deletionLink"
+        static let userPosts = "userPosts"
+        static let userPostDeletionLink = "userPostDeletionLink"
+        static let strayAnimal = "strayAnimal"
+        static let petAdoption = "petAdoption"
+        static let alert = "Alert"
+        static let alertMessage = "Post Created"
+        static let ok = "OK!"
+        static let dateFormat = "MM/dd/yyyy"
+        static let dateAndHour = "MM/dd/yyyy/HH/mm/ss"
+        static let retakePhoto = "Re-take Photo"
+        static let animalNotFoundMessage = "The image does not contain an animal or the animal is not clearly visible"
+        static let photoPlaceHolder = "photoPlaceHolder"
+        static let missingPetInfo = "Enter missing pet info"
+        static let uploadAPhoto = "Upload a Photo"
+        static let petInfo = "Enter pet info"
+        
+    }
+    
     private enum TextField: Int {
         case strayAnimalTextField = 0
         case contactName
@@ -99,7 +131,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
-        tableView.register(UINib(nibName: "StrayAnimalEntryTableViewCell", bundle: nil), forCellReuseIdentifier: "strayAnimalEntry")
+        tableView.register(UINib(nibName: Constants.strayAnimalEntryTableViewCell, bundle: nil), forCellReuseIdentifier: Constants.strayAnimalEntryIdentifier)
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.tableFooterView = UIView()
         
@@ -126,22 +158,20 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         guard let pickedImage = self.pickedImage else { return }
         var metaDataOut: FIRStorageMetadata?
         
-        print("Darn picked image \(pickedImage)")
-        
         let storage = FIRStorage.storage().reference().child(userID).child(getDateAndHour())
         
         if let uploadData = UIImageJPEGRepresentation(pickedImage, 0.8) {
             //            displayIndicator()
-            let uploadTask = storage.put(uploadData, metadata: nil, completion: { (metaData, error) in
+            let uploadTask = storage.put(uploadData, metadata: nil, completion: { [weak self] (metaData, error) in
+                guard let strongSelf = self else { return }
+                
                 if error != nil {
                     print(error)
                     return
                 }
                 
                 metaDataOut = metaData
-                self.createNewEntry(metaDataImage: metaData)
-                // make self weak
-                //                self.hideIndicator()
+                strongSelf.createNewEntry(metaDataImage: metaData)
                 
             })
         }
@@ -159,13 +189,13 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         
         
         var coordinates: [String: AnyObject] = [
-            "lat": locationValues.latitude as AnyObject,
-            "long": locationValues.longitude as AnyObject,
-            "userName": currentUser as AnyObject,
-            "notes": infoText as AnyObject,
-            "metaData": metaData as AnyObject,
-            "date": getCurrentDate() as AnyObject,
-            "address": address as AnyObject
+            Constants.lat: locationValues.latitude as AnyObject,
+            Constants.long: locationValues.longitude as AnyObject,
+            Constants.userName: currentUser as AnyObject,
+            Constants.notes: infoText as AnyObject,
+            Constants.metaData: metaData as AnyObject,
+            Constants.date: getCurrentDate() as AnyObject,
+            Constants.address: address as AnyObject
         ]
         
         guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
@@ -175,43 +205,43 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
             switch section {
             case .missingPet :
                 if let contactName = self.contactName, let contactPhoneNumber = self.contactPhoneNumber {
-                    coordinates.updateValue("\(contactName)" as AnyObject, forKey: "contactName")
-                    coordinates.updateValue("\(contactPhoneNumber)" as AnyObject, forKey: "contactPhoneNumber")
+                    coordinates.updateValue("\(contactName)" as AnyObject, forKey: Constants.contactName)
+                    coordinates.updateValue("\(contactPhoneNumber)" as AnyObject, forKey: Constants.contactPhoneNumber)
                 }
                 
-                let mainPost =  reference.child(currentCity).child("missingPet").childByAutoId()
+                let mainPost =  reference.child(currentCity).child(Constants.missingPet).childByAutoId()
                 mainPost.setValue(coordinates)
-                coordinates.updateValue("\(mainPost)" as AnyObject, forKey: "deletionLink")
+                coordinates.updateValue("\(mainPost)" as AnyObject, forKey: Constants.deletionLink)
                 
-                let userPostDict = reference.child("userPosts").child("missingPet").child(currentUser).childByAutoId()
+                let userPostDict = reference.child(Constants.userPosts).child(Constants.missingPet).child(currentUser).childByAutoId()
                 
-                coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: "userPostDeletionLink")
+                coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: Constants.userPostDeletionLink)
                 
                 userPostDict.setValue(coordinates)
             case .strayAnimal:
                 let mainPost = reference.child(currentCity).childByAutoId()
-                coordinates.updateValue("\(mainPost)" as AnyObject, forKey: "deletionLink")
+                coordinates.updateValue("\(mainPost)" as AnyObject, forKey: Constants.deletionLink)
                 mainPost.setValue(coordinates)
                 
                 
-                let userPostDict = reference.child("userPosts").child("strayAnimal").child(currentUser).childByAutoId()
+                let userPostDict = reference.child(Constants.userPosts).child(Constants.strayAnimal).child(currentUser).childByAutoId()
                 userPostDict.setValue(coordinates)
                 
-                coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: "userPostDeletionLink")
+                coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: Constants.userPostDeletionLink)
                 userPostDict.setValue(coordinates)
             case .petAdoption:
                 if let contactName = self.contactName, let contactPhoneNumber = self.contactPhoneNumber {
-                    coordinates.updateValue("\(contactName)" as AnyObject, forKey: "contactName")
-                    coordinates.updateValue("\(contactPhoneNumber)" as AnyObject, forKey: "contactPhoneNumber")
+                    coordinates.updateValue("\(contactName)" as AnyObject, forKey: Constants.contactName)
+                    coordinates.updateValue("\(contactPhoneNumber)" as AnyObject, forKey: Constants.contactPhoneNumber)
                 }
                 
-                let mainPost =  reference.child(currentCity).child("petAdoption").childByAutoId()
+                let mainPost =  reference.child(currentCity).child(Constants.petAdoption).childByAutoId()
                 mainPost.setValue(coordinates)
-                coordinates.updateValue("\(mainPost)" as AnyObject, forKey: "deletionLink")
+                coordinates.updateValue("\(mainPost)" as AnyObject, forKey: Constants.deletionLink)
                 
-                let userPostDict = reference.child("userPosts").child("petAdoption").child(currentUser).childByAutoId()
+                let userPostDict = reference.child(Constants.userPosts).child(Constants.petAdoption).child(currentUser).childByAutoId()
                 
-                coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: "userPostDeletionLink")
+                coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: Constants.userPostDeletionLink)
                 
                 userPostDict.setValue(coordinates)
             }
@@ -220,9 +250,9 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         
         activityIndicator.stopActivityIndicator(view: tableView)
         
-        //make weak
-        let alert = UIAlertController(title: "Alert", message: "Post Created", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK!", style: .default, handler: { (action) in
+        //make it weak
+        let alert = UIAlertController(title: Constants.alert, message: Constants.alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: Constants.ok, style: .default, handler: { (action) in
             self.dismiss(animated: true, completion: nil)
         }))
         
@@ -232,7 +262,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     func getCurrentDate() -> String {
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy"
+        formatter.dateFormat = Constants.dateFormat
         let formattedDate = formatter.string(from: date)
         return formattedDate
     }
@@ -241,7 +271,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     func getDateAndHour() -> String {
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM/dd/yyyy/HH/mm/ss"
+        formatter.dateFormat = Constants.dateAndHour
         let formattedDate = formatter.string(from: date)
         return formattedDate.replacingOccurrences(of: "/", with: "")
     }
@@ -291,7 +321,6 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                     
                     for animal in array {
                         if conceptArray.contains(animal) {
-                            print("array contains animal")
                             
                             self.areTextfiledActivated = true
                             DispatchQueue.main.async {
@@ -300,8 +329,8 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                             }
                             return
                         } else {
-                            let alert = UIAlertController(title: "Alert", message: "The image you have taken does not have animal in it", preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "Retake photo", style: .default, handler: { (action) in
+                            let alert = UIAlertController(title: Constants.alert, message: Constants.animalNotFoundMessage, preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: Constants.retakePhoto, style: .default, handler: { (action) in
                                 //                                self.dismiss(animated: true, completion: nil)
                             }))
                             self.present(alert, animated: true, completion: nil)
@@ -335,9 +364,9 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "strayAnimalEntry" , for: indexPath) as! StrayAnimalEntryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.strayAnimalEntryIdentifier , for: indexPath) as! StrayAnimalEntryTableViewCell
         
-        cell.strayAnimalimageView.image = UIImage(named: "photoPlaceHolder")
+        cell.strayAnimalimageView.image = UIImage(named: Constants.photoPlaceHolder)
         if let pickedImage = self.pickedImage {
             cell.strayAnimalimageView.image = pickedImage
         }
@@ -351,15 +380,15 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                 case .missingPet :
                     cell.contactName.isHidden = false
                     cell.contactPhoneNUmber.isHidden = false
-                    cell.strayAnimalInfoTextField.placeholder = "Enter missin pet info"
-                    cell.takePhotoButton.setTitle("Upload a Photo", for: .normal)
+                    cell.strayAnimalInfoTextField.placeholder = Constants.missingPetInfo
+                    cell.takePhotoButton.setTitle(Constants.uploadAPhoto, for: .normal)
                 case .strayAnimal:
                     print("tray animal")
                 case .petAdoption:
                     cell.contactName.isHidden = false
                     cell.contactPhoneNUmber.isHidden = false
-                    cell.strayAnimalInfoTextField.placeholder = "Enter missin pet info"
-                    cell.takePhotoButton.setTitle("Upload a Photo", for: .normal)
+                    cell.strayAnimalInfoTextField.placeholder = Constants.petInfo
+                    cell.takePhotoButton.setTitle(Constants.uploadAPhoto, for: .normal)
                 }
             }
         }
@@ -383,26 +412,4 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         print(tf, tf2, tf3)
     }
     
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let textFieldy = TextField(rawValue: textField.tag) {
-            switch textFieldy {
-            case .strayAnimalTextField:
-                self.infoText = textField.text
-                print(infoText)
-                
-            case .contactName:
-                self.contactName = textField.text
-                print(contactName)
-                
-            case .contactPhoneNumber:
-                self.contactPhoneNumber = textField.text
-                print(contactPhoneNumber)
-            }
-        }
-        sendPhoto()
-        textField.resignFirstResponder()
-        print(textField.text)
-        return true
-    }
 }
