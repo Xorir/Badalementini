@@ -63,26 +63,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         mapView.delegate = self
         title = Constants.vcTitle
-        
-        
-        ClarifAIInteractor.analyzeImageByURL(imageURL: "http://orig15.deviantart.net/18ba/f/2016/094/8/8/red_crystal_dragon_by_sandara-d9xs66f.jpg") { (response, error) in
-            if error != nil {
-                print("darn error")
-                return
-            }
-            
-            if let response = response {
-                for concept in response {
-                    print(concept.conceptName)
-                }
-            }
-        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        mapView.removeAnnotations(annotationArray)
+        checkStrayAnimals()
     }
-    
     
     func centerUserLocation() {
         guard let lat = UserLocationManager.sharedInstance.locationValues?.latitude, let long = UserLocationManager.sharedInstance.locationValues?.longitude else { return }
@@ -179,7 +167,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func displayTheDetail(annotation: Annotation) {
         let strayAnimalDetailVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.strayAnimalDetail) as! StrayAnimalDetailViewController
         strayAnimalDetailVC.annotationInfo = annotation
-        strayAnimalDetailVC.title = annotation.userName
+        strayAnimalDetailVC.title = "Stray animal detail"
         
         self.navigationController?.pushViewController(strayAnimalDetailVC, animated: true)
     }

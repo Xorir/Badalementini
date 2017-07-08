@@ -287,7 +287,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                     }
                     
                     userPetAdoptionPosts?.remove(at: indexPath.row)
-                    
                     tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 }
             }
