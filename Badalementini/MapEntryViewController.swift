@@ -65,6 +65,8 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         static let missingPetInfo = "Enter missing pet info"
         static let uploadAPhoto = "Upload a Photo"
         static let petInfo = "Enter pet info"
+        static let animalGoodToGo = "The image is good to use"
+        static let takeAPhoto = "Take a Photo"
         
     }
     
@@ -302,11 +304,12 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.pickedImage = pickedImage
             //make it weak
-            ClarifAIInteractor.analyzeImageByBytes(imageByte: pickedImage, handler: { (response, error) in
+            ClarifAIInteractor.analyzeImageByBytes(imageByte: pickedImage, handler: { [weak self] (response, error) in
+                guard let strongSelf = self else { return }
                 
                 if error != nil {
                     DispatchQueue.main.async {
-                        self.activityIndicator.stopActivityIndicator(view: self.tableView)
+                        strongSelf.activityIndicator.stopActivityIndicator(view: strongSelf.tableView)
                     }
                     print("error")
                     return
@@ -326,21 +329,17 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                     for animal in array {
                         if conceptArray.contains(animal) {
                             
-                            self.areTextfiledActivated = true
+                            strongSelf.areTextfiledActivated = true
                             DispatchQueue.main.async {
-                                self.activityIndicator.stopActivityIndicator(view: self.tableView)
-                                self.tableView.reloadData()
+                                strongSelf.activityIndicator.stopActivityIndicator(view: strongSelf.tableView)
+                                strongSelf.tableView.reloadData()
                             }
+                            strongSelf.present(strongSelf.displayAlertController(title: Constants.alert, message: Constants.animalGoodToGo), animated: true, completion: nil)
                             return
                         } else {
-                            let alert = UIAlertController(title: Constants.alert, message: Constants.animalNotFoundMessage, preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: Constants.retakePhoto, style: .default, handler: { (action) in
-                                //                                self.dismiss(animated: true, completion: nil)
-                            }))
-                            self.present(alert, animated: true, completion: nil)
+                            strongSelf.present(strongSelf.displayAlertController(title: Constants.alert, message: Constants.animalNotFoundMessage), animated: true, completion: nil)
                             DispatchQueue.main.async {
-                                self.activityIndicator.stopActivityIndicator(view: self.tableView)
-                                
+                                strongSelf.activityIndicator.stopActivityIndicator(view: strongSelf.tableView)
                             }
                             return
                         }
@@ -357,6 +356,12 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                 }
             })
         }
+    }
+    
+    func displayAlertController(title: String, message: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: Constants.ok, style: .default, handler: { (action) in }))
+        return alert
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -392,7 +397,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                     cell.contactName.isHidden = false
                     cell.contactPhoneNUmber.isHidden = false
                     cell.strayAnimalInfoTextField.placeholder = Constants.petInfo
-                    cell.takePhotoButton.setTitle(Constants.uploadAPhoto, for: .normal)
+                    cell.takePhotoButton.setTitle(Constants.takeAPhoto, for: .normal)
                 }
             }
         }
