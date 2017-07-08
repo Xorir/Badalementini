@@ -52,6 +52,8 @@ class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        petAdoptionArray = []
+        tableView.reloadData()
         getInfFromFirebase()
     }
     

@@ -54,7 +54,7 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
         guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
         
         reference = FIRDatabase.database().reference()
-        reference.child(currentCity).child(Constants.missingPet).observe(.value, with: {  [weak self] (snapshot) -> Void in
+        reference.child(currentCity).child(Constants.missingPet).observe(.value, with: { [weak self] (snapshot) -> Void in
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             guard let strongSelf = self else { return }
             
@@ -66,20 +66,20 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
                 let strayAnimal = StrayModel(dictionary: value as! NSDictionary)
                 guard let strayAni = strayAnimal else { return }
                 strayArray.append(strayAni)
-                print("STRAY ANIMAL IN MISSING DOG \(strayArray)")
             }
             
             //Make it strongSelf
             strongSelf.missingPetArray = strayArray
-            
-            //            self.annotationTry(annotationValues: strayArray)
             strongSelf.tableView.reloadData()
         })
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        missingPetArray = []
+        tableView.reloadData()
         getInfFromFirebase()
+
     }
     
     func setupTableView() {
