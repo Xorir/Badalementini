@@ -39,6 +39,7 @@
 		D2A619C21EFEF71E00C7D69C /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */; };
 		D2A619C51F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A619C31F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift */; };
 		D2A619C61F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */; };
+		D2BB2EC81F10AF17008FF9BE /* EntryButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB2EC71F10AF17008FF9BE /* EntryButtons.swift */; };
 		D2D2C1C11EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */; };
 		D2D2C1C21EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */; };
 		D2EB944F1F034AFD00174DC5 /* UserPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB944E1F034AFD00174DC5 /* UserPostsViewController.swift */; };
@@ -83,6 +84,7 @@
 		D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		D2A619C31F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalDetailTableViewCell.swift; sourceTree = "<group>"; };
 		D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrayAnimalDetailTableViewCell.xib; sourceTree = "<group>"; };
+		D2BB2EC71F10AF17008FF9BE /* EntryButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryButtons.swift; sourceTree = "<group>"; };
 		D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalEntryTableViewCell.swift; sourceTree = "<group>"; };
 		D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrayAnimalEntryTableViewCell.xib; sourceTree = "<group>"; };
 		D2EB944E1F034AFD00174DC5 /* UserPostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostsViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				D2EB94511F0352B800174DC5 /* UserPostTableViewCell.xib */,
 				D25C108D1F0580C00014DA93 /* MissingAdoptionTableViewCell.swift */,
 				D25C108E1F0580C00014DA93 /* MissingAdoptionTableViewCell.xib */,
+				D2BB2EC71F10AF17008FF9BE /* EntryButtons.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				D23079BA1EE772A700EA34CF /* MissingPetTableViewCell.swift in Sources */,
 				D254A5361EC9880D0079C17E /* AppState.swift in Sources */,
 				D25C108F1F0580C00014DA93 /* MissingAdoptionTableViewCell.swift in Sources */,
+				D2BB2EC81F10AF17008FF9BE /* EntryButtons.swift in Sources */,
 				D254A5341EC987500079C17E /* SignInViewController.swift in Sources */,
 				D2EB944F1F034AFD00174DC5 /* UserPostsViewController.swift in Sources */,
 				D2EB94521F0352B800174DC5 /* UserPostTableViewCell.swift in Sources */,
