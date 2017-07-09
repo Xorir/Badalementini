@@ -38,7 +38,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         static let dateAndHour = "MM/dd/yyyy/HH/mm/ss"
         static let retakePhoto = "Re-take Photo"
         static let animalNotFoundMessage = "The image does not contain an animal or the animal is not clearly visible"
-        static let photoPlaceHolder = "photoPlaceHolder"
+        static let photoPlaceHolder = "assembly1"
         static let missingPetInfo = "Enter missing pet info"
         static let uploadAPhoto = "Upload a Photo"
         static let petInfo = "Enter pet info"

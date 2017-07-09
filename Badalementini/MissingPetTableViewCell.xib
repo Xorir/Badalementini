@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="357" height="134.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NMt-tw-5FE">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="assembly1" translatesAutoresizingMaskIntoConstraints="NO" id="NMt-tw-5FE">
                         <rect key="frame" x="8" y="7" width="120" height="120"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="2QK-V3-84m"/>
@@ -48,4 +48,7 @@
             <point key="canvasLocation" x="58.5" y="123.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="assembly1" width="4096" height="4096"/>
+    </resources>
 </document>

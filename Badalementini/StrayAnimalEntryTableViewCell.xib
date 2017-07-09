@@ -26,7 +26,7 @@
                             <action selector="takeStrayAnimalPhoto:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Nat-87-xXm"/>
                         </connections>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-L2-wC9">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="assembly1" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-L2-wC9">
                         <rect key="frame" x="8" y="8" width="425" height="458"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="458" id="K8t-NX-ZfI"/>
@@ -79,4 +79,7 @@
             <point key="canvasLocation" x="28.5" y="248.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="assembly1" width="4096" height="4096"/>
+    </resources>
 </document>
