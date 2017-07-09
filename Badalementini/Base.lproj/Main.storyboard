@@ -369,7 +369,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIQ-5s-2YN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="assembly1" translatesAutoresizingMaskIntoConstraints="NO" id="TIQ-5s-2YN">
                                 <rect key="frame" x="16" y="80" width="343" height="571"/>
                             </imageView>
                         </subviews>
@@ -574,6 +574,7 @@
     </scenes>
     <resources>
         <image name="animal-element-7" width="30" height="30"/>
+        <image name="assembly1" width="4096" height="4096"/>
         <image name="paper-map-7" width="30" height="30"/>
         <image name="torch-light-7" width="30" height="30"/>
         <image name="woman-7" width="29" height="30"/>
