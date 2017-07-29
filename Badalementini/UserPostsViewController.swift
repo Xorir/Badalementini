@@ -295,7 +295,9 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 100.0))
-        headerView.backgroundColor = .red
+        headerView.backgroundColor = .purple
+        headerView.layer.borderWidth = 3.0
+        headerView.layer.borderColor = UIColor.white.cgColor
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
         headerView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
