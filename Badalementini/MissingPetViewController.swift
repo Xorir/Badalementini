@@ -51,10 +51,10 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func getInfFromFirebase() {
-        guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
+        guard let administrativeArea = UserLocationManager.sharedInstance.administrativeArea else { return }
         
         reference = FIRDatabase.database().reference()
-        reference.child(currentCity).child(Constants.missingPet).observe(.value, with: { [weak self] (snapshot) -> Void in
+        reference.child(administrativeArea).child(Constants.missingPet).observe(.value, with: { [weak self] (snapshot) -> Void in
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             guard let strongSelf = self else { return }
             

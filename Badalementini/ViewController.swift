@@ -86,11 +86,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         guard let areaOfInterest = UserLocationManager.sharedInstance.areaOfInterest else { return }
         guard let name = UserLocationManager.sharedInstance.name else { return }
         guard let thro = UserLocationManager.sharedInstance.thoroughfare else { return }
+        guard let administrativeArea = UserLocationManager.sharedInstance.administrativeArea else { return }
         
         print("AREA OF INTEREST \(name, thro, areaOfInterest)")
         
         reference = FIRDatabase.database().reference()
-        reference.child(currentCity).observe(.value, with: { (snapshot) -> Void in
+        reference.child(administrativeArea).child(Constants.petSection).observe(.value, with: { (snapshot) -> Void in
+            
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             
             var keko = [NSDictionary]()
