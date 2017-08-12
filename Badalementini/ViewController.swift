@@ -69,6 +69,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         mapView.removeAnnotations(annotationArray)
+        annotationArray = []
         checkStrayAnimals()
     }
     
