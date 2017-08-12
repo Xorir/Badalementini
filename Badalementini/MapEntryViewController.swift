@@ -178,17 +178,19 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         ]
         
         guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
+        guard let administrativeArea = UserLocationManager.sharedInstance.administrativeArea else { return }
         guard let petSection = petSection else { return }
         
         if let section = PetSection(rawValue: petSection) {
             switch section {
+                
             case .missingPet :
                 if let contactName = self.contactName, let contactPhoneNumber = self.contactPhoneNumber {
                     coordinates.updateValue("\(contactName)" as AnyObject, forKey: Constants.contactName)
                     coordinates.updateValue("\(contactPhoneNumber)" as AnyObject, forKey: Constants.contactPhoneNumber)
                 }
                 
-                let mainPost =  reference.child(currentCity).child(Constants.missingPet).childByAutoId()
+                let mainPost =  reference.child(administrativeArea).child(Constants.missingPet).childByAutoId()
                 mainPost.setValue(coordinates)
                 coordinates.updateValue("\(mainPost)" as AnyObject, forKey: Constants.deletionLink)
                 
@@ -197,8 +199,9 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                 coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: Constants.userPostDeletionLink)
                 
                 userPostDict.setValue(coordinates)
+                
             case .strayAnimal:
-                let mainPost = reference.child(currentCity).childByAutoId()
+                let mainPost = reference.child(administrativeArea).child(Constants.strayAnimal).childByAutoId()
                 coordinates.updateValue("\(mainPost)" as AnyObject, forKey: Constants.deletionLink)
                 mainPost.setValue(coordinates)
                 
@@ -214,7 +217,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                     coordinates.updateValue("\(contactPhoneNumber)" as AnyObject, forKey: Constants.contactPhoneNumber)
                 }
                 
-                let mainPost =  reference.child(currentCity).child(Constants.petAdoption).childByAutoId()
+                let mainPost =  reference.child(administrativeArea).child(Constants.petAdoption).childByAutoId()
                 mainPost.setValue(coordinates)
                 coordinates.updateValue("\(mainPost)" as AnyObject, forKey: Constants.deletionLink)
                 
