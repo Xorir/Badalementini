@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OyX-d7-4IY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="OyX-d7-4IY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -170,53 +170,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9rp-Bu-YUN">
-                                <rect key="frame" x="38" y="79" width="299" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCT-TS-gZE">
-                                <rect key="frame" x="148" y="191" width="78" height="30"/>
-                                <state key="normal" title="Sign Up"/>
-                                <connections>
-                                    <action selector="signUpTapped:" destination="OyX-d7-4IY" eventType="touchUpInside" id="HHM-U3-fzf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ww-qt-O9C">
-                                <rect key="frame" x="142" y="229" width="90" height="30"/>
-                                <state key="normal" title="Sign In"/>
-                                <connections>
-                                    <action selector="signInTapped:" destination="OyX-d7-4IY" eventType="touchUpInside" id="pE6-0h-imf"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F0h-pI-Ghp">
-                                <rect key="frame" x="38" y="132" width="299" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="mhC-KO-3g7">
+                                <rect key="frame" x="14" y="28" width="345" height="363"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="363" id="deE-UU-FFB"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9rp-Bu-YUN" firstAttribute="leading" secondItem="KwY-CI-WCn" secondAttribute="leadingMargin" constant="22" id="3Yv-xk-EIP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="F0h-pI-Ghp" secondAttribute="trailing" constant="22" id="9RL-2P-rXA"/>
-                            <constraint firstItem="3Ww-qt-O9C" firstAttribute="leading" secondItem="KwY-CI-WCn" secondAttribute="leadingMargin" constant="126" id="E2Y-Fh-ksd"/>
-                            <constraint firstItem="VCT-TS-gZE" firstAttribute="top" secondItem="F0h-pI-Ghp" secondAttribute="bottom" constant="29" id="FQz-KD-YY0"/>
-                            <constraint firstItem="3Ww-qt-O9C" firstAttribute="top" secondItem="VCT-TS-gZE" secondAttribute="bottom" constant="8" id="LTp-R4-EbF"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9rp-Bu-YUN" secondAttribute="trailing" constant="22" id="Ppd-oF-2Lv"/>
-                            <constraint firstItem="F0h-pI-Ghp" firstAttribute="leading" secondItem="KwY-CI-WCn" secondAttribute="leadingMargin" constant="22" id="Ri7-zb-9Mw"/>
-                            <constraint firstItem="9rp-Bu-YUN" firstAttribute="top" secondItem="5wd-Mh-k5S" secondAttribute="bottom" constant="59" id="Suw-A7-i0w"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VCT-TS-gZE" secondAttribute="trailing" constant="133" id="WJT-ke-vSs"/>
-                            <constraint firstItem="3Ww-qt-O9C" firstAttribute="top" secondItem="VCT-TS-gZE" secondAttribute="bottom" constant="8" id="dea-1a-bIW"/>
-                            <constraint firstItem="F0h-pI-Ghp" firstAttribute="top" secondItem="9rp-Bu-YUN" secondAttribute="bottom" constant="23" id="ewL-h5-Bn7"/>
-                            <constraint firstItem="VCT-TS-gZE" firstAttribute="leading" secondItem="KwY-CI-WCn" secondAttribute="leadingMargin" constant="132" id="jTx-67-Lke"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3Ww-qt-O9C" secondAttribute="trailing" constant="127" id="vCU-Js-vQx"/>
+                            <constraint firstItem="mhC-KO-3g7" firstAttribute="leading" secondItem="KwY-CI-WCn" secondAttribute="leadingMargin" constant="-2" id="C4v-Gz-7ss"/>
+                            <constraint firstItem="mhC-KO-3g7" firstAttribute="top" secondItem="5wd-Mh-k5S" secondAttribute="bottom" constant="8" id="Dpk-X0-Lhj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mhC-KO-3g7" secondAttribute="trailing" id="qsi-YF-h3V"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="9rp-Bu-YUN" id="M1W-pw-dMb"/>
-                        <outlet property="passwordTextField" destination="F0h-pI-Ghp" id="h3Y-o7-8Ln"/>
+                        <outlet property="logo" destination="mhC-KO-3g7" id="dQ8-S6-ywY"/>
                         <segue destination="VcS-en-dEB" kind="show" identifier="SignedIn" id="4nN-N4-KWx"/>
                     </connections>
                 </viewController>
@@ -571,4 +540,12 @@
             <point key="canvasLocation" x="-1642.4000000000001" y="838.83058470764627"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="animal-element-7" width="30" height="30"/>
+        <image name="assembly1" width="4096" height="4096"/>
+        <image name="logo" width="4096" height="4096"/>
+        <image name="paper-map-7" width="30" height="30"/>
+        <image name="torch-light-7" width="30" height="30"/>
+        <image name="woman-7" width="29" height="30"/>
+    </resources>
 </document>

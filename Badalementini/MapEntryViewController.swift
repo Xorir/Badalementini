@@ -247,7 +247,6 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func getPhotos() {
-        print("test deneme")
         imagePicker.allowsEditing = false
         if let petSection = petSection {
             if let section = PetSection(rawValue: petSection){
