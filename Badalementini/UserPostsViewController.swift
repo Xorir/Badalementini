@@ -11,6 +11,19 @@ import Firebase
 
 class UserPostsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    private struct Constants {
+        static let userPostsTitle = "User Posts"
+        static let missingPet = "missingPet"
+        static let userPosts = "userPosts"
+        static let strayAnimal = "strayAnimal"
+        static let petAdoption = "petAdoption"
+        static let userPostCell = "UserPostTableViewCell"
+        static let userPostIdentifier = "userPostsIdentifier"
+        static let cell = "theCell"
+        static let firebaseFormattedLink = "https://badalementini.firebaseio.com/"
+        static let headerHeight: CGFloat = 100.0
+    }
+    
     enum PostSection: Int {
         case missingPet = 0
         case strayAnimal
@@ -30,7 +43,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Do any additional setup after loading the view.
         setupTableView()
-        title = "user posts"
+        title = Constants.userPostsTitle
         getUserMissingPetPosts()
         getUserStrayAnimalPosts()
         getUserPetAdoptionPosts()
@@ -47,7 +60,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
         // make it weak and check naming
         
         reference = FIRDatabase.database().reference()
-        reference.child("userPosts").child("missingPet").child("\(currentUser)").observe(.value, with: { (snapshot) -> Void in
+        reference.child(Constants.userPosts).child(Constants.missingPet).child("\(currentUser)").observe(.value, with: { (snapshot) -> Void in
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             
             var keko = [NSDictionary]()
@@ -63,7 +76,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
             self.userMissingPetPosts = strayArray
             self.tableView.reloadData()
             
-            print("POSTS ARRAY \(strayArray)")
         })
     }
     
@@ -73,7 +85,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
         // make it weak and check naming
         
         reference = FIRDatabase.database().reference()
-        reference.child("userPosts").child("strayAnimal").child("\(currentUser)").observe(.value, with: { (snapshot) -> Void in
+        reference.child(Constants.userPosts).child(Constants.strayAnimal).child("\(currentUser)").observe(.value, with: { (snapshot) -> Void in
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             
             var keko = [NSDictionary]()
@@ -89,7 +101,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
             self.userStrayAnimalPosts = strayArray
             self.tableView.reloadData()
             
-            print("POSTS ARRAY \(strayArray)")
         })
     }
     
@@ -99,7 +110,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
         // make it weak and check naming
         
         reference = FIRDatabase.database().reference()
-        reference.child("userPosts").child("petAdoption").child("\(currentUser)").observe(.value, with: { (snapshot) -> Void in
+        reference.child(Constants.userPosts).child(Constants.petAdoption).child("\(currentUser)").observe(.value, with: { (snapshot) -> Void in
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             
             var keko = [NSDictionary]()
@@ -115,7 +126,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
             self.userPetAdoptionPosts = strayArray
             self.tableView.reloadData()
             
-            print("POSTS ARRAY \(strayArray)")
         })
     }
     
@@ -124,8 +134,8 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
-        tableView.register(UINib(nibName: "UserPostTableViewCell", bundle: nil), forCellReuseIdentifier: "userPostsIdentifier")
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "theCell")
+        tableView.register(UINib(nibName: Constants.userPostCell, bundle: nil), forCellReuseIdentifier: Constants.userPostIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.cell)
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.tableFooterView = UIView()
         
@@ -162,7 +172,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
             switch section {
             case .missingPet:
                 let cell = tableView.dequeueReusableCell(withIdentifier:
-                    "userPostsIdentifier", for: indexPath) as! UserPostTableViewCell
+                    Constants.userPostIdentifier, for: indexPath) as! UserPostTableViewCell
                 if let userPosts = userMissingPetPosts {
                     
                     cell.userPostImageView.getCachedImage(urlString: userPosts[indexPath.row].metaData!)
@@ -173,7 +183,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                 return cell
             case .strayAnimal:
                 let cell = tableView.dequeueReusableCell(withIdentifier:
-                    "userPostsIdentifier", for: indexPath) as! UserPostTableViewCell
+                    Constants.userPostIdentifier, for: indexPath) as! UserPostTableViewCell
                 if let userPosts = userStrayAnimalPosts {
                     
                     cell.userPostImageView.getCachedImage(urlString: userPosts[indexPath.row].metaData!)
@@ -183,7 +193,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                 return cell
             case .petAdoption:
                 let cell = tableView.dequeueReusableCell(withIdentifier:
-                    "userPostsIdentifier", for: indexPath) as! UserPostTableViewCell
+                    Constants.userPostIdentifier, for: indexPath) as! UserPostTableViewCell
                 if let userPosts = userPetAdoptionPosts {
                     
                     cell.userPostImageView.getCachedImage(urlString: userPosts[indexPath.row].metaData!)
@@ -209,7 +219,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                         reference = FIRDatabase.database().reference()
                         reference.child(formatDeletionLink(link: deletionLink)).removeValue(completionBlock: { (error, refer) in
                             let keki = self.reference.child(self.formatDeletionLink(link: deletionLink))
-                            print("darn keki \(keki)")
                             if error == nil {
                                 print("post deleted")
                             }
@@ -220,7 +229,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                         reference = FIRDatabase.database().reference()
                         reference.child(formatDeletionLink(link: userPostDeletionLink)).removeValue(completionBlock: { (error, refer) in
                             let keki = self.reference.child(self.formatDeletionLink(link: userPostDeletionLink))
-                            print("darn keki \(keki)")
                             if error == nil {
                                 print("user post deleted")
                             }
@@ -237,7 +245,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                         reference = FIRDatabase.database().reference()
                         reference.child(formatDeletionLink(link: deletionLink)).removeValue(completionBlock: { (error, refer) in
                             let keki = self.reference.child(self.formatDeletionLink(link: deletionLink))
-                            print("darn keki \(keki)")
                             if error == nil {
                                 print("post deleted")
                             }
@@ -248,7 +255,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                         reference = FIRDatabase.database().reference()
                         reference.child(formatDeletionLink(link: userPostDeletionLink)).removeValue(completionBlock: { (error, refer) in
                             let keki = self.reference.child(self.formatDeletionLink(link: userPostDeletionLink))
-                            print("darn keki \(keki)")
                             if error == nil {
                                 print("user post deleted")
                             }
@@ -264,7 +270,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                         reference = FIRDatabase.database().reference()
                         reference.child(formatDeletionLink(link: deletionLink)).removeValue(completionBlock: { (error, refer) in
                             let keki = self.reference.child(self.formatDeletionLink(link: deletionLink))
-                            print("darn keki \(keki)")
                             if error == nil {
                                 print("post deleted")
                             }
@@ -275,7 +280,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                         reference = FIRDatabase.database().reference()
                         reference.child(formatDeletionLink(link: userPostDeletionLink)).removeValue(completionBlock: { (error, refer) in
                             let keki = self.reference.child(self.formatDeletionLink(link: userPostDeletionLink))
-                            print("darn keki \(keki)")
                             if error == nil {
                                 print("user post deleted")
                             }
@@ -283,7 +287,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                     }
                     
                     userPetAdoptionPosts?.remove(at: indexPath.row)
-                    
                     tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 }
             }
@@ -292,12 +295,15 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 100.0))
-        headerView.backgroundColor = .red
+        headerView.backgroundColor = .purple
+        headerView.layer.borderWidth = 3.0
+        headerView.layer.borderColor = UIColor.white.cgColor
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
         headerView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: headerView.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
+        label.textColor = .white
         
         if let section = PostSection(rawValue: section) {
             switch section {
@@ -327,12 +333,12 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100.0
+        return Constants.headerHeight
     }
     
     
     func formatDeletionLink(link: String) -> String {
-        let formattedDeletionLink = link.replacingOccurrences(of: "https://badalementini.firebaseio.com/", with: "")
+        let formattedDeletionLink = link.replacingOccurrences(of: Constants.firebaseFormattedLink, with: "")
         
         return formattedDeletionLink
     }

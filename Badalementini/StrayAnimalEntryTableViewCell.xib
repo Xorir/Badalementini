@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,7 +26,7 @@
                             <action selector="takeStrayAnimalPhoto:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Nat-87-xXm"/>
                         </connections>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-L2-wC9">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="assembly1" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-L2-wC9">
                         <rect key="frame" x="8" y="8" width="425" height="458"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="458" id="K8t-NX-ZfI"/>
@@ -51,7 +51,7 @@
                                 <rect key="frame" x="0.0" y="64" width="425" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                             </textField>
                         </subviews>
                     </stackView>
@@ -79,4 +79,7 @@
             <point key="canvasLocation" x="28.5" y="248.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="assembly1" width="4096" height="4096"/>
+    </resources>
 </document>

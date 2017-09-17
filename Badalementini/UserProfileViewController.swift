@@ -11,6 +11,16 @@ import Firebase
 
 class UserProfileViewController: UIViewController {
     
+    private struct Constants {
+        static let userProfileTitle = "User Profile"
+        static let keyPressed = "keyPressed"
+        static let checkAndDelete = "Check and Delete My Posts"
+        static let mainStoryboard = "Main"
+        static let userPostIdentifier = "userPostsVC"
+        static let buttonWidth: Double = 50.0
+        static let buttonHeight: Double = 20.0
+    }
+    
     var checkPostedItemsButton: EntryButtons!
     
     override func viewDidLoad() {
@@ -18,7 +28,7 @@ class UserProfileViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         setupCheckPostButton()
-        title = "User Profile"
+        title = Constants.userProfileTitle
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,7 +38,7 @@ class UserProfileViewController: UIViewController {
     
     @IBAction func signOutBarButton(_ sender: UIBarButtonItem) {
         if AppState.sharedInstance.isFaceBookUser {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "keyPressed"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.keyPressed), object: nil)
         }
         let firebaseAuth = FIRAuth.auth()
         do {
@@ -41,15 +51,14 @@ class UserProfileViewController: UIViewController {
     }
     
     func getPosts() {
-        print("posts")
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let userPostsVC = mainStoryBoard.instantiateViewController(withIdentifier: "userPostsVC") as! UserPostsViewController
+        let mainStoryBoard = UIStoryboard(name: Constants.mainStoryboard, bundle: nil)
+        let userPostsVC = mainStoryBoard.instantiateViewController(withIdentifier: Constants.userPostIdentifier) as! UserPostsViewController
         navigationController?.pushViewController(userPostsVC, animated: true)
     }
     
     func setupCheckPostButton() {
-        checkPostedItemsButton = EntryButtons(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
-        checkPostedItemsButton.setTitle("Check and Delete my posts", for: .normal)
+        checkPostedItemsButton = EntryButtons(frame: CGRect(x: 0, y: 0, width: Constants.buttonWidth, height: Constants.buttonHeight))
+        checkPostedItemsButton.setTitle(Constants.checkAndDelete, for: .normal)
         checkPostedItemsButton.addTarget(self, action: #selector(getPosts), for: .touchUpInside)
         
         view.addSubview(checkPostedItemsButton)

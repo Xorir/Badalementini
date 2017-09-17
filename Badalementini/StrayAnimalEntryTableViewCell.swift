@@ -83,9 +83,6 @@ class StrayAnimalEntryTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBAction func takeStrayAnimalPhoto(_ sender: UIButton) {
         self.delegate?.presentImagePicker()
-        strayAnimalInfoTextField.isEnabled = true
-        contactPhoneNUmber.isEnabled = true
-        contactName.isEnabled = true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

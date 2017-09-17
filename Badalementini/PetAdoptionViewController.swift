@@ -11,32 +11,39 @@ import Firebase
 
 class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    private struct Constants {
+        static let create = "Add"
+        static let petAdoptionTitle = "Pet Adoption"
+        static let petAdoption = "petAdoption"
+        static let missingPetCell = "MissingPetTableViewCell"
+        static let petAdoptionIdentifier = "petAdoptionCell"
+        static let rowHeight: CGFloat = 100.0
+        static let mainStoryboard = "Main"
+        static let mapEntryVC = "MapEntryViewController"
+        static let petSection = "petAdoption"
+        static let missingAndAdoption = "missingAndAdoption"
+        static let widthHeight: CGFloat = 50.0
+        
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     var petAdoptionArray: [StrayModel]!
     var reference = FIRDatabaseReference.init()
-
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let addAdoptPet = UIButton()
-        addAdoptPet.setTitle("Add", for: .normal)
+        addAdoptPet.setTitle(Constants.create, for: .normal)
         addAdoptPet.setTitleColor(UIColor.red, for: .normal)
-        addAdoptPet.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        addAdoptPet.frame = CGRect(x: 0, y: 0, width: Constants.widthHeight, height: Constants.widthHeight)
         addAdoptPet.addTarget(self, action: #selector(addPet), for: .touchUpInside)
         let missingPetBarButtonItem = UIBarButtonItem(customView: addAdoptPet)
         navigationItem.rightBarButtonItem = missingPetBarButtonItem
         // Do any additional setup after loading the view.
-        title = "Pet Adoption"
+        title = Constants.petAdoptionTitle
         setupTableView()
         
-    }
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func addPet() {
@@ -45,16 +52,16 @@ class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        petAdoptionArray = []
+        tableView.reloadData()
         getInfFromFirebase()
-
     }
     
-    
     func getInfFromFirebase() {
-        guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
+        guard let administrativeArea = UserLocationManager.sharedInstance.administrativeArea else { return }
         
         reference = FIRDatabase.database().reference()
-        reference.child(currentCity).child("petAdoption").observe(.value, with: {  [weak self] (snapshot) -> Void in
+        reference.child(administrativeArea).child(Constants.petAdoption).observe(.value, with: {  [weak self] (snapshot) -> Void in
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             guard let strongSelf = self else { return }
             
@@ -66,13 +73,9 @@ class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableV
                 let strayAnimal = StrayModel(dictionary: value as! NSDictionary)
                 guard let strayAni = strayAnimal else { return }
                 strayArray.append(strayAni)
-                print("STRAY ANIMAL IN MISSING DOG \(strayArray)")
             }
             
-            //Make it strongSelf
             strongSelf.petAdoptionArray = strayArray
-            
-            //            self.annotationTry(annotationValues: strayArray)
             strongSelf.tableView.reloadData()
         })
     }
@@ -81,17 +84,17 @@ class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100.0
-        tableView.register(UINib(nibName: "MissingPetTableViewCell", bundle: nil), forCellReuseIdentifier: "petAdoptionCell")
+        tableView.estimatedRowHeight = Constants.rowHeight
+        tableView.register(UINib(nibName: Constants.missingPetCell, bundle: nil), forCellReuseIdentifier: Constants.petAdoptionIdentifier)
         self.automaticallyAdjustsScrollViewInsets = false
         tableView.tableFooterView = UIView()
         
     }
     
     func addPetAdomption() {
-        let mapEntryDetailStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let mapDetailVC = mapEntryDetailStoryBoard.instantiateViewController(withIdentifier: "MapEntryViewController") as! MapEntryViewController
-        mapDetailVC.petSection = "petAdoption"
+        let mapEntryDetailStoryBoard = UIStoryboard(name: Constants.mainStoryboard, bundle: nil)
+        let mapDetailVC = mapEntryDetailStoryBoard.instantiateViewController(withIdentifier: Constants.mapEntryVC) as! MapEntryViewController
+        mapDetailVC.petSection = Constants.petAdoption
         navigationController?.showDetailViewController(mapDetailVC, sender: self)
     }
     
@@ -103,7 +106,7 @@ class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "petAdoptionCell" , for: indexPath) as! MissingPetTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.petAdoptionIdentifier , for: indexPath) as! MissingPetTableViewCell
         cell.missingPetInfo(missingPet: petAdoptionArray[indexPath.row])
         
         return cell
@@ -111,8 +114,8 @@ class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let missingAdoptionVC = mainStoryBoard.instantiateViewController(withIdentifier: "missingAndAdoption") as! MissingAndAdoptionViewController
+        let mainStoryBoard = UIStoryboard(name: Constants.mainStoryboard, bundle: nil)
+        let missingAdoptionVC = mainStoryBoard.instantiateViewController(withIdentifier: Constants.missingAndAdoption) as! MissingAndAdoptionViewController
         missingAdoptionVC.missingAdoptionPet = petAdoptionArray[indexPath.row]
         navigationController?.pushViewController(missingAdoptionVC, animated: true)
         

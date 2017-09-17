@@ -60,8 +60,9 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKW-Me-wc8">
-                                <rect key="frame" x="16" y="580" width="343" height="30"/>
-                                <state key="normal" title="Add a new Post"/>
+                                <rect key="frame" x="16" y="574" width="343" height="36"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Create a new Post"/>
                                 <connections>
                                     <action selector="getCurrent:" destination="I0c-T5-igd" eventType="touchUpInside" id="lYw-er-4VA"/>
                                 </connections>
@@ -238,11 +239,11 @@
             </objects>
             <point key="canvasLocation" x="1421.5999999999999" y="833.43328335832086"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search-->
         <scene sceneID="nYK-VG-xoO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lvh-Ns-lCu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="SUC-xd-52o"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="paper-map-7" id="SUC-xd-52o"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yK8-IU-1lu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -274,7 +275,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.40784313725490196" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="KvZ-Py-Pdc" firstAttribute="leading" secondItem="ugc-8u-fg0" secondAttribute="leadingMargin" id="6gV-LX-S4b"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KvZ-Py-Pdc" secondAttribute="trailing" id="Akr-06-yyH"/>
@@ -337,7 +338,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIQ-5s-2YN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="assembly1" translatesAutoresizingMaskIntoConstraints="NO" id="TIQ-5s-2YN">
                                 <rect key="frame" x="16" y="80" width="343" height="571"/>
                             </imageView>
                         </subviews>
@@ -398,7 +399,7 @@
         <scene sceneID="Roh-1F-HHj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ffq-g2-B47" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Missing Pet" id="cya-5M-sSY"/>
+                    <tabBarItem key="tabBarItem" title="Missing Pet" image="torch-light-7" id="cya-5M-sSY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wIo-kF-voE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -469,7 +470,7 @@
         <scene sceneID="KmO-s7-QMP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jz3-W3-w6q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="User Profile" id="qbX-E7-1FK"/>
+                    <tabBarItem key="tabBarItem" title="User Profile" image="woman-7" id="qbX-E7-1FK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zQu-kO-89x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -524,7 +525,7 @@
         <scene sceneID="xLE-N3-Rwg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R5c-W8-nq3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Adopt Pet" id="UxP-dU-dLa"/>
+                    <tabBarItem key="tabBarItem" title="Adopt Pet" image="animal-element-7" id="UxP-dU-dLa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3wE-QA-qNg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

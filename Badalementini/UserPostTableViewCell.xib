@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="376" height="108.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zbi-we-MKe">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="assembly1" translatesAutoresizingMaskIntoConstraints="NO" id="zbi-we-MKe">
                         <rect key="frame" x="8" y="8" width="95" height="91"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="91" id="uhU-vP-YVf"/>
@@ -59,4 +59,7 @@
             <point key="canvasLocation" x="62" y="102.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="assembly1" width="4096" height="4096"/>
+    </resources>
 </document>
