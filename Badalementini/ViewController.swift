@@ -23,7 +23,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     private struct Constants {
         static let mapEntryDetail = "MapEntryDetail"
         static let mapEntryIdentifier = "mapEntry"
-        static let vcTitle = "Stay Animals"
+        static let vcTitle = "Stray Animals"
         static let letLongSpan = 0.01
         static let borderWidth: CGFloat = 2.0
         static let cornerRadius: CGFloat = 5.0
@@ -82,13 +82,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func checkStrayAnimals() {
-        guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
-        guard let areaOfInterest = UserLocationManager.sharedInstance.areaOfInterest else { return }
-        guard let name = UserLocationManager.sharedInstance.name else { return }
-        guard let thro = UserLocationManager.sharedInstance.thoroughfare else { return }
         guard let administrativeArea = UserLocationManager.sharedInstance.administrativeArea else { return }
-        
-        print("AREA OF INTEREST \(name, thro, areaOfInterest)")
         
         reference = FIRDatabase.database().reference()
         reference.child(administrativeArea).child(Constants.petSection).observe(.value, with: { (snapshot) -> Void in
@@ -106,7 +100,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
             
             self.annotationTry(annotationValues: strayArray)
-            
         })
     }
     
@@ -122,11 +115,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         for anno in annotationValues {
             //Refactor
-            if let lat = anno.lat, let long = anno.long, let info = anno.notes, let metaData = anno.metaData, let userName = anno.userName, let address = anno.address {
+            if let lat = anno.lat, let long = anno.long, let info = anno.notes, let metaData = anno.metaData, let userName = anno.userName {
                 let lokas = CLLocationCoordinate2DMake(lat as CLLocationDegrees, long as CLLocationDegrees)
                 
-                let value = Annotation(title: userName, coordinate: lokas, info: info, metaData: metaData, userName: userName, address: address)
-                annotationArray.append(value)
+                if let address = anno.address {
+                    let value = Annotation(title: userName, coordinate: lokas, info: info, metaData: metaData, userName: userName, address: address)
+                    annotationArray.append(value)
+                } else {
+                    let value = Annotation(title: userName, coordinate: lokas, info: info, metaData: metaData, userName: userName, address: "")
+                    annotationArray.append(value)
+                }
             }
         }
         
@@ -177,8 +175,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination as? StrayAnimalDetailViewController, let annotationView = sender as? MKPinAnnotationView  {
-            print("ANNOTATION VIEW \(annotationView)")
-            destinationVC.title = "Amonog dorime "
         }
     }
     
@@ -188,7 +184,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             guard let strongSelf = self else { return }
             
             if error != nil {
-                print(error)
                 strongSelf.activityIndicator.stopActivityIndicator(view: strongSelf.view)
                 return
             } else {
@@ -222,7 +217,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             UserLocationManager.sharedInstance.locationValues = locationValues
             
             reverseGeocoding(latitude: locationValues.latitude, longitude: locationValues.longitude)
-            
         }
     }
 }

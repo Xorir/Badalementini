@@ -129,7 +129,6 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func sendPhoto() {
-        
         // Upload image to Firebase
         activityIndicator.setupActivityIndicator(view: self.tableView, isFullScreen: false)
         
@@ -140,7 +139,6 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         let storage = FIRStorage.storage().reference().child(userID).child(getDateAndHour())
         
         if let uploadData = UIImageJPEGRepresentation(pickedImage, 0.8) {
-            //            displayIndicator()
             let uploadTask = storage.put(uploadData, metadata: nil, completion: { [weak self] (metaData, error) in
                 guard let strongSelf = self else { return }
                 
@@ -148,10 +146,8 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                     print(error)
                     return
                 }
-                
                 metaDataOut = metaData
                 strongSelf.createNewEntry(metaDataImage: metaData)
-                
             })
         }
     }
@@ -164,8 +160,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
         guard let infoText = self.infoText else { return }
         guard let metaData = metaDataImage?.downloadURL()?.absoluteString else { return }
-        guard let address = UserLocationManager.sharedInstance.address else { return }
-        
+//        guard let address = UserLocationManager.sharedInstance.address else { return }
         
         var coordinates: [String: AnyObject] = [
             Constants.lat: locationValues.latitude as AnyObject,
@@ -173,9 +168,11 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
             Constants.userName: currentUser as AnyObject,
             Constants.notes: infoText as AnyObject,
             Constants.metaData: metaData as AnyObject,
-            Constants.date: getCurrentDate() as AnyObject,
-            Constants.address: address as AnyObject
-        ]
+            Constants.date: getCurrentDate() as AnyObject]
+        
+        if let address = UserLocationManager.sharedInstance.address {
+            coordinates[Constants.address] = address as AnyObject
+        }
         
         guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
         guard let administrativeArea = UserLocationManager.sharedInstance.administrativeArea else { return }

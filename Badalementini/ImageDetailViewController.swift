@@ -24,9 +24,6 @@ class ImageDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailImageView.layer.borderWidth = Constants.borderWidth
-        detailImageView.layer.borderColor = UIColor.purple.cgColor
-        
         if isStrayAnimalVC {
             guard let metaData = annotationInfo.metaData else { return }
             //        detailImageView.getCachedImage(urlString: metaData)

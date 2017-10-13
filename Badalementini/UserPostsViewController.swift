@@ -37,7 +37,6 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
     var userStrayAnimalPosts: [StrayModel]?
     var userPetAdoptionPosts: [StrayModel]?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

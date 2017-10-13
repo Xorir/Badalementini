@@ -35,7 +35,7 @@ class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableV
         
         let addAdoptPet = UIButton()
         addAdoptPet.setTitle(Constants.create, for: .normal)
-        addAdoptPet.setTitleColor(UIColor.red, for: .normal)
+        addAdoptPet.setTitleColor(UIColor.white, for: .normal)
         addAdoptPet.frame = CGRect(x: 0, y: 0, width: Constants.widthHeight, height: Constants.widthHeight)
         addAdoptPet.addTarget(self, action: #selector(addPet), for: .touchUpInside)
         let missingPetBarButtonItem = UIBarButtonItem(customView: addAdoptPet)

@@ -40,7 +40,7 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let addMissingPet = UIButton()
         addMissingPet.setTitle("Add", for: .normal)
-        addMissingPet.setTitleColor(UIColor.red, for: .normal)
+        addMissingPet.setTitleColor(.white, for: .normal)
         addMissingPet.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         addMissingPet.addTarget(self, action: #selector(addMissingPetFunc), for: .touchUpInside)
         let missingPetBarButtonItem = UIBarButtonItem(customView: addMissingPet)
