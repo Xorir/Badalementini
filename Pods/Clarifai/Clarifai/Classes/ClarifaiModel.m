@@ -8,6 +8,7 @@
 
 #import "ClarifaiModel.h"
 #import "ClarifaiApp.h"
+#import "NSDictionary+Clarifai.h"
 
 @interface ClarifaiModel() {
   __block BOOL finishedTrainingAttempt;
@@ -36,11 +37,19 @@
     } else if ([type isEqualToString:@"embed"]) {
       _modelType = ClarifaiModelTypeEmbed;
     } else if ([type isEqualToString:@"facedetect"]) {
+      _modelType = ClarifaiModelTypeFaceDetect;
+    } else if ([type isEqualToString:@"detection"]) {
       _modelType = ClarifaiModelTypeDetection;
     } else if ([type isEqualToString:@"cluster"]) {
       _modelType = ClarifaiModelTypeCluster;
     } else if ([type isEqualToString:@"color"]) {
       _modelType = ClarifaiModelTypeColor;
+    } else if ([type isEqualToString:@"focus"]) {
+      _modelType = ClarifaiModelTypeBlur;
+    } else if ([type isEqualToString:@"blur"]) {
+      _modelType = ClarifaiModelTypeBlur;
+    } else {
+      _modelType = ClarifaiModelTypeUnsupported;
     }
     
     //init concepts array if there is any
@@ -108,7 +117,7 @@
     }
   }];
   if (!finishedTrainingAttempt) {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
       [self pollUntilTrained:completion];
     });
   }
@@ -121,32 +130,41 @@
       SafeRunBlock(completion, nil, error);
       return;
     }
-    NSString *apiURL = [NSString stringWithFormat:@"%@/models/%@/versions/%@/outputs", kApiBaseUrl, self.modelID, self.version.versionID];
+    if (_modelType == ClarifaiModelTypeUnsupported) {
+      NSLog(@"This model is not supported in your current client version. Please update for official support. Alternatively, you can use the responseDict property on each ClarifaiOutput to support the model on your own.");
+    }
+
+    NSString *apiURL = @"";
+    if (self.version != nil) {
+      apiURL = [NSString stringWithFormat:@"%@/models/%@/versions/%@/outputs", kApiBaseUrl, self.modelID, self.version.versionID];
+    } else {
+      apiURL = [NSString stringWithFormat:@"%@/models/%@/outputs", kApiBaseUrl, self.modelID];
+    }
+
+    NSString *escapedURL = [apiURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     NSMutableArray *imagesToPredictOn = [NSMutableArray array];
     for (ClarifaiImage *image in images) {
       if (image.mediaURL) {
         [imagesToPredictOn addObject:@{@"data": @{@"image": @{@"url": image.mediaURL}}}];
       } else if (image.image) {
         NSData *imageData = UIImageJPEGRepresentation(image.image, 0.88);
-        [imagesToPredictOn addObject:@{@"data": @{@"image": @{@"base64": imageData.base64Encoding}}}];
+        [imagesToPredictOn addObject:@{@"data": @{@"image": @{@"base64": [imageData base64EncodedStringWithOptions:0]}}}];
+      } else if (image.mediaData) {
+        [imagesToPredictOn addObject:@{@"data": @{@"image": @{@"base64": [image.mediaData base64EncodedStringWithOptions:0]}}}];
       }
     }
-    NSDictionary *params = @{@"inputs": imagesToPredictOn};
+    NSDictionary *params = @{@"inputs": imagesToPredictOn};    
     
-    [_app.sessionManager POST:apiURL
+    [_app.sessionManager POST:escapedURL
                    parameters:params
                      progress:nil
                       success:^(NSURLSessionDataTask *task, id response) {
-      NSArray *outputsData = response[@"outputs"];
-      NSMutableArray *outputs = [[NSMutableArray alloc] init];
-      for (int i = 0; i < outputsData.count; i++) {
-        ClarifaiOutput *output = [[ClarifaiOutput alloc] initWithDictionary:outputsData[i]];
-        [outputs addObject:output];
-      }
-      completion(outputs, nil);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-      completion(nil, error);
-    }];
+                        NSArray <ClarifaiOutput *> *outputs = [self formatOutputsFromResponse:response[@"outputs"]];
+                        completion(outputs, nil);
+                      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                        completion(nil, error);
+                      }];
   }];
 }
 
@@ -158,7 +176,14 @@
       SafeRunBlock(completion, nil, error);
       return;
     }
+    if (_modelType == ClarifaiModelTypeUnsupported) {
+      NSError *err = [[NSError alloc] initWithDomain:kErrorDomain code:400 userInfo:@{@"description":@"Cannot predict, this model is not supported in your current client version. Please update."}];
+      completion(nil,err);
+      return;
+    }
     NSString *apiURL = [NSString stringWithFormat:@"%@/models/%@/versions/%@/outputs", kApiBaseUrl, self.modelID, self.version.versionID];
+     NSString *escapedURL = [apiURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     NSMutableArray *imagesToPredictOn = [NSMutableArray array];
     for (ClarifaiImage *image in images) {
       if (image.mediaURL) {
@@ -166,19 +191,16 @@
       } else if (image.image) {
         NSData *imageData = UIImageJPEGRepresentation(image.image, 0.88);
         [imagesToPredictOn addObject:@{@"data": @{@"image": @{@"base64": imageData.base64Encoding}}}];
+      } else if (image.mediaData) {
+        [imagesToPredictOn addObject:@{@"data": @{@"image": @{@"base64": image.mediaData.base64Encoding}}}];
       }
     }
     NSDictionary *params = @{@"inputs": imagesToPredictOn, @"model":@{@"output_info":@{@"output_config":@{@"language":language}}}};
-    [_app.sessionManager POST:apiURL
+    [_app.sessionManager POST:escapedURL
                    parameters:params
                      progress:nil
                       success:^(NSURLSessionDataTask *task, id response) {
-                        NSArray *outputsData = response[@"outputs"];
-                        NSMutableArray *outputs = [[NSMutableArray alloc] init];
-                        for (int i = 0; i < outputsData.count; i++) {
-                          ClarifaiOutput *output = [[ClarifaiOutput alloc] initWithDictionary:outputsData[i]];
-                          [outputs addObject:output];
-                        }
+                        NSArray <ClarifaiOutput *> *outputs = [self formatOutputsFromResponse:response[@"outputs"]];
                         completion(outputs, nil);
                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                         completion(nil, error);
@@ -186,6 +208,49 @@
 
   }];
 }
+
+- (NSArray <ClarifaiOutput *> *)formatOutputsFromResponse:(NSArray *)outputsData {
+  NSMutableArray *outputs = [[NSMutableArray alloc] init];
+  for (int i = 0; i < outputsData.count; i++) {
+    
+    NSString *type = [outputsData[i] findObjectForKey:@"type"];
+    NSString *typeExt = [outputsData[i] findObjectForKey:@"type_ext"];
+    
+    // Construct array of all detected regions.
+    NSArray *regionsArray = [outputsData[i] findObjectForKey:@"regions"];
+    NSMutableArray *regions = [NSMutableArray array];
+    for (NSDictionary *regionDict in regionsArray) {
+      ClarifaiOutputRegion *region = [[ClarifaiOutputRegion alloc] initWithDictionary:regionDict];
+      [regions addObject:region];
+    }
+    
+    if ([regions count] > 0) {
+      ClarifaiOutputRegion *testRegion = regions[0];
+      
+      if ([testRegion.identity count] > 0 || [testRegion.ageAppearance count] > 0 || [type isEqualToString:@"facedetect"] || [typeExt isEqualToString:@"facedetect"]) {
+        // Any Facedetect model. Need type only for face model, since it has no unique region information. Even if this changes, it will still work using a normal ClarifaiOutput.
+        ClarifaiOutputFace *output = [[ClarifaiOutputFace alloc] initWithDictionary:outputsData[i]];
+        output.faces = regions;
+        [outputs addObject:output];
+      } else if (testRegion.focusDensity) {
+        // Focus model
+        ClarifaiOutputFocus *output = [[ClarifaiOutputFocus alloc] initWithDictionary:outputsData[i]];
+        output.focusRegions = regions;
+        [outputs addObject:output];
+      } else {
+        // default to general output.
+        ClarifaiOutput *output = [[ClarifaiOutput alloc] initWithDictionary:outputsData[i]];
+        output.regions = regions;
+        [outputs addObject:output];
+      }
+    } else {
+      // no regions.
+      ClarifaiOutput *output = [[ClarifaiOutput alloc] initWithDictionary:outputsData[i]];
+      [outputs addObject:output];
+    }
+  }
+  return outputs;
+} 
 
 - (void)listVersions:(int)page
       resultsPerPage:(int)resultsPerPage

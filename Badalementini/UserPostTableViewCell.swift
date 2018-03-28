@@ -15,6 +15,7 @@ class UserPostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -62,7 +62,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
-    var reference = FIRDatabaseReference.init()
+    var reference = DatabaseReference()
     var enterInfoTextField: UITextField! = nil
     var customNavigationbar: UINavigationBar! = nil
     var animalImageView: UIImageView! = nil
@@ -129,43 +129,38 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func sendPhoto() {
-        
         // Upload image to Firebase
         activityIndicator.setupActivityIndicator(view: self.tableView, isFullScreen: false)
         
         guard let userID = AppState.sharedInstance.UID else { return }
         guard let pickedImage = self.pickedImage else { return }
-        var metaDataOut: FIRStorageMetadata?
+        var metaDataOut: StorageMetadata?
         
-        let storage = FIRStorage.storage().reference().child(userID).child(getDateAndHour())
+        let storage = Storage.storage().reference().child(userID).child(getDateAndHour())
         
         if let uploadData = UIImageJPEGRepresentation(pickedImage, 0.8) {
-            //            displayIndicator()
-            let uploadTask = storage.put(uploadData, metadata: nil, completion: { [weak self] (metaData, error) in
+            let uploadTask = storage.putData(uploadData, metadata: nil, completion: { [weak self] (metaData, error) in
                 guard let strongSelf = self else { return }
                 
                 if error != nil {
                     print(error)
                     return
                 }
-                
                 metaDataOut = metaData
                 strongSelf.createNewEntry(metaDataImage: metaData)
-                
             })
         }
     }
     
-    func createNewEntry(metaDataImage: FIRStorageMetadata?) {
+    func createNewEntry(metaDataImage: StorageMetadata?) {
         
         // enter info to Firebase DB
-        reference = FIRDatabase.database().reference()
+        reference = Database.database().reference()
         guard let locationValues = UserLocationManager.sharedInstance.locationValues else { return }
-        guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let currentUser = Auth.auth().currentUser?.uid else { return }
         guard let infoText = self.infoText else { return }
         guard let metaData = metaDataImage?.downloadURL()?.absoluteString else { return }
-        guard let address = UserLocationManager.sharedInstance.address else { return }
-        
+//        guard let address = UserLocationManager.sharedInstance.address else { return }
         
         var coordinates: [String: AnyObject] = [
             Constants.lat: locationValues.latitude as AnyObject,
@@ -173,9 +168,11 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
             Constants.userName: currentUser as AnyObject,
             Constants.notes: infoText as AnyObject,
             Constants.metaData: metaData as AnyObject,
-            Constants.date: getCurrentDate() as AnyObject,
-            Constants.address: address as AnyObject
-        ]
+            Constants.date: getCurrentDate() as AnyObject]
+        
+        if let address = UserLocationManager.sharedInstance.address {
+            coordinates[Constants.address] = address as AnyObject
+        }
         
         guard let currentCity = UserLocationManager.sharedInstance.locality else { return }
         guard let administrativeArea = UserLocationManager.sharedInstance.administrativeArea else { return }

@@ -70,7 +70,6 @@ class StrayAnimalDetailViewController: UIViewController, UITableViewDelegate, UI
         cell.delegate = self
         cell.configure(info: self.annotationInfo)
         
-        
         return cell
     }
     

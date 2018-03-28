@@ -1,5 +1,13 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
+#else
+#ifndef FOUNDATION_EXPORT
+#if defined(__cplusplus)
+#define FOUNDATION_EXPORT extern "C"
+#else
+#define FOUNDATION_EXPORT extern
+#endif
+#endif
 #endif
 
 #import "FBSDKAppGroupAddDialog.h"
@@ -7,6 +15,8 @@
 #import "FBSDKAppGroupJoinDialog.h"
 #import "FBSDKAppInviteContent.h"
 #import "FBSDKAppInviteDialog.h"
+#import "FBSDKCameraEffectArguments.h"
+#import "FBSDKCameraEffectTextures.h"
 #import "FBSDKGameRequestContent.h"
 #import "FBSDKGameRequestDialog.h"
 #import "FBSDKHashtag.h"
@@ -18,12 +28,19 @@
 #import "FBSDKSendButton.h"
 #import "FBSDKShareAPI.h"
 #import "FBSDKShareButton.h"
+#import "FBSDKShareCameraEffectContent.h"
 #import "FBSDKShareConstants.h"
 #import "FBSDKShareDialog.h"
 #import "FBSDKShareDialogMode.h"
 #import "FBSDKShareKit.h"
 #import "FBSDKShareLinkContent.h"
 #import "FBSDKShareMediaContent.h"
+#import "FBSDKShareMessengerActionButton.h"
+#import "FBSDKShareMessengerGenericTemplateContent.h"
+#import "FBSDKShareMessengerGenericTemplateElement.h"
+#import "FBSDKShareMessengerMediaTemplateContent.h"
+#import "FBSDKShareMessengerOpenGraphMusicTemplateContent.h"
+#import "FBSDKShareMessengerURLActionButton.h"
 #import "FBSDKShareOpenGraphAction.h"
 #import "FBSDKShareOpenGraphContent.h"
 #import "FBSDKShareOpenGraphObject.h"

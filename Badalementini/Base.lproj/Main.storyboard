@@ -544,7 +544,7 @@
     <resources>
         <image name="animal-element-7" width="30" height="30"/>
         <image name="assembly1" width="4096" height="4096"/>
-        <image name="logo" width="4096" height="4096"/>
+        <image name="logo" width="1024" height="1024"/>
         <image name="paper-map-7" width="30" height="30"/>
         <image name="torch-light-7" width="30" height="30"/>
         <image name="woman-7" width="29" height="30"/>

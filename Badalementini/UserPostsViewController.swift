@@ -31,12 +31,11 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBOutlet weak var tableView: UITableView!
-    var reference = FIRDatabaseReference.init()
+    var reference = DatabaseReference.init()
     var stray: StrayModel!
     var userMissingPetPosts: [StrayModel]?
     var userStrayAnimalPosts: [StrayModel]?
     var userPetAdoptionPosts: [StrayModel]?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,11 +54,11 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func getUserMissingPetPosts() {
-        guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let currentUser = Auth.auth().currentUser?.uid else { return }
         
         // make it weak and check naming
         
-        reference = FIRDatabase.database().reference()
+        reference = Database.database().reference()
         reference.child(Constants.userPosts).child(Constants.missingPet).child("\(currentUser)").observe(.value, with: { (snapshot) -> Void in
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             
@@ -80,11 +79,11 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func getUserStrayAnimalPosts() {
-        guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let currentUser = Auth.auth().currentUser?.uid else { return }
         
         // make it weak and check naming
         
-        reference = FIRDatabase.database().reference()
+        reference = Database.database().reference()
         reference.child(Constants.userPosts).child(Constants.strayAnimal).child("\(currentUser)").observe(.value, with: { (snapshot) -> Void in
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             
@@ -105,11 +104,11 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func getUserPetAdoptionPosts() {
-        guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let currentUser = Auth.auth().currentUser?.uid else { return }
         
         // make it weak and check naming
         
-        reference = FIRDatabase.database().reference()
+        reference = Database.database().reference()
         reference.child(Constants.userPosts).child(Constants.petAdoption).child("\(currentUser)").observe(.value, with: { (snapshot) -> Void in
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             
@@ -216,7 +215,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                 case .missingPet:
                     
                     if let deletionLink = userMissingPetPosts?[indexPath.row].deletionLink {
-                        reference = FIRDatabase.database().reference()
+                        reference = Database.database().reference()
                         reference.child(formatDeletionLink(link: deletionLink)).removeValue(completionBlock: { (error, refer) in
                             let keki = self.reference.child(self.formatDeletionLink(link: deletionLink))
                             if error == nil {
@@ -226,7 +225,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                     }
                     
                     if let userPostDeletionLink = userMissingPetPosts?[indexPath.row].userPostDeletionLink {
-                        reference = FIRDatabase.database().reference()
+                        reference = Database.database().reference()
                         reference.child(formatDeletionLink(link: userPostDeletionLink)).removeValue(completionBlock: { (error, refer) in
                             let keki = self.reference.child(self.formatDeletionLink(link: userPostDeletionLink))
                             if error == nil {
@@ -242,7 +241,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                 case .strayAnimal:
                     
                     if let deletionLink = userStrayAnimalPosts?[indexPath.row].deletionLink {
-                        reference = FIRDatabase.database().reference()
+                        reference = Database.database().reference()
                         reference.child(formatDeletionLink(link: deletionLink)).removeValue(completionBlock: { (error, refer) in
                             let keki = self.reference.child(self.formatDeletionLink(link: deletionLink))
                             if error == nil {
@@ -252,7 +251,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                     }
                     
                     if let userPostDeletionLink = userStrayAnimalPosts?[indexPath.row].userPostDeletionLink {
-                        reference = FIRDatabase.database().reference()
+                        reference = Database.database().reference()
                         reference.child(formatDeletionLink(link: userPostDeletionLink)).removeValue(completionBlock: { (error, refer) in
                             let keki = self.reference.child(self.formatDeletionLink(link: userPostDeletionLink))
                             if error == nil {
@@ -267,7 +266,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                 case .petAdoption:
                     
                     if let deletionLink = userPetAdoptionPosts?[indexPath.row].deletionLink {
-                        reference = FIRDatabase.database().reference()
+                        reference = Database.database().reference()
                         reference.child(formatDeletionLink(link: deletionLink)).removeValue(completionBlock: { (error, refer) in
                             let keki = self.reference.child(self.formatDeletionLink(link: deletionLink))
                             if error == nil {
@@ -277,7 +276,7 @@ class UserPostsViewController: UIViewController, UITableViewDelegate, UITableVie
                     }
                     
                     if let userPostDeletionLink = userPetAdoptionPosts?[indexPath.row].userPostDeletionLink {
-                        reference = FIRDatabase.database().reference()
+                        reference = Database.database().reference()
                         reference.child(formatDeletionLink(link: userPostDeletionLink)).removeValue(completionBlock: { (error, refer) in
                             let keki = self.reference.child(self.formatDeletionLink(link: userPostDeletionLink))
                             if error == nil {

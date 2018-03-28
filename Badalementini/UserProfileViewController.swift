@@ -40,9 +40,9 @@ class UserProfileViewController: UIViewController {
         if AppState.sharedInstance.isFaceBookUser {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.keyPressed), object: nil)
         }
-        let firebaseAuth = FIRAuth.auth()
+        let firebaseAuth = Auth.auth()
         do {
-            try firebaseAuth?.signOut()
+            try firebaseAuth.signOut()
             AppState.sharedInstance.signedIn = false
             dismiss(animated: true, completion: nil)
         } catch let signOutError as NSError {

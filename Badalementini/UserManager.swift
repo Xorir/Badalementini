@@ -13,7 +13,7 @@ class UserManager: NSObject {
     
     static let sharedInstance = UserManager()
     
-    var ref: FIRDatabaseReference!
-    var _refHandle: FIRDatabaseHandle!
+    var ref: DatabaseReference!
+    var _refHandle: DatabaseHandle!
     
 }

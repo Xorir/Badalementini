@@ -13,6 +13,9 @@ class MissingPetTableViewCell: UITableViewCell {
     @IBOutlet weak var missingPetImageView: UIImageView!
     @IBOutlet weak var missingPetInfoLabel: UILabel!
     
+    @IBOutlet weak var contactName: UILabel!
+    @IBOutlet weak var contactNumber: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,7 +25,7 @@ class MissingPetTableViewCell: UITableViewCell {
     }
     
     func roundImageView() {
-        missingPetImageView.layer.borderWidth = 1.0
+        missingPetImageView.layer.borderWidth = 1.5
         missingPetImageView.layer.masksToBounds = false
         missingPetImageView.layer.borderColor = UIColor.purple.cgColor
         missingPetImageView.layer.cornerRadius = missingPetImageView.frame.size.width / 2
@@ -31,8 +34,12 @@ class MissingPetTableViewCell: UITableViewCell {
     
     func missingPetInfo(missingPet: StrayModel) {
         //weak
-        missingPetImageView.getCachedImage(urlString: missingPet.metaData!)
+        if let metaData = missingPet.metaData {
+            missingPetImageView.getCachedImage(urlString: metaData)
+        }
         missingPetInfoLabel.text = missingPet.notes
+        contactName.text = missingPet.contactName
+        contactNumber.text = missingPet.contactPhoneNumber
     }
 
 }

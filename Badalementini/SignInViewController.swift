@@ -19,15 +19,15 @@ class SignInViewController: UIViewController, LoginButtonDelegate {
     }
     
     @IBOutlet weak var logo: UIImageView!
-    var reference = FIRDatabaseReference.init()
-    var currentUser: FIRUser?
+    var reference = DatabaseReference.init()
+    var currentUser: User?
     
 //    @IBOutlet weak var emailTextField: UITextField!
 //    @IBOutlet weak var passwordTextField: UITextField!
     let loginButton = LoginButton(readPermissions: [ .publicProfile, .email])
     
     override func viewDidAppear(_ animated: Bool) {
-        if let user = FIRAuth.auth()?.currentUser {
+        if let user = Auth.auth().currentUser {
             self.signedIn(user)
         }
     }
@@ -36,7 +36,7 @@ class SignInViewController: UIViewController, LoginButtonDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        reference = FIRDatabase.database().reference()
+        reference = Database.database().reference()
         
         view.addSubview(loginButton)
         loginButton.delegate = self
@@ -81,7 +81,7 @@ class SignInViewController: UIViewController, LoginButtonDelegate {
 //        
 //    }
     
-    func signedIn(_ user: FIRUser?) {
+    func signedIn(_ user: User?) {
         AppState.sharedInstance.displayName = user?.displayName ?? user?.email
         AppState.sharedInstance.signedIn = true
         AppState.sharedInstance.UID = user?.uid
@@ -91,9 +91,9 @@ class SignInViewController: UIViewController, LoginButtonDelegate {
     func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
         print("login \(result)")
         guard let authenticationToken = AccessToken.current?.authenticationToken else { return }
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: (authenticationToken))
+        let credential = FacebookAuthProvider.credential(withAccessToken: (authenticationToken))
         
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+        Auth.auth().signIn(with: credential) { (user, error) in
             if let error = error {
                 print(error)
                 return
