@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '48E25E66D622C6B01EAF6F8BDEA43DA4'
-               BlueprintName = 'Clarifai'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Clarifai.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5C056DB68732226EBB6564BC9AC44805"
+               BlueprintName = "Clarifai"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "Clarifai.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

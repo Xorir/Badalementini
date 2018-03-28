@@ -12,7 +12,7 @@ import Firebase
 
 class MissingPetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var reference = FIRDatabaseReference.init()
+    var reference = DatabaseReference()
     @IBOutlet weak var tableView: UITableView!
     var missingPetArray: [StrayModel]!
     
@@ -53,7 +53,7 @@ class MissingPetViewController: UIViewController, UITableViewDelegate, UITableVi
     func getInfFromFirebase() {
         guard let administrativeArea = UserLocationManager.sharedInstance.administrativeArea else { return }
         
-        reference = FIRDatabase.database().reference()
+        reference = Database.database().reference()
         reference.child(administrativeArea).child(Constants.missingPet).observe(.value, with: { [weak self] (snapshot) -> Void in
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             guard let strongSelf = self else { return }

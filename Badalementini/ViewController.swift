@@ -14,7 +14,7 @@ import Clarifai
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    var reference = FIRDatabaseReference.init()
+    var reference = DatabaseReference.init()
     var stray: StrayModel!
     @IBOutlet weak var postPost: UIButton!
     let activityIndicator = ActivityIndicator()
@@ -84,7 +84,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func checkStrayAnimals() {
         guard let administrativeArea = UserLocationManager.sharedInstance.administrativeArea else { return }
         
-        reference = FIRDatabase.database().reference()
+        reference = Database.database().reference()
         reference.child(administrativeArea).child(Constants.petSection).observe(.value, with: { (snapshot) -> Void in
             
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }

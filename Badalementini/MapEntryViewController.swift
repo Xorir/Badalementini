@@ -62,7 +62,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
-    var reference = FIRDatabaseReference.init()
+    var reference = DatabaseReference()
     var enterInfoTextField: UITextField! = nil
     var customNavigationbar: UINavigationBar! = nil
     var animalImageView: UIImageView! = nil
@@ -134,12 +134,12 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         
         guard let userID = AppState.sharedInstance.UID else { return }
         guard let pickedImage = self.pickedImage else { return }
-        var metaDataOut: FIRStorageMetadata?
+        var metaDataOut: StorageMetadata?
         
-        let storage = FIRStorage.storage().reference().child(userID).child(getDateAndHour())
+        let storage = Storage.storage().reference().child(userID).child(getDateAndHour())
         
         if let uploadData = UIImageJPEGRepresentation(pickedImage, 0.8) {
-            let uploadTask = storage.put(uploadData, metadata: nil, completion: { [weak self] (metaData, error) in
+            let uploadTask = storage.putData(uploadData, metadata: nil, completion: { [weak self] (metaData, error) in
                 guard let strongSelf = self else { return }
                 
                 if error != nil {
@@ -152,12 +152,12 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
-    func createNewEntry(metaDataImage: FIRStorageMetadata?) {
+    func createNewEntry(metaDataImage: StorageMetadata?) {
         
         // enter info to Firebase DB
-        reference = FIRDatabase.database().reference()
+        reference = Database.database().reference()
         guard let locationValues = UserLocationManager.sharedInstance.locationValues else { return }
-        guard let currentUser = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let currentUser = Auth.auth().currentUser?.uid else { return }
         guard let infoText = self.infoText else { return }
         guard let metaData = metaDataImage?.downloadURL()?.absoluteString else { return }
 //        guard let address = UserLocationManager.sharedInstance.address else { return }

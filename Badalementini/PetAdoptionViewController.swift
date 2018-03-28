@@ -28,7 +28,7 @@ class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var tableView: UITableView!
     var petAdoptionArray: [StrayModel]!
-    var reference = FIRDatabaseReference.init()
+    var reference = DatabaseReference.init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,7 @@ class PetAdoptionViewController: UIViewController, UITableViewDelegate, UITableV
     func getInfFromFirebase() {
         guard let administrativeArea = UserLocationManager.sharedInstance.administrativeArea else { return }
         
-        reference = FIRDatabase.database().reference()
+        reference = Database.database().reference()
         reference.child(administrativeArea).child(Constants.petAdoption).observe(.value, with: {  [weak self] (snapshot) -> Void in
             guard let straySnapshot = snapshot.value as? [String: AnyObject] else { return }
             guard let strongSelf = self else { return }
