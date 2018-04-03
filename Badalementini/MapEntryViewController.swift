@@ -189,6 +189,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                 
                 let mainPost =  reference.child(administrativeArea).child(Constants.missingPet).childByAutoId()
                 mainPost.setValue(coordinates)
+                
                 coordinates.updateValue("\(mainPost)" as AnyObject, forKey: Constants.deletionLink)
                 
                 let userPostDict = reference.child(Constants.userPosts).child(Constants.missingPet).child(currentUser).childByAutoId()
@@ -196,6 +197,9 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                 coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: Constants.userPostDeletionLink)
                 
                 userPostDict.setValue(coordinates)
+                
+//                let notificationDictionary: [String: String] = ["title": "Missing Pet", "message": "pet is missing in your area"]
+                
                 
             case .strayAnimal:
                 let mainPost = reference.child(administrativeArea).child(Constants.strayAnimal).childByAutoId()
@@ -208,6 +212,7 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                 
                 coordinates.updateValue("\(userPostDict)" as AnyObject, forKey: Constants.userPostDeletionLink)
                 userPostDict.setValue(coordinates)
+                
             case .petAdoption:
                 if let contactName = self.contactName, let contactPhoneNumber = self.contactPhoneNumber {
                     coordinates.updateValue("\(contactName)" as AnyObject, forKey: Constants.contactName)

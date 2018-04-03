@@ -39,7 +39,9 @@
 		D2A619C21EFEF71E00C7D69C /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */; };
 		D2A619C51F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A619C31F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift */; };
 		D2A619C61F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */; };
+		D2B4460D207077160050F154 /* FIRMessagingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B4460C207077160050F154 /* FIRMessagingService.swift */; };
 		D2BB2EC81F10AF17008FF9BE /* EntryButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB2EC71F10AF17008FF9BE /* EntryButtons.swift */; };
+		D2C19554206C06E1006B26A1 /* UNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C19553206C06E1006B26A1 /* UNService.swift */; };
 		D2D2C1C11EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */; };
 		D2D2C1C21EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */; };
 		D2EB944F1F034AFD00174DC5 /* UserPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EB944E1F034AFD00174DC5 /* UserPostsViewController.swift */; };
@@ -84,7 +86,9 @@
 		D2A619C11EFEF71E00C7D69C /* ImageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		D2A619C31F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalDetailTableViewCell.swift; sourceTree = "<group>"; };
 		D2A619C41F00287100C7D69C /* StrayAnimalDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrayAnimalDetailTableViewCell.xib; sourceTree = "<group>"; };
+		D2B4460C207077160050F154 /* FIRMessagingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRMessagingService.swift; sourceTree = "<group>"; };
 		D2BB2EC71F10AF17008FF9BE /* EntryButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryButtons.swift; sourceTree = "<group>"; };
+		D2C19553206C06E1006B26A1 /* UNService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UNService.swift; sourceTree = "<group>"; };
 		D2D2C1BF1EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrayAnimalEntryTableViewCell.swift; sourceTree = "<group>"; };
 		D2D2C1C01EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrayAnimalEntryTableViewCell.xib; sourceTree = "<group>"; };
 		D2EB944E1F034AFD00174DC5 /* UserPostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostsViewController.swift; sourceTree = "<group>"; };
@@ -180,9 +184,11 @@
 		D28A95D11EDE7769009F9DFE /* Singleton */ = {
 			isa = PBXGroup;
 			children = (
+				D2C19553206C06E1006B26A1 /* UNService.swift */,
 				D254A5371EC9894E0079C17E /* UserManager.swift */,
 				D254A5351EC9880D0079C17E /* AppState.swift */,
 				D254A57F1ED6A2E00079C17E /* UserLocationManager.swift */,
+				D2B4460C207077160050F154 /* FIRMessagingService.swift */,
 			);
 			name = Singleton;
 			sourceTree = "<group>";
@@ -272,7 +278,13 @@
 						DevelopmentTeam = X5NHG8EC8E;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -370,6 +382,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -388,6 +401,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -406,6 +420,7 @@
 				D254A5381EC9894E0079C17E /* UserManager.swift in Sources */,
 				D2A619C51F00287100C7D69C /* StrayAnimalDetailTableViewCell.swift in Sources */,
 				D28A95DE1EE536C7009F9DFE /* MissingPetViewController.swift in Sources */,
+				D2C19554206C06E1006B26A1 /* UNService.swift in Sources */,
 				D25C108C1F057FB30014DA93 /* MissingAndAdoptionViewController.swift in Sources */,
 				D28A95DC1EDFDC05009F9DFE /* TheActivityIndicator.swift in Sources */,
 				D28A95D41EDE8E11009F9DFE /* StrayAnimalDetailViewController.swift in Sources */,
@@ -430,6 +445,7 @@
 				D218BA4C1EFA1D9D0054F3B2 /* ActivityIndicator.swift in Sources */,
 				D2D2C1C11EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift in Sources */,
 				D254A5801ED6A2E00079C17E /* UserLocationManager.swift in Sources */,
+				D2B4460D207077160050F154 /* FIRMessagingService.swift in Sources */,
 				D2A619C21EFEF71E00C7D69C /* ImageDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
