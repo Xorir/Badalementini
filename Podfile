@@ -10,6 +10,7 @@ target 'Badalementini' do
 	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Storage'
+	pod 'Firebase/Messaging'
 	pod 'AlamofireImage', '~> 3.1'	
 	pod 'FacebookCore'
 	pod 'FacebookLogin'
