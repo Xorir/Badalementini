@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import Firebase
 import Clarifai
+import UserNotifications
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -63,6 +64,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         mapView.delegate = self
         title = Constants.vcTitle
+        FIRMessagingSevice.shared.subscribe(to: "topic")
 
     }
     
@@ -71,6 +73,35 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.removeAnnotations(annotationArray)
         annotationArray = []
         checkStrayAnimals()
+        checkPushNotification()
+    }
+    
+    func checkPushNotification(){
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().getNotificationSettings(){ (setttings) in
+                
+                switch setttings.authorizationStatus{
+                case .authorized:
+                    FIRMessagingSevice.shared.subscribe(to: "topic")
+                case .denied:
+                    FIRMessagingSevice.shared.unSubscribe(from: "topic")
+
+                case .notDetermined:
+                    print("something vital went wrong here")
+                }
+            }
+        } else {
+            
+            let isNotificationEnabled = UIApplication.shared.currentUserNotificationSettings?.types.contains(UIUserNotificationType.alert)
+            if let isNotificationEnabled = isNotificationEnabled {
+                if isNotificationEnabled {
+                    print("enabled notification setting")
+                } else{
+                    print("setting has been disabled")
+                }
+            }
+         
+        }
     }
     
     func centerUserLocation() {

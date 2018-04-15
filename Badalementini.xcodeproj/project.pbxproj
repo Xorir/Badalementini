@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		866240C6F888F7469B962FD1 /* Pods_Badalementini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2392B117E06BB6F1B8B4270C /* Pods_Badalementini.framework */; };
 		D216882E2082F17400F2E5B1 /* UNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216882D2082F17400F2E5B1 /* UNService.swift */; };
+		D21688302082FA4500F2E5B1 /* FIRMessagingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D216882F2082FA4500F2E5B1 /* FIRMessagingService.swift */; };
 		D218BA4C1EFA1D9D0054F3B2 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D218BA4B1EFA1D9D0054F3B2 /* ActivityIndicator.swift */; };
 		D23079BA1EE772A700EA34CF /* MissingPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23079B81EE772A700EA34CF /* MissingPetTableViewCell.swift */; };
 		D23079BB1EE772A700EA34CF /* MissingPetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23079B91EE772A700EA34CF /* MissingPetTableViewCell.xib */; };
@@ -53,6 +54,7 @@
 		2392B117E06BB6F1B8B4270C /* Pods_Badalementini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Badalementini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC2FD49481DC622C78150C18 /* Pods-Badalementini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Badalementini.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Badalementini/Pods-Badalementini.debug.xcconfig"; sourceTree = "<group>"; };
 		D216882D2082F17400F2E5B1 /* UNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNService.swift; sourceTree = "<group>"; };
+		D216882F2082FA4500F2E5B1 /* FIRMessagingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIRMessagingService.swift; sourceTree = "<group>"; };
 		D218BA4B1EFA1D9D0054F3B2 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D23079B81EE772A700EA34CF /* MissingPetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissingPetTableViewCell.swift; sourceTree = "<group>"; };
 		D23079B91EE772A700EA34CF /* MissingPetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MissingPetTableViewCell.xib; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				D254A5351EC9880D0079C17E /* AppState.swift */,
 				D254A57F1ED6A2E00079C17E /* UserLocationManager.swift */,
 				D216882D2082F17400F2E5B1 /* UNService.swift */,
+				D216882F2082FA4500F2E5B1 /* FIRMessagingService.swift */,
 			);
 			name = Singleton;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				D218BA4C1EFA1D9D0054F3B2 /* ActivityIndicator.swift in Sources */,
 				D2D2C1C11EFAC11A00882E06 /* StrayAnimalEntryTableViewCell.swift in Sources */,
 				D254A5801ED6A2E00079C17E /* UserLocationManager.swift in Sources */,
+				D21688302082FA4500F2E5B1 /* FIRMessagingService.swift in Sources */,
 				D2A619C21EFEF71E00C7D69C /* ImageDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
