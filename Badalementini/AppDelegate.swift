@@ -11,6 +11,7 @@ import Firebase
 import MapKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import Messages
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -36,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("did register for notifications")
+        print(Messaging.messaging().fcmToken)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
