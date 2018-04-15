@@ -197,6 +197,18 @@ class MapEntryViewController: UIViewController, UIImagePickerControllerDelegate,
                 
                 userPostDict.setValue(coordinates)
                 
+                if let userPostalCode = UserLocationManager.sharedInstance.postalCode {
+                    var notificationInfo: [String: String] = [
+                        "postalCode": "\(11233)",
+                        "userName": "\(currentUser)",
+                        "infoText": "\(infoText)"
+                    ]
+                    
+                    let notificationPost = reference.child("notifications").childByAutoId()
+                    notificationPost.setValue(notificationInfo)
+                    
+                }
+                
             case .strayAnimal:
                 let mainPost = reference.child(administrativeArea).child(Constants.strayAnimal).childByAutoId()
                 coordinates.updateValue("\(mainPost)" as AnyObject, forKey: Constants.deletionLink)

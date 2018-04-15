@@ -82,9 +82,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 
                 switch setttings.authorizationStatus{
                 case .authorized:
-                    FIRMessagingSevice.shared.subscribe(to: "topic")
+                    FIRMessagingSevice.shared.subscribe(to: "11233")
                 case .denied:
-                    FIRMessagingSevice.shared.unSubscribe(from: "topic")
+                    FIRMessagingSevice.shared.unSubscribe(from: "11233")
 
                 case .notDetermined:
                     print("something vital went wrong here")
@@ -100,7 +100,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     print("setting has been disabled")
                 }
             }
-         
         }
     }
     
